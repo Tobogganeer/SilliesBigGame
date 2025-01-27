@@ -1,14 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class Interactor : MonoBehaviour
 {
-    public Texture2D defaultCursor, interactCursor;
-
-    public Vector2 defaultCursorHotspot = new Vector2(0f, 0f);
-    // Interact cursor might be centered on the middle of the sprite
-    public Vector2 interactCursorHotspot = new Vector2(16f, 16f);
+    public CursorTypes cursors;
 
     Camera cam;
     IInteractable current;
@@ -21,23 +19,37 @@ public class Interactor : MonoBehaviour
     private void Update()
     {
         CastRay();
-        Texture2D cursor = current == null ? defaultCursor : interactCursor;
-        Vector2 hotspot = current == null ? Vector2.zero : new Vector2(16f, 16f);
-        Cursor.SetCursor(cursor, hotspot, CursorMode.Auto);
+        // Set the current cursor type if we are hovering over something
+        if (current == null)
+            cursors.SetCursorType(CursorType.Default);
+        else
+            cursors.SetCursorType(current.GetCursorType());
     }
 
     void CastRay()
     {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        GameObject hitObject = null;
+
+        // Check if we are hovering over UI
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            hitObject = EventSystem.current.currentSelectedGameObject;
+        }
+        else
+        {
+            Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
+            if (Physics.Raycast(ray, out RaycastHit hit))
+                hitObject = hit.collider.gameObject;
+        }
 
         // Check for object
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        if (hitObject != null)
         {
             // Check if it's interactable
-            if (hit.collider.TryGetComponent(out current))
+            if (hitObject.TryGetComponent(out current))
             {
                 // Check if we are tryna interact
-                if (Input.GetKeyDown(KeyCode.Mouse0))
+                if (Mouse.current.leftButton.wasPressedThisFrame)
                 {
                     // Do it
                     current.OnClicked();
