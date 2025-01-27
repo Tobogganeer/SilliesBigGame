@@ -31,7 +31,7 @@ public class Interactor : MonoBehaviour
         GameObject hitObject = null;
 
         // Check if we are hovering over UI
-        if (EventSystem.current.IsPointerOverGameObject())
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
         {
             hitObject = EventSystem.current.currentSelectedGameObject;
         }

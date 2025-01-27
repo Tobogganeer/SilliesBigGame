@@ -9,8 +9,17 @@ public class CursorTypes : ScriptableObject
     public SerializableDictionary<CursorType, CursorPreset> cursorPresets =
         new SerializableDictionary<CursorType, CursorPreset>();
 
+    // Store to avoid changing every frame if not necessary
+    private CursorType lastSetCursorType;
+
     public void SetCursorType(CursorType cursor)
     {
+        // Don't need to set the last set one again
+        if (cursor == lastSetCursorType)
+            return;
+
+        lastSetCursorType = cursor;
+
         if (cursorPresets.TryGetValue(cursor, out CursorPreset preset))
             preset.SetAsActive();
         else
