@@ -1,0 +1,17 @@
+{
+    "name": "Tobo.Audio",
+    "rootNamespace": "Tobo.Audio",
+    "references": [
+        "GUID:7314d173273003b46bedcbf47d74ef07",
+        "GUID:09a37e0ee9494c442b6c3ddf7591c7c7"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
