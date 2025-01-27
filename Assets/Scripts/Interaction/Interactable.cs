@@ -5,4 +5,5 @@ using UnityEngine;
 public interface IInteractable
 {
     public void OnClicked();
+    public CursorType GetCursorType() { return CursorType.InteractHand; }
 }
