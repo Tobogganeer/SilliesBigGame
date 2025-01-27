@@ -37,6 +37,7 @@ public class Interactor : MonoBehaviour
         }
         else
         {
+            // Otherwise cast a ray into the scene
             Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
             if (Physics.Raycast(ray, out RaycastHit hit))
                 hitObject = hit.collider.gameObject;
