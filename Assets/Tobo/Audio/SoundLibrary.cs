@@ -19,11 +19,23 @@ namespace Tobo.Audio
         public Sound[] sounds;
 
 #if UNITY_EDITOR
-        [MenuItem("Audio/Update current Sounds")]
-        public static void FillSounds()
+        [MenuItem("Audio/Update Current Sounds")]
+        static void FillSounds()
         {
             SoundLibrary lib = LibraryUtil.FillLibrary<SoundLibrary, Sound>(nameof(SoundLibrary.sounds));
             AudioCodegen.Generate(lib);
+        }
+
+        public static void FillAndGenerateSounds(bool generate = true)
+        {
+            SoundLibrary lib = LibraryUtil.FillLibrary<SoundLibrary, Sound>(nameof(SoundLibrary.sounds));
+            if (generate)
+                AudioCodegen.Generate(lib);
+        }
+
+        public static void Generate()
+        {
+            AudioCodegen.Generate(LibraryUtil.FindLibrary<SoundLibrary>());
         }
 #endif
     }

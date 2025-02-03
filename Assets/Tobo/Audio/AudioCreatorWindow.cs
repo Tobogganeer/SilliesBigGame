@@ -22,6 +22,7 @@ namespace Tobo.Audio.Editor
         AudioCategory category = AudioCategory.SFX;
 
         bool batchMode = true;
+        bool doCodegen = true;
 
         SerializedObject target;
 
@@ -98,6 +99,10 @@ namespace Tobo.Audio.Editor
             EditorGUILayout.LabelField("Sound Data", EditorStyles.boldLabel);
             is2D = EditorGUILayout.Toggle("Sound is 2D", is2D);
             category = (AudioCategory)EditorGUILayout.EnumPopup("Audio Category", category);
+            EditorGUILayout.Space();
+            doCodegen = EditorGUILayout.Toggle(new GUIContent("Generate Sound.ID code",
+                "Auto regenerates the file containing sound IDs. If disabled, run Audio/Update Current Sounds"), doCodegen);
+
             if (clips.Count == 1 || !batchMode)
             {
                 if (GUILayout.Button("Save sound"))
@@ -116,7 +121,7 @@ namespace Tobo.Audio.Editor
             Sound s = Sound.CreateInternal(clips, is2D, category);
             AssetDatabase.CreateAsset(s, Combine(path, fileName));
             AssetDatabase.Refresh();
-            SoundLibrary.FillSounds();
+            SoundLibrary.FillAndGenerateSounds(doCodegen);
         }
 
         void SaveBatch(string path)
@@ -129,7 +134,7 @@ namespace Tobo.Audio.Editor
                 AssetDatabase.CreateAsset(s, Combine(path, clips[i].name + ".asset"));
             }
             AssetDatabase.Refresh();
-            SoundLibrary.FillSounds();
+            SoundLibrary.FillAndGenerateSounds(doCodegen);
         }
 
         void DisabledLabel(string label, string text)
