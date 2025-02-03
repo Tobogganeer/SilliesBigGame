@@ -45,7 +45,7 @@ public class Interactor : MonoBehaviour
         GameObject hitObject = null;
 
         // Check if we are hovering over UI
-        if (EventSystem.current != null)// && EventSystem.current.IsPointerOverGameObject())
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
         {
             // Returns null
             //hitObject = EventSystem.current.currentSelectedGameObject;
@@ -86,6 +86,7 @@ public class Interactor : MonoBehaviour
                 {
                     // Fill our list with the interactables on the new object
                     current = hitObject.GetComponents<IInteractable>();
+                    Debug.Log("Filled for " + currentObject.name);
 
                     CallEnterForAll();
 
