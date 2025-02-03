@@ -35,6 +35,7 @@ namespace Tobo.Audio
                     // Generate Sound.ID enum
                     using (cf.Enum(Modifiers.Public, "ID"))
                     {
+                        cf.EnumValue("None", 0);
                         for (int i = 0; i < soundIDs.Length; i++)
                         {
                             cf.EnumValue(soundIDs[i], soundIDs[i].GetStableHashCode());
@@ -65,6 +66,9 @@ namespace Tobo.Audio
                     sb.Append("internal static Dictionary<string, Sound.ID> SoundIDNameToSoundID { get; private set; } = new Dictionary<string, Sound.ID>()");
                     using (new Scope(cf, true))
                     {
+                        cf.ApplyIndent();
+                        sb.AppendLine("{ \"None\", Sound.ID.None },");
+
                         for (int i = 0; i < soundIDs.Length; i++)
                         {
                             cf.ApplyIndent();
@@ -73,6 +77,8 @@ namespace Tobo.Audio
                     }
                 }
             }
+
+            cf.SaveToDisk();
         }
 
         /// <summary>

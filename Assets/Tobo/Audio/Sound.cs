@@ -7,23 +7,6 @@ namespace Tobo.Audio
     [CreateAssetMenu(menuName = "Scriptable Objects/Sound")]
     public partial class Sound : ScriptableObject
     {
-        public enum ID : ushort
-        {
-            None = 0,
-            UIClick,
-            UIHover,
-            // Leaving room for different material types
-            LeftFootstep = 20,
-            RightFootstep = 30,
-            Drop = 40,
-            Jump = 50,
-
-            Item_Select_Generic,
-            Item_Drag_Generic,
-            Item_Drop_Generic,
-            SlotHover
-        }
-
         [SerializeField] private ID soundID;
         [SerializeField] private AudioClip[] clips;
         [SerializeField] private float maxDistance = 35f;
