@@ -273,6 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursors: {fileID: 11400000, guid: ee8ac99a379cfed4a9450ecb83ee1016, type: 2}
+  useInteractHandWhenNoCustomCursorProvided: 1
 --- !u!1 &395947989
 GameObject:
   m_ObjectHideFlags: 0

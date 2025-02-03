@@ -12,7 +12,7 @@ public class Interactor : MonoBehaviour
     public bool useInteractHandWhenNoCustomCursorProvided = true;
 
     Camera cam;
-    List<IInteractable> current; // List of all interactables on the hovered object
+    IInteractable[] current; // List of all interactables on the hovered object
     ICustomCursor currentCursor; // If the hovered object wants a custom cursor, it'll be stored here
 
     GameObject currentObject; // The object we are currently hovered over
@@ -36,7 +36,7 @@ public class Interactor : MonoBehaviour
     {
         // If the target object has no custom cursor, should we show the interact hand by default?
         if (useInteractHandWhenNoCustomCursorProvided)
-            return current?.Count > 0 ? CursorType.InteractHand : CursorType.Default;
+            return current?.Length > 0 ? CursorType.InteractHand : CursorType.Default;
         else return CursorType.Default;
     }
 
@@ -45,7 +45,7 @@ public class Interactor : MonoBehaviour
         GameObject hitObject = null;
 
         // Check if we are hovering over UI
-        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+        if (EventSystem.current != null)// && EventSystem.current.IsPointerOverGameObject())
         {
             // Returns null
             //hitObject = EventSystem.current.currentSelectedGameObject;
@@ -67,6 +67,12 @@ public class Interactor : MonoBehaviour
             if (currentObject == hitObject)
             {
                 CallStayForAll();
+                // Check if we are trying to interact
+                if (Mouse.current.leftButton.wasPressedThisFrame)
+                {
+                    // Do it
+                    CallOnClickedForAll();
+                }
             }
             else
             {
@@ -79,7 +85,7 @@ public class Interactor : MonoBehaviour
                 if (hitObject.TryGetComponent<IInteractable>(out _))
                 {
                     // Fill our list with the interactables on the new object
-                    hitObject.GetComponents(current);
+                    current = hitObject.GetComponents<IInteractable>();
 
                     CallEnterForAll();
 
@@ -118,7 +124,7 @@ public class Interactor : MonoBehaviour
         if (current == null)
             return;
 
-        for (int i = 0; i < current.Count; i++)
+        for (int i = 0; i < current.Length; i++)
             action(current[i]);
     }
 
