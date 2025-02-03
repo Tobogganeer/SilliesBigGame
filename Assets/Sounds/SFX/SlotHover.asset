@@ -9,8 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feef067aca970c241ada3810dfe15a7d, type: 3}
-  m_Name: Sounds
+  m_Script: {fileID: 11500000, guid: 687e7219b33c27445909a75ec375ab60, type: 3}
+  m_Name: SlotHover
   m_EditorClassIdentifier: 
-  sounds:
-  - {fileID: 11400000, guid: 5e906a0d21de50347952c1fb1d26b1d1, type: 2}
+  soundID: 0
+  clips:
+  - {fileID: 8300000, guid: b9976bc23c987ed4a9d6b8f670849081, type: 3}
+  maxDistance: 35
+  category: 1
+  volume: 1
+  minPitch: 0.85
+  maxPitch: 1.1
+  is2d: 1

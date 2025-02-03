@@ -19,7 +19,7 @@ namespace Tobo.Audio
         public Sound[] sounds;
 
 #if UNITY_EDITOR
-        [MenuItem("Audio/Fill Sounds")]
+        [MenuItem("Audio/Update current Sounds")]
         public static void FillSounds()
         {
             LibraryUtil.FillLibrary<SoundLibrary, Sound>(nameof(SoundLibrary.sounds));
