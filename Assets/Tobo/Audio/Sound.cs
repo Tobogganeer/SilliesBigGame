@@ -77,6 +77,7 @@ namespace Tobo.Audio
             AudioManager.Play2D(this);
         }
 
+#if TOBO_NET
         public void PlayLocal(Vector3 position)
         {
             AudioManager.PlayLocal(this, position);
@@ -86,7 +87,8 @@ namespace Tobo.Audio
         {
             AudioManager.PlayLocal2D(this);
         }
-        #endregion
+#endif
+#endregion
 
         internal static Sound CreateInternal(string name, List<AudioClip> clips, bool is2D, AudioCategory category)
         {

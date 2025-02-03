@@ -20,6 +20,10 @@ namespace Tobo.Audio
             UIHover = 1718178577,
         }
 
+        public static Sound SlotHover => Get(ID.SlotHover);
+        public static Sound UIClick => Get(ID.UIClick);
+        public static Sound UIHover => Get(ID.UIHover);
+
         internal static Dictionary<string, string> FilenameToSoundIDName { get; private set; } = new Dictionary<string, string>()
         {
         };

@@ -45,6 +45,16 @@ namespace Tobo.Audio
                     cf.Space();
                     System.Text.StringBuilder sb = cf.GetStringBuilder();
 
+                    // Big ol list of sounds
+                    foreach (string soundID in soundIDs)
+                    {
+                        cf.ApplyIndent();
+                        sb.Append("public static Sound ").Append(soundID).Append(" => Get(ID.").Append(soundID).AppendLine(");");
+                    }
+
+                    cf.Space();
+
+                    // Filename to SoundID name dict
                     cf.ApplyIndent();
                     sb.Append("internal static Dictionary<string, string> FilenameToSoundIDName { get; private set; } = new Dictionary<string, string>()");
                     using (new Scope(cf, true))
@@ -62,6 +72,7 @@ namespace Tobo.Audio
 
                     cf.Space();
 
+                    // Name to SoundID dict
                     cf.ApplyIndent();
                     sb.Append("internal static Dictionary<string, Sound.ID> SoundIDNameToSoundID { get; private set; } = new Dictionary<string, Sound.ID>()");
                     using (new Scope(cf, true))

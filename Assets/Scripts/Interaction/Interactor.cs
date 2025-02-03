@@ -20,7 +20,6 @@ public class Interactor : MonoBehaviour
     private void Start()
     {
         cam = Camera.main;
-        current = new List<IInteractable>();
     }
 
     private void Update()

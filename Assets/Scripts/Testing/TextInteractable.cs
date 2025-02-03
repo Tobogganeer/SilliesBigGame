@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Tobo.Util;
+using Tobo.Audio;
 
 public class TextInteractable : MonoBehaviour, IInteractable
 {
@@ -11,5 +12,6 @@ public class TextInteractable : MonoBehaviour, IInteractable
     public void OnClicked()
     {
         PopUp.Show(text, time);
+        Sound.UIClick.Play2D();
     }
 }
