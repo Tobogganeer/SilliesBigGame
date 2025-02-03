@@ -10,6 +10,16 @@ public class PlayerMovement : MonoBehaviour
         instance = this;
     }
 
+    Camera cam;
+
+    CameraPosition currentPosition;
+    CameraPosition.CameraRotation currentRotation;
+
+    private void Start()
+    {
+        cam = Camera.main;
+    }
+
     public void Travel(CameraPosition.Transition transition)
     {
 
@@ -18,5 +28,10 @@ public class PlayerMovement : MonoBehaviour
     public void TeleportTo(CameraPosition position, CameraPosition.CameraRotation rotation)
     {
         transform.position = position.transform.position;
+        Vector3 lookTarget = rotation.GetForwardVector(position.transform.position);
+        cam.transform.LookAt(lookTarget);
+
+        currentPosition = position;
+        currentRotation = rotation;
     }
 }

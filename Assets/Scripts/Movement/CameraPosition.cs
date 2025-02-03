@@ -56,6 +56,15 @@ public class CameraPosition : MonoBehaviour
         public CameraDirection facing;
         public Transform customFacingTarget;
         public List<Transition> transitions;
+
+        public Vector3 GetForwardVector(Vector3 from)
+        {
+            if (facing != CameraDirection.Custom)
+                return facing.GetOffset();
+            else if (customFacingTarget != null)
+                return from.Dir(customFacingTarget.position);
+            return Vector3.up; // This would look real funny in game - staring straight up
+        }
     }
 
     [Serializable]
