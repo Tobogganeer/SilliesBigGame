@@ -86,7 +86,7 @@ namespace Tobo.Audio
         }
         #endregion
 
-        public static Sound CreateInternal(List<AudioClip> clips, bool is2D, AudioCategory category)
+        internal static Sound CreateInternal(List<AudioClip> clips, bool is2D, AudioCategory category)
         {
             Sound s = CreateInstance<Sound>();
 

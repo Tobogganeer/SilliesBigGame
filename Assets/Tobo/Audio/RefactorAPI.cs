@@ -8,12 +8,7 @@ namespace Tobo.Audio
     {
         void Start()
         {
-        
-        }
 
-        void Update()
-        {
-        
         }
     }
 }
