@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,13 +9,18 @@ public class Interactor : MonoBehaviour
 {
     public CursorTypes cursors;
 
+    public bool useInteractHandWhenNoCustomCursorProvided = true;
+
     Camera cam;
-    IInteractable current;
+    List<IInteractable> current; // List of all interactables on the hovered object
     ICustomCursor currentCursor;
+
+    GameObject currentObject;
 
     private void Start()
     {
         cam = Camera.main;
+        current = new List<IInteractable>();
     }
 
     private void Update()
@@ -22,9 +28,17 @@ public class Interactor : MonoBehaviour
         CastRay();
         // Set the current cursor type if we are hovering over something
         if (currentCursor == null)
-            cursors.SetCursorType(CursorType.Default);
+            cursors.SetCursorType(GetCursorTypeWithNoCustomCursorFound());
         else
             cursors.SetCursorType(currentCursor.GetCursorType());
+    }
+
+    CursorType GetCursorTypeWithNoCustomCursorFound()
+    {
+        // If the target object has no custom cursor, should we show the interact hand by default?
+        if (useInteractHandWhenNoCustomCursorProvided)
+            return current?.Count > 0 ? CursorType.InteractHand : CursorType.Default;
+        else return CursorType.Default;
     }
 
     void CastRay()
@@ -50,32 +64,39 @@ public class Interactor : MonoBehaviour
         // Check for object
         if (hitObject != null)
         {
-            IInteractable old = current;
-
-            // Check if it's interactable
-            if (hitObject.TryGetComponent(out current))
+            // We hit the same object again - no need to check further
+            if (currentObject == hitObject)
             {
-                // Hovered over a new object
-                if (old != current)
-                {
-                    old?.OnCursorExit();
-                    current.OnCursorEnter();
-                }
-
-                // Check if we are tryna interact
-                if (Mouse.current.leftButton.wasPressedThisFrame)
-                {
-                    // Do it
-                    current.OnClicked();
-                }
-
-                current.OnCursorStay();
+                CallStayForAll();
             }
-            else NoInteractableFound();
+            else
+            {
+                currentObject = hitObject;
+
+                // Call OnCursorExit for all of the current (old) interactables
+                CallExitForAll();
+
+                // Check if the new object is interactable
+                if (hitObject.TryGetComponent<IInteractable>(out _))
+                {
+                    // Fill our list with the interactables on the new object
+                    hitObject.GetComponents(current);
+
+                    CallEnterForAll();
+
+                    // Check if we are trying to interact
+                    if (Mouse.current.leftButton.wasPressedThisFrame)
+                    {
+                        // Do it
+                        CallOnClickedForAll();
+                    }
+                }
+                else NoInteractableFound();
+            }
 
             // Check if has a custom cursor
             if (!hitObject.TryGetComponent(out currentCursor))
-                current = null;
+                currentCursor = null;
         }
         else
         {
@@ -87,7 +108,24 @@ public class Interactor : MonoBehaviour
 
     void NoInteractableFound()
     {
-        current?.OnCursorExit();
+        // Call OnCursorExit on all current interactables
+        CallExitForAll();
         current = null;
     }
+
+    #region Shorthands to call functions on all current interactables
+    void CallFunctionOnAll(Action<IInteractable> action)
+    {
+        if (current == null)
+            return;
+
+        for (int i = 0; i < current.Count; i++)
+            action(current[i]);
+    }
+
+    void CallOnClickedForAll() => CallFunctionOnAll((inter) => inter.OnClicked());
+    void CallEnterForAll() => CallFunctionOnAll((inter) => inter.OnCursorEnter());
+    void CallStayForAll() => CallFunctionOnAll((inter) => inter.OnCursorStay());
+    void CallExitForAll() => CallFunctionOnAll((inter) => inter.OnCursorExit());
+    #endregion
 }
