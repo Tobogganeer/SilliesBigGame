@@ -22,7 +22,8 @@ namespace Tobo.Audio
         [MenuItem("Audio/Update current Sounds")]
         public static void FillSounds()
         {
-            LibraryUtil.FillLibrary<SoundLibrary, Sound>(nameof(SoundLibrary.sounds));
+            SoundLibrary lib = LibraryUtil.FillLibrary<SoundLibrary, Sound>(nameof(SoundLibrary.sounds));
+            AudioCodegen.Generate(lib);
         }
 #endif
     }

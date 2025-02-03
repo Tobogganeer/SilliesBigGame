@@ -27,7 +27,7 @@ namespace Tobo.Util.Editor
 
 
 
-        public static void FillLibrary<TLibrary, TObject>(string arrayName)
+        public static TLibrary FillLibrary<TLibrary, TObject>(string arrayName)
             where TLibrary : ScriptableObject
             where TObject : ScriptableObject
         {
@@ -42,6 +42,7 @@ namespace Tobo.Util.Editor
             }
 
             FillScriptableObjects<TObject>(libraries[0], arrayName);
+            return libraries[0];
         }
 
         public static void FillScriptableObjects<T>(Object owner, string arrayName) where T : ScriptableObject

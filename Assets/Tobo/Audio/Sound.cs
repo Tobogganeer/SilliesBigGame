@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Tobo.Audio
 {
     [CreateAssetMenu(menuName = "Scriptable Objects/Sound")]
-    public class Sound : ScriptableObject
+    public partial class Sound : ScriptableObject
     {
         public enum ID : ushort
         {
