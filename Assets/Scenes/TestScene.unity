@@ -151,7 +151,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92eebb98793272c47839bd393b6acc7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotations: []
+  rotations:
+  - facing: 0
+    transitions:
+    - directionToClick: 2
+      moveTrigger: {fileID: 0}
+      mode: 0
+      leadsToRotation: 1
+      leadsToPosition: {fileID: 0}
+      moveSmoothly: 0
+      moveSpeedMultiplier: 0
+      _foldout: 1
+  - facing: 1
+    transitions: []
+  - facing: 2
+    transitions: []
+  - facing: 3
+    transitions: []
 --- !u!4 &28827116
 Transform:
   m_ObjectHideFlags: 0
