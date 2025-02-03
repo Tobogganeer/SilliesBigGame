@@ -8,8 +8,11 @@ using System;
 using UnityEditor;
 #endif
 
-namespace BeyondTheDoor.Importer.CodeGen
+namespace Tobo.Codegen
 {
+    /// <summary>
+    /// Used to aid in creating auto-generated code files
+    /// </summary>
     public class CodeFile
     {
         const int AutoGenPreambleMinLength = 50;

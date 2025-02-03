@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static BeyondTheDoor.Importer.CodeGen.CodeFile;
+using static Tobo.Codegen.CodeFile;
 
-namespace BeyondTheDoor.Importer.CodeGen
+namespace Tobo.Codegen
 {
     /// <summary>
     /// Wrapper for a CodeFile used to generate enums.
