@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// Makes a UI object interact with the Interactable system
+/// </summary>
 public class UIInteractable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    //public CursorType cursorType = CursorType.InteractHand;
-
     public static UIInteractable CurrentlyHovered;
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -20,16 +21,4 @@ public class UIInteractable : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         if (CurrentlyHovered == this)
             CurrentlyHovered = null;
     }
-
-    public void OnClicked()
-    {
-        // Does nothing
-    }
-
-    /*
-    CursorType IInteractable.GetCursorType()
-    {
-        return cursorType;
-    }
-    */
 }

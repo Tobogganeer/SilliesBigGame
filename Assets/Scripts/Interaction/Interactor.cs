@@ -10,7 +10,7 @@ public class Interactor : MonoBehaviour
 
     Camera cam;
     IInteractable current;
-    IChangeCursor currentCursor;
+    ICustomCursor currentCursor;
 
     private void Start()
     {
