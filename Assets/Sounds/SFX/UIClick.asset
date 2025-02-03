@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 687e7219b33c27445909a75ec375ab60, type: 3}
   m_Name: UIClick
   m_EditorClassIdentifier: 
-  soundID: 0
+  soundID: 1713459037
   clips:
   - {fileID: 8300000, guid: c8629b684e6e5e143879f259abfc070c, type: 3}
   maxDistance: 35

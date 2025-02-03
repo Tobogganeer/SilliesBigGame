@@ -69,10 +69,12 @@ namespace Tobo.Audio
         }
         #endregion
 
-        internal static Sound CreateInternal(List<AudioClip> clips, bool is2D, AudioCategory category)
+        internal static Sound CreateInternal(string name, List<AudioClip> clips, bool is2D, AudioCategory category)
         {
             Sound s = CreateInstance<Sound>();
 
+            s.name = name;
+            s.soundID = (ID)AudioCodegen.GetSoundIDBeforeCompilation(name);
             s.clips = clips.ToArray();
             s.is2d = is2D;
             s.category = category;

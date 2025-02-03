@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 687e7219b33c27445909a75ec375ab60, type: 3}
   m_Name: SlotHover
   m_EditorClassIdentifier: 
-  soundID: 0
+  soundID: -1850161273
   clips:
   - {fileID: 8300000, guid: b9976bc23c987ed4a9d6b8f670849081, type: 3}
   maxDistance: 35

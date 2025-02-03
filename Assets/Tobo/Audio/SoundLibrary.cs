@@ -15,7 +15,7 @@ namespace Tobo.Audio
         //  AudioManager just had a Sound[]
         // Probably because it was in a prefab in resources or smth, idk
 
-        [Header("Fill through Menu")]
+        [Header("Fill through Menu (Audio/UpdateCurrentSounds)")]
         public Sound[] sounds;
 
 #if UNITY_EDITOR

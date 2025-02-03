@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 687e7219b33c27445909a75ec375ab60, type: 3}
   m_Name: UIHover
   m_EditorClassIdentifier: 
-  soundID: 0
+  soundID: 1718178577
   clips:
   - {fileID: 8300000, guid: 8c0ad79a2b7b18547a3b88db962b9eec, type: 3}
   maxDistance: 35

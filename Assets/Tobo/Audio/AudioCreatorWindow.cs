@@ -114,11 +114,10 @@ namespace Tobo.Audio.Editor
 
         void Save(string path, string fileName)
         {
-            fileName += ".asset";
-
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
-            Sound s = Sound.CreateInternal(clips, is2D, category);
+            Sound s = Sound.CreateInternal(fileName, clips, is2D, category);
+            fileName += ".asset";
             AssetDatabase.CreateAsset(s, Combine(path, fileName));
             AssetDatabase.Refresh();
             SoundLibrary.FillAndGenerateSounds(doCodegen);
@@ -130,7 +129,7 @@ namespace Tobo.Audio.Editor
             {
                 List<AudioClip> _new = new List<AudioClip>();
                 _new.Add(clips[i]);
-                Sound s = Sound.CreateInternal(_new, is2D, category);
+                Sound s = Sound.CreateInternal(clips[i].name, _new, is2D, category);
                 AssetDatabase.CreateAsset(s, Combine(path, clips[i].name + ".asset"));
             }
             AssetDatabase.Refresh();

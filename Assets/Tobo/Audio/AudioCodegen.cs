@@ -96,5 +96,10 @@ namespace Tobo.Audio
                 soundAssetName = "_" + soundAssetName;
             return soundAssetName;
         }
+
+        public static int GetSoundIDBeforeCompilation(string soundAssetName)
+        {
+            return GetSoundIDString(soundAssetName).GetStableHashCode();
+        }
     }
 }
