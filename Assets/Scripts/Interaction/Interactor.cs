@@ -10,6 +10,7 @@ public class Interactor : MonoBehaviour
 
     Camera cam;
     IInteractable current;
+    IChangeCursor currentCursor;
 
     private void Start()
     {
@@ -20,10 +21,10 @@ public class Interactor : MonoBehaviour
     {
         CastRay();
         // Set the current cursor type if we are hovering over something
-        if (current == null)
+        if (currentCursor == null)
             cursors.SetCursorType(CursorType.Default);
         else
-            cursors.SetCursorType(current.GetCursorType());
+            cursors.SetCursorType(currentCursor.GetCursorType());
     }
 
     void CastRay()
@@ -49,18 +50,44 @@ public class Interactor : MonoBehaviour
         // Check for object
         if (hitObject != null)
         {
+            IInteractable old = current;
+
             // Check if it's interactable
             if (hitObject.TryGetComponent(out current))
             {
+                // Hovered over a new object
+                if (old != current)
+                {
+                    old?.OnCursorExit();
+                    current.OnCursorEnter();
+                }
+
                 // Check if we are tryna interact
                 if (Mouse.current.leftButton.wasPressedThisFrame)
                 {
                     // Do it
                     current.OnClicked();
                 }
+
+                current.OnCursorStay();
             }
-            else current = null;
+            else NoInteractableFound();
+
+            // Check if has a custom cursor
+            if (!hitObject.TryGetComponent(out currentCursor))
+                current = null;
         }
-        else current = null;
+        else
+        {
+            // Hit nothing
+            NoInteractableFound();
+            currentCursor = null;
+        }
+    }
+
+    void NoInteractableFound()
+    {
+        current?.OnCursorExit();
+        current = null;
     }
 }

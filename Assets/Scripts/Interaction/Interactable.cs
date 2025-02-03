@@ -4,6 +4,15 @@ using UnityEngine;
 
 public interface IInteractable
 {
+    public void OnCursorEnter() { }
+    public void OnCursorStay() { }
+    public void OnCursorExit() { }
+
     public void OnClicked();
-    public CursorType GetCursorType() { return CursorType.InteractHand; }
 }
+
+public interface IChangeCursor
+{
+    public CursorType GetCursorType();
+}
+
