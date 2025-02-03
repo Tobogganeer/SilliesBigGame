@@ -29,6 +29,9 @@ public class CameraPosition : MonoBehaviour
         public bool moveSmoothly = true; // We might want to snap in some cases?
         public float moveSpeedMultiplier = 1f;
 
+        [HideInInspector]
+        public bool _foldout = true;
+
         public enum Mode
         {
             AnotherRotation,
