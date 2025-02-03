@@ -163,11 +163,29 @@ MonoBehaviour:
       moveSpeedMultiplier: 0
       _foldout: 1
   - facing: 1
-    transitions: []
+    transitions:
+    - directionToClick: 0
+      moveTrigger: {fileID: 0}
+      mode: 0
+      leadsToRotation: 0
+      leadsToPosition: {fileID: 0}
+      moveSmoothly: 0
+      moveSpeedMultiplier: 0
+      _foldout: 1
   - facing: 2
     transitions: []
   - facing: 3
     transitions: []
+  - facing: 4
+    transitions:
+    - directionToClick: 0
+      moveTrigger: {fileID: 0}
+      mode: 0
+      leadsToRotation: 0
+      leadsToPosition: {fileID: 0}
+      moveSmoothly: 0
+      moveSpeedMultiplier: 0
+      _foldout: 1
 --- !u!4 &28827116
 Transform:
   m_ObjectHideFlags: 0

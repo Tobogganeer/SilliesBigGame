@@ -58,22 +58,31 @@ public class CameraPosition : MonoBehaviour
         Gizmos.DrawSphere(transform.position, 0.2f);
 
         const float Offset = 1f;
+        const float SmallLocalOffset = 0.02f;
 
+        int stateNum = 0;
         foreach (CameraRotation state in rotations)
         {
+            stateNum++;
+            UnityEngine.Random.InitState(stateNum);
             // Draw direction itself
             Gizmos.color = state.facing.GetColour();
             Gizmos.DrawSphere(GetPosition(state.facing), 0.1f);
 
             // Draw connections
             //Gizmos.color = Color.white;
-            foreach (Transition trans in state.transitions)
+            for (int i = 0; i < state.transitions.Count; i++)
             {
+                Transition trans = state.transitions[i];
+
+                // Small offset to see different connections
+                Vector3 locOff = UnityEngine.Random.insideUnitSphere * SmallLocalOffset;
+
                 // Another rotation on this object
                 if (trans.mode == Transition.Mode.AnotherRotation)
                 {
-                    Gizmos.DrawLine(GetPosition(state.facing), GetPosition(trans.leadsToRotation));
-                    Gizmos.DrawWireSphere(GetPosition(trans.leadsToRotation), 0.13f);
+                    Gizmos.DrawLine(GetPosition(state.facing) + locOff, GetPosition(trans.leadsToRotation) + locOff);
+                    Gizmos.DrawWireSphere(GetPosition(trans.leadsToRotation) + locOff, 0.13f);
                 }
                 // Check if the other object has been assigned
                 else if (trans.leadsToPosition != null)
@@ -81,7 +90,7 @@ public class CameraPosition : MonoBehaviour
                     Vector3 targetPosition = trans.leadsToPosition.transform.position;
                     Vector3 targetOffset = trans.leadsToRotation.GetOffset() * Offset;
 
-                    Gizmos.DrawLine(GetPosition(state.facing), targetPosition + targetOffset);
+                    Gizmos.DrawLine(GetPosition(state.facing) + locOff, targetPosition + targetOffset);
                     Gizmos.DrawWireSphere(targetPosition + targetOffset, 0.13f);
                 }
             }
