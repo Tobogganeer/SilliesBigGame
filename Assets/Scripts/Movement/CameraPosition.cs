@@ -11,6 +11,45 @@ public class CameraPosition : MonoBehaviour
 {
     public List<CameraRotation> rotations;
 
+
+    public bool TryGetRotation(CameraDirection facing, out CameraRotation outRotation, Transform customTarget = null)
+    {
+        // Search through for matching direction
+        if (facing != CameraDirection.Custom)
+        {
+            foreach (CameraRotation rotation in rotations)
+            {
+                if (rotation.facing == facing)
+                {
+                    outRotation = rotation;
+                    return true;
+                }
+            }
+        }
+        else
+        {
+            // Search for matching custom target
+            if (customTarget == null)
+            {
+                outRotation = null;
+                return false;
+            }
+            foreach (CameraRotation rotation in rotations)
+            {
+                // 'facing' should always be Custom for both anyways
+                if (rotation.facing == facing && rotation.customFacingTarget == customTarget)
+                {
+                    outRotation = rotation;
+                    return true;
+                }
+            }
+        }
+
+        outRotation = null;
+        return false;
+    }
+
+
     [Serializable]
     public class CameraRotation
     {
