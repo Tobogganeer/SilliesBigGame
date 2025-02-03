@@ -17,6 +17,7 @@ public class TransitionPropertyDrawer : PropertyDrawer
         SerializedProperty toPosition = Prop("leadsToPosition");
         SerializedProperty toRotation = Prop("leadsToRotation");
         SerializedProperty foldout = Prop("_foldout");
+        SerializedProperty customTarget = Prop("customFacingTarget");
 
         var moveDir = (CameraPosition.MoveDirection)dirProp.intValue;
         var moveMode = (CameraPosition.Transition.Mode)modeProp.intValue;
@@ -29,13 +30,23 @@ public class TransitionPropertyDrawer : PropertyDrawer
         EditorGUIUtility.labelWidth = 100f;
 
         string labelText;
+        string camDirText;
+        // Get special string if we are aiming at a custom target
+        if (endCameraDir == CameraDirection.Custom)
+        {
+            Transform target = customTarget.objectReferenceValue as Transform;
+            camDirText = "Look at \"" + (target != null ? target.name : "(unset)") + "\"";
+        }
+        else
+            camDirText = endCameraDir.ToString();
+
         if (moveMode == CameraPosition.Transition.Mode.AnotherPosition)
         {
             CameraPosition to = toPosition.objectReferenceValue as CameraPosition;
-            labelText = (to != null ? to.name : "(unset)") + " > " + endCameraDir;
+            labelText = (to != null ? to.name : "(unset)") + " > " + camDirText;
         }
         else
-            labelText = endCameraDir.ToString();
+            labelText = camDirText;
 
         foldout.boolValue = EditorGUI.Foldout(new Rect(pos.x, 0, pos.width, line), foldout.boolValue, new GUIContent(labelText));
 
@@ -66,6 +77,8 @@ public class TransitionPropertyDrawer : PropertyDrawer
             if (moveMode == CameraPosition.Transition.Mode.AnotherPosition)
                 EditorGUI.PropertyField(Increase(ref rect), toPosition, Label("New CameraPosition"));
             EditorGUI.PropertyField(Increase(ref rect), toRotation, Label("New Rotation"));
+            if (endCameraDir == CameraDirection.Custom)
+                EditorGUI.PropertyField(Increase(ref rect), customTarget, Label("Look towards"));
             EditorGUI.PropertyField(Increase(ref rect), Prop("moveSmoothly"));
             EditorGUI.PropertyField(Increase(ref rect), Prop("moveSpeedMultiplier"));
 
@@ -95,6 +108,11 @@ public class TransitionPropertyDrawer : PropertyDrawer
             return line;
 
         float height = line * 7; // 5 + a space + foldout
+
+        SerializedProperty facingProp = property.FindPropertyRelative("leadsToRotation");
+        var facing = (CameraDirection)facingProp.intValue;
+        if (facing == CameraDirection.Custom)
+            height += line;
 
         SerializedProperty dirProp = property.FindPropertyRelative("directionToClick");
         var moveDir = (CameraPosition.MoveDirection)dirProp.intValue;

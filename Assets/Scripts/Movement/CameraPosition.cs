@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Tobo.Util;
 
 /// <summary>
 /// Represents a position for the camera to be in. Contains multiple rotations and transitions.
@@ -14,6 +15,7 @@ public class CameraPosition : MonoBehaviour
     public class CameraRotation
     {
         public CameraDirection facing;
+        public Transform customFacingTarget;
         public List<Transition> transitions;
     }
 
@@ -25,6 +27,7 @@ public class CameraPosition : MonoBehaviour
         public Mode mode;
 
         public CameraDirection leadsToRotation;
+        public Transform customFacingTarget;
         public CameraPosition leadsToPosition;
         public bool moveSmoothly = true; // We might want to snap in some cases?
         public float moveSpeedMultiplier = 1f;
@@ -58,6 +61,7 @@ public class CameraPosition : MonoBehaviour
         Gizmos.DrawSphere(transform.position, 0.2f);
 
         const float Offset = 1f;
+        const float CustomLookTargetLength = 0.5f;
         const float SmallLocalOffset = 0.02f;
 
         int stateNum = 0;
@@ -67,7 +71,10 @@ public class CameraPosition : MonoBehaviour
             UnityEngine.Random.InitState(stateNum);
             // Draw direction itself
             Gizmos.color = state.facing.GetColour();
-            Gizmos.DrawSphere(GetPosition(state.facing), 0.1f);
+            Vector3 pos = GetPosition(state.facing, state.customFacingTarget);
+            Gizmos.DrawSphere(pos, 0.1f);
+            if (state.facing == CameraDirection.Custom && state.customFacingTarget != null)
+                Gizmos.DrawLine(pos, pos + pos.Dir(state.customFacingTarget.position) * CustomLookTargetLength);
 
             // Draw connections
             //Gizmos.color = Color.white;
@@ -81,22 +88,35 @@ public class CameraPosition : MonoBehaviour
                 // Another rotation on this object
                 if (trans.mode == Transition.Mode.AnotherRotation)
                 {
-                    Gizmos.DrawLine(GetPosition(state.facing) + locOff, GetPosition(trans.leadsToRotation) + locOff);
-                    Gizmos.DrawWireSphere(GetPosition(trans.leadsToRotation) + locOff, 0.13f);
+                    Gizmos.DrawLine(GetPosition(state.facing, state.customFacingTarget) + locOff,
+                        GetPosition(trans.leadsToRotation, trans.customFacingTarget) + locOff);
+                    Gizmos.DrawWireSphere(GetPosition(trans.leadsToRotation, trans.customFacingTarget) + locOff, 0.13f);
                 }
                 // Check if the other object has been assigned
                 else if (trans.leadsToPosition != null)
                 {
                     Vector3 targetPosition = trans.leadsToPosition.transform.position;
-                    Vector3 targetOffset = trans.leadsToRotation.GetOffset() * Offset;
+                    Vector3 targetOffset = GetOffset(trans.leadsToRotation, trans.customFacingTarget);
 
-                    Gizmos.DrawLine(GetPosition(state.facing) + locOff, targetPosition + targetOffset);
+                    Gizmos.DrawLine(GetPosition(state.facing, state.customFacingTarget) + locOff, targetPosition + targetOffset);
                     Gizmos.DrawWireSphere(targetPosition + targetOffset, 0.13f);
                 }
             }
         }
 
-        Vector3 GetPosition(CameraDirection dir) => transform.position + dir.GetOffset() * Offset;
+        Vector3 GetOffset(CameraDirection dir, Transform customFacing)
+        {
+            if (dir != CameraDirection.Custom)
+                return dir.GetOffset() * Offset;
+            else if (customFacing != null)
+                return transform.position.Dir(customFacing.position) * Offset;
+            return Vector3.zero;
+        }
+
+        Vector3 GetPosition(CameraDirection dir, Transform customFacing)
+        {
+            return transform.position + GetOffset(dir, customFacing); 
+        }
     }
 }
 
@@ -128,7 +148,11 @@ public enum CameraDirection
     /// <summary>
     /// Y-
     /// </summary>
-    Down
+    Down,
+    /// <summary>
+    /// Towards a specified object
+    /// </summary>
+    Custom
 }
 
 static class CameraDirectionExtensions
@@ -141,6 +165,7 @@ static class CameraDirectionExtensions
         CameraDirection.West => Vector3.left,
         CameraDirection.Up => Vector3.up,
         CameraDirection.Down => Vector3.down,
+        CameraDirection.Custom => Vector3.zero,
         _ => throw new NotImplementedException(),
     };
 
@@ -152,6 +177,7 @@ static class CameraDirectionExtensions
         CameraDirection.West => new Color(0.8f, 0.2f, 0.2f),
         CameraDirection.Up => new Color(0.3f, 0.7f, 0.3f),
         CameraDirection.Down => new Color(0.2f, 0.8f, 0.2f),
+        CameraDirection.Custom => new Color(0.8f, 0.2f, 0.8f),
         _ => throw new NotImplementedException(),
     };
 }

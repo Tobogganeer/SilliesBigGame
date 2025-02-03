@@ -153,35 +153,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotations:
   - facing: 0
+    customFacingTarget: {fileID: 0}
     transitions:
     - directionToClick: 2
       moveTrigger: {fileID: 0}
       mode: 0
       leadsToRotation: 1
+      customFacingTarget: {fileID: 0}
       leadsToPosition: {fileID: 0}
       moveSmoothly: 0
       moveSpeedMultiplier: 0
       _foldout: 1
   - facing: 1
+    customFacingTarget: {fileID: 0}
     transitions:
     - directionToClick: 0
       moveTrigger: {fileID: 0}
       mode: 0
       leadsToRotation: 0
+      customFacingTarget: {fileID: 0}
       leadsToPosition: {fileID: 0}
       moveSmoothly: 0
       moveSpeedMultiplier: 0
       _foldout: 1
   - facing: 2
+    customFacingTarget: {fileID: 0}
     transitions: []
   - facing: 3
+    customFacingTarget: {fileID: 0}
     transitions: []
   - facing: 4
+    customFacingTarget: {fileID: 0}
     transitions:
     - directionToClick: 0
       moveTrigger: {fileID: 0}
       mode: 0
       leadsToRotation: 0
+      customFacingTarget: {fileID: 0}
+      leadsToPosition: {fileID: 0}
+      moveSmoothly: 0
+      moveSpeedMultiplier: 0
+      _foldout: 1
+  - facing: 6
+    customFacingTarget: {fileID: 1908420357}
+    transitions:
+    - directionToClick: 0
+      moveTrigger: {fileID: 0}
+      mode: 0
+      leadsToRotation: 6
+      customFacingTarget: {fileID: 1029041177}
       leadsToPosition: {fileID: 0}
       moveSmoothly: 0
       moveSpeedMultiplier: 0
@@ -198,7 +218,9 @@ Transform:
   m_LocalPosition: {x: -5.1010423, y: -0.03592267, z: -3.670276}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1908420357}
+  - {fileID: 1029041177}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &330585543
@@ -594,6 +616,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1029041176
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1029041177}
+  m_Layer: 0
+  m_Name: 2nd Custom Facing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1029041177
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029041176}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.275, y: 0.088, z: -0.695}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 28827116}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1228150276
 GameObject:
@@ -1010,6 +1063,37 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+--- !u!1 &1908420356
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1908420357}
+  m_Layer: 0
+  m_Name: Custom Facing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1908420357
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908420356}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.327, y: 0.088, z: 1.009}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 28827116}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
