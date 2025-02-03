@@ -13,9 +13,9 @@ public class Interactor : MonoBehaviour
 
     Camera cam;
     List<IInteractable> current; // List of all interactables on the hovered object
-    ICustomCursor currentCursor;
+    ICustomCursor currentCursor; // If the hovered object wants a custom cursor, it'll be stored here
 
-    GameObject currentObject;
+    GameObject currentObject; // The object we are currently hovered over
 
     private void Start()
     {
