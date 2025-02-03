@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Tobo.Audio.Sound;
 
 namespace Tobo.Audio
 {
@@ -25,14 +26,32 @@ namespace Tobo.Audio
         public float MaxPitch => maxPitch;
         public bool Is2d => is2d;
 
-        public static Sound From(ID id)
+        public static Sound Get(string sound)
+        {
+            if (!SoundIDNameToSoundID.TryGetValue(sound, out ID id))
+                if (FilenameToSoundIDName.TryGetValue(sound, out sound))
+                    id = SoundIDNameToSoundID[sound];
+                else
+                {
+                    Debug.LogWarning("Couldn't find sound with ID: " + sound);
+                    return Get(ID.None);
+                }
+            return Get(id);
+        }
+
+        public static Audio Override(string sound)
+        {
+            return Get(sound).Override();
+        }
+
+        public static Sound Get(ID id)
         {
             return AudioManager.GetSound(id);
         }
 
         public static Audio Override(ID id)
         {
-            return From(id).Override();
+            return Get(id).Override();
         }
 
         public Audio Override()
@@ -100,6 +119,7 @@ namespace Tobo.Audio
             AudioManager.Play2D(id);
         }
 
+#if TOBO_NET
         public static void PlayLocal(this Sound.ID id, Vector3 position)
         {
             AudioManager.PlayLocal(id, position);
@@ -109,5 +129,6 @@ namespace Tobo.Audio
         {
             AudioManager.PlayLocal2D(id);
         }
+#endif
     }
 }
