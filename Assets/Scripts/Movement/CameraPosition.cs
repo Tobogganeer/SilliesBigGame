@@ -11,6 +11,28 @@ public class CameraPosition : MonoBehaviour
 {
     public List<CameraRotation> rotations;
 
+    public Vector3 position => transform.position;
+
+    private void Start()
+    {
+        InitTransitions();
+    }
+
+    // Initializes from and to positions
+    private void InitTransitions()
+    {
+        foreach (CameraRotation rotation in rotations)
+        {
+            foreach (Transition transition in rotation.transitions)
+            {
+                transition.fromPosition = this;
+                // If we are just rotating, the end position is just this
+                if (transition.mode == Transition.Mode.AnotherRotation)
+                    transition.leadsToPosition = this;
+            }
+        }
+    }
+
 
     public bool TryGetRotation(CameraDirection facing, out CameraRotation outRotation, Transform customTarget = null)
     {
@@ -70,6 +92,7 @@ public class CameraPosition : MonoBehaviour
     [Serializable]
     public class Transition
     {
+        public CameraPosition fromPosition;
         public MoveDirection directionToClick; // What direction we click on-screen to transition
         public CustomMoveTrigger moveTrigger; // If using a custom trigger (e.g. click on a doorway)
         public Mode mode;
@@ -78,10 +101,20 @@ public class CameraPosition : MonoBehaviour
         public Transform customFacingTarget;
         public CameraPosition leadsToPosition;
         public bool moveSmoothly = true; // We might want to snap in some cases?
-        public float moveSpeedMultiplier = 1f;
+        public float moveTime = 1f;
+        public float rotateTime = 0.5f;
 
         [HideInInspector]
         public bool _foldout = true;
+
+        public Vector3 GetTargetForwardVector()
+        {
+            if (leadsToRotation == CameraDirection.Custom)
+                return customFacingTarget == null ? Vector3.zero :
+                    leadsToPosition.position.Dir(customFacingTarget.position);
+            else
+                return leadsToRotation.GetOffset();
+        }
 
         public enum Mode
         {
