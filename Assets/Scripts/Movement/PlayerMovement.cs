@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Tobo.Util;
@@ -11,23 +12,21 @@ public class PlayerMovement : MonoBehaviour
         instance = this;
     }
 
-    public float rotateTime = 0.5f;
-    public float moveTime = 1f;
-
     Camera cam;
 
     CameraPosition currentPosition;
     CameraPosition.CameraRotation currentRotation;
 
     float travelProgress;
-    float travelSpeedMultiplier;
     CameraPosition.Transition currentTransition;
 
     Vector3 fromPosition;
-    Quaternion fromRotation;
-    
     Vector3 targetPosition;
+    float moveTimer;
+
     Quaternion targetRotation;
+    Quaternion fromRotation;
+    float rotateTimer;
 
     public bool Travelling => currentTransition != null;
     public float TravelProgress => travelProgress;
@@ -46,12 +45,24 @@ public class PlayerMovement : MonoBehaviour
         // Assume our current position is fine
         currentTransition = transition;
         travelProgress = 0f;
-        travelSpeedMultiplier = transition.moveSpeedMultiplier;
+        moveTimer = 0f;
+        rotateTimer = 0f;
 
         fromPosition = transform.position;
         fromRotation = transform.rotation;
         targetPosition = transition.leadsToPosition.position;
         targetRotation = Quaternion.LookRotation(transition.GetTargetForwardVector());
+
+        // TODO: May cause bugs later (setting current position + rot before we move)?
+        currentPosition = transition.leadsToPosition;
+        if (!transition.fromPosition.TryGetRotation(transition.leadsToRotation, out currentRotation, transition.customFacingTarget))
+            throw new NullReferenceException($"Tried traveling to {transition.leadsToPosition.name}" +
+                $"=> {transition.leadsToRotation}, but that rotation was null!");
+    }
+
+    private void Update()
+    {
+        // TODO: Increment timers, actually move
     }
 
     public void TeleportTo(CameraPosition position, CameraPosition.CameraRotation rotation)
@@ -62,5 +73,8 @@ public class PlayerMovement : MonoBehaviour
 
         currentPosition = position;
         currentRotation = rotation;
+
+        travelProgress = 1f;
+        currentTransition = null;
     }
 }
