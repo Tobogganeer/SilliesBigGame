@@ -8,9 +8,9 @@ using UnityEngine.UI;
 public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public int inventorySlot = 0;
-    public string itemDataKey = string.Empty;
-    public string itemDescription = string.Empty;
-    public GameObject itemImage = null;
+    public string itemDataKey;
+    public string itemDescription;
+    public SpriteRenderer itemImageSlot;
 
     public ItemData ItemData;
 
@@ -18,7 +18,9 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     void Start()
     {
-        if (itemDataKey != string.Empty)
+
+
+        if (itemDataKey != null)
         {
             Search(itemDataKey);
         }
@@ -42,7 +44,10 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void Search(string itemKey)
     {
-        itemDescription = ItemData.itemData[itemKey][itemDescription];
-        itemImage.GetComponent<Image>().sprite = Resources.Load<Sprite>(ItemData.itemData[itemKey][itemImage]);
+        itemDescription = ItemData.itemData[itemKey]["itemDescription"];
+
+        print(ItemData.itemData[itemKey]["itemImage"]);
+
+        itemImageSlot.sprite = Resources.Load<Sprite>(ItemData.itemData[itemKey]["itemImage"]);
     }
 }
