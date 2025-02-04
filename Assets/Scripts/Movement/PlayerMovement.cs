@@ -23,10 +23,14 @@ public class PlayerMovement : MonoBehaviour
     Vector3 fromPosition;
     Vector3 targetPosition;
     float moveTimer;
+    // Factor from 0 to 1 - returns 1 if we are supposed to move instantly
+    float moveFac => currentTransition.moveTime == 0 ? 1f : Mathf.Clamp01(moveTimer / currentTransition.moveTime);
 
     Quaternion targetRotation;
     Quaternion fromRotation;
     float rotateTimer;
+    // Factor from 0 to 1 - returns 1 if we are supposed to rotate instantly
+    float rotateFac => currentTransition.rotateTime == 0 ? 1f : Mathf.Clamp01(rotateTimer / currentTransition.rotateTime);
 
     public bool Travelling => currentTransition != null;
     public float TravelProgress => Mathf.Clamp01(travelProgress);
@@ -48,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
         moveTimer = 0f;
         rotateTimer = 0f;
 
+        // Where we are and where we are going
         fromPosition = transform.position;
         fromRotation = transform.rotation;
         targetPosition = transition.leadsToPosition.position;
@@ -56,25 +61,54 @@ public class PlayerMovement : MonoBehaviour
         // TODO: May cause bugs later (setting current position + rot before we move)?
         currentPosition = transition.leadsToPosition;
         if (!transition.fromPosition.TryGetRotation(transition.leadsToRotation, out currentRotation, transition.customFacingTarget))
-            throw new NullReferenceException($"Tried traveling to {transition.leadsToPosition.name}" +
+            throw new NullReferenceException($"Tried travelling to {transition.leadsToPosition.name}" +
                 $"=> {transition.leadsToRotation}, but that rotation was null!");
     }
 
     private void Update()
     {
-        // TODO: Increment timers, actually move
+        if (!Travelling)
+            return;
+
+        UpdateTimers();
+
+        if (travelProgress >= 1f)
+        {
+            FinishTravelling();
+            return;
+        }
+
+
+    }
+
+    void UpdateTimers()
+    {
+        moveTimer += Time.deltaTime;
+        rotateTimer += Time.deltaTime;
+
+        // Travel progress is the slower of the two
+        travelProgress = Mathf.Min(moveFac, rotateFac);
+    }
+
+    void FinishTravelling()
+    {
+        travelProgress = 1f;
+        moveTimer = 1e5f; // Set these to be massive so we are definitely done moving
+        rotateTimer = 1e5f;
+
+        // Lock to final position
+        transform.position = currentPosition.transform.position;
+        Vector3 lookTarget = currentRotation.GetForwardVector(currentPosition.position);
+        cam.transform.LookAt(lookTarget);
+
+        currentTransition = null;
     }
 
     public void TeleportTo(CameraPosition position, CameraPosition.CameraRotation rotation)
     {
-        transform.position = position.transform.position;
-        Vector3 lookTarget = rotation.GetForwardVector(position.transform.position);
-        cam.transform.LookAt(lookTarget);
-
         currentPosition = position;
         currentRotation = rotation;
 
-        travelProgress = 1f;
-        currentTransition = null;
+        FinishTravelling();
     }
 }
