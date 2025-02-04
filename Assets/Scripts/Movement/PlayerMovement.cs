@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     float rotateTimer;
 
     public bool Travelling => currentTransition != null;
-    public float TravelProgress => travelProgress;
+    public float TravelProgress => Mathf.Clamp01(travelProgress);
 
     private void Start()
     {
