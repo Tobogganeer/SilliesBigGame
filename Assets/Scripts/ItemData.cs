@@ -10,19 +10,18 @@ public class ItemData : MonoBehaviour
     private void Start()
     {
         itemData.Add("Flashlight", new Dictionary<string, string> { 
-            { "ItemDescription", "To venture in the dark" },
+            { "itemDescription", "To venture in the dark" },
             {"itemImage", "ItemSprites/flashlightTest"}
         });
         itemData.Add("Battery", new Dictionary<string, string> {
-            { "ItemDescription", "To power electronic objects" },
+            { "itemDescription", "To power electronic objects" },
             {"itemImage", "ItemSprites/flashlightTest"}
         });
         itemData.Add("Key", new Dictionary<string, string> {
-            { "ItemDescription", "Now you can leave" },
+            { "itemDescription", "Now you can leave" },
             {"itemImage", "ItemSprites/flashlightTest"}
         });
 
-        print(itemData.Keys);
     }
 
 }

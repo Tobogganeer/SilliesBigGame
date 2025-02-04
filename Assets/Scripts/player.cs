@@ -16,11 +16,6 @@ public class player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       for (int i = 0; i < ItemPanel.transform.childCount; i++)
-        {
-            Inventory.Add(i,ItemPanel.transform.GetChild(i).GetComponent<ItemSlot>().itemDataKey);
-            Debug.Log(Inventory[i]);
-        }
 
 
     }
