@@ -80,7 +80,7 @@ public class TransitionPropertyDrawer : PropertyDrawer
             EditorGUI.PropertyField(Increase(ref rect), toRotation, Label("New Rotation"));
             if (endCameraDir == CameraDirection.Custom)
                 EditorGUI.PropertyField(Increase(ref rect), customTarget, Label("Look towards"));
-            EditorGUI.PropertyField(Increase(ref rect), Prop("moveSmoothly"));
+            //EditorGUI.PropertyField(Increase(ref rect), Prop("moveSmoothly"));
             EditorGUI.PropertyField(Increase(ref rect), Prop("moveTime"));
             EditorGUI.PropertyField(Increase(ref rect), Prop("rotateTime"));
 
@@ -109,7 +109,7 @@ public class TransitionPropertyDrawer : PropertyDrawer
         if (!property.FindPropertyRelative("_foldout").boolValue)
             return line;
 
-        float height = line * 8; // 6 + a space + foldout
+        float height = line * 7; // 5 + a space + foldout
 
         SerializedProperty facingProp = property.FindPropertyRelative("leadsToRotation");
         var facing = (CameraDirection)facingProp.intValue;

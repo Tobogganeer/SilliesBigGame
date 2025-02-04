@@ -100,7 +100,7 @@ public class CameraPosition : MonoBehaviour
         public CameraDirection leadsToRotation;
         public Transform customFacingTarget;
         public CameraPosition leadsToPosition;
-        public bool moveSmoothly = true; // We might want to snap in some cases?
+        //public bool moveSmoothly = true; // We might want to snap in some cases?
         public float moveTime = 1f;
         public float rotateTime = 0.5f;
 
