@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Travel(CameraPosition.Transition transition, bool interruptCurrentTravel = false)
     {
-        Travel(transition.leadsToPosition.position, Quaternion.LookRotation(transition.GetTargetForwardVector()));
+        Travel(transition.leadsToPosition.position, Quaternion.LookRotation(transition.GetTargetForwardVector()), transition.moveTime, transition.rotateTime, interruptCurrentTravel);
     }
 
     public void Travel(Vector3 position, Vector3 lookTarget, float moveTime = 1.0f, float rotateTime = 0.5f, bool interruptCurrentTravel = false)

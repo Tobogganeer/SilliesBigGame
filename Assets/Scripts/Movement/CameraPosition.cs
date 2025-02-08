@@ -81,6 +81,7 @@ public class CameraPosition : MonoBehaviour
         public CameraDirection facing;
         public Transform customFacingTarget;
         public List<Transition> transitions;
+        [HideInInspector, NonSerialized]
         public CameraPosition position;
 
         public Vector3 GetForwardVector(Vector3 from)
@@ -96,7 +97,9 @@ public class CameraPosition : MonoBehaviour
     [Serializable]
     public class Transition
     {
+        [NonSerialized]
         public CameraPosition fromPosition;
+        [NonSerialized]
         public CameraRotation fromRotation;
         public MoveDirection directionToClick; // What direction we click on-screen to transition
         public CustomMoveTrigger moveTrigger; // If using a custom trigger (e.g. click on a doorway)
