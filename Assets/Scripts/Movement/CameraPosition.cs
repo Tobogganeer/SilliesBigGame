@@ -23,9 +23,12 @@ public class CameraPosition : MonoBehaviour
     {
         foreach (CameraRotation rotation in rotations)
         {
+            rotation.position = this;
+
             foreach (Transition transition in rotation.transitions)
             {
                 transition.fromPosition = this;
+                transition.fromRotation = rotation;
                 // If we are just rotating, the end position is just this
                 if (transition.mode == Transition.Mode.AnotherRotation)
                     transition.leadsToPosition = this;
@@ -78,6 +81,7 @@ public class CameraPosition : MonoBehaviour
         public CameraDirection facing;
         public Transform customFacingTarget;
         public List<Transition> transitions;
+        public CameraPosition position;
 
         public Vector3 GetForwardVector(Vector3 from)
         {
@@ -93,6 +97,7 @@ public class CameraPosition : MonoBehaviour
     public class Transition
     {
         public CameraPosition fromPosition;
+        public CameraRotation fromRotation;
         public MoveDirection directionToClick; // What direction we click on-screen to transition
         public CustomMoveTrigger moveTrigger; // If using a custom trigger (e.g. click on a doorway)
         public Mode mode;
