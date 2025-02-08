@@ -6,16 +6,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private static PlayerMovement instance;
+    public static PlayerMovement instance;
     private void Awake()
     {
         instance = this;
     }
-
-    Camera cam;
-
-    CameraPosition currentPosition;
-    CameraPosition.CameraRotation currentRotation;
 
     float travelProgress;
     CameraPosition.Transition currentTransition;
@@ -35,19 +30,24 @@ public class PlayerMovement : MonoBehaviour
     public bool Travelling => currentTransition != null;
     public float TravelProgress => Mathf.Clamp01(travelProgress);
 
-    private void Start()
+    public void Travel(CameraPosition.Transition transition, bool interruptCurrentTravel = false)
     {
-        cam = Camera.main;
+        Travel(transition.leadsToPosition.position, Quaternion.LookRotation(transition.GetTargetForwardVector()));
     }
 
-    public void Travel(CameraPosition.Transition transition, bool interruptCurrentTravel = false)
+    public void Travel(Vector3 position, Vector3 lookTarget, float moveTime = 1.0f, float rotateTime = 0.5f, bool interruptCurrentTravel = false)
+    {
+        Travel(position, Quaternion.LookRotation(position.Dir(lookTarget)), moveTime, rotateTime, interruptCurrentTravel);
+    }
+
+    public void Travel(Vector3 position, Quaternion rotation, float moveTime = 1.0f, float rotateTime = 0.5f, bool interruptCurrentTravel = false)
     {
         // Don't interupt if we are travelling currently
         if (currentTransition != null && !interruptCurrentTravel)
             return;
 
         // Assume our current position is fine
-        currentTransition = transition;
+        currentTransition = new CameraPosition.Transition(moveTime, rotateTime);
         travelProgress = 0f;
         moveTimer = 0f;
         rotateTimer = 0f;
@@ -55,14 +55,8 @@ public class PlayerMovement : MonoBehaviour
         // Where we are and where we are going
         fromPosition = transform.position;
         fromRotation = transform.rotation;
-        targetPosition = transition.leadsToPosition.position;
-        targetRotation = Quaternion.LookRotation(transition.GetTargetForwardVector());
-
-        // TODO: May cause bugs later (setting current position + rot before we move)?
-        currentPosition = transition.leadsToPosition;
-        if (!transition.fromPosition.TryGetRotation(transition.leadsToRotation, out currentRotation, transition.customFacingTarget))
-            throw new NullReferenceException($"Tried travelling to {transition.leadsToPosition.name}" +
-                $"=> {transition.leadsToRotation}, but that rotation was null!");
+        targetPosition = position;
+        targetRotation = rotation;
     }
 
     private void Update()
@@ -78,7 +72,11 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
+        float easedMoveFac = Ease.SmoothStep3(moveFac);
+        float easedRotateFac= Ease.SmoothStop3(rotateFac);
 
+        transform.position = Vector3.Lerp(fromPosition, targetPosition, easedMoveFac);
+        transform.rotation = Quaternion.Slerp(fromRotation, targetRotation, easedRotateFac);
     }
 
     void UpdateTimers()
@@ -97,17 +95,26 @@ public class PlayerMovement : MonoBehaviour
         rotateTimer = 1e5f;
 
         // Lock to final position
-        transform.position = currentPosition.transform.position;
-        Vector3 lookTarget = currentRotation.GetForwardVector(currentPosition.position);
-        cam.transform.LookAt(lookTarget);
+        transform.position = targetPosition;
+        transform.rotation = targetRotation;
 
         currentTransition = null;
     }
 
     public void TeleportTo(CameraPosition position, CameraPosition.CameraRotation rotation)
     {
-        currentPosition = position;
-        currentRotation = rotation;
+        TeleportTo(position.position, Quaternion.LookRotation(rotation.GetForwardVector(position.position)));
+    }
+
+    public void TeleportTo(Vector3 position, Vector3 lookTarget)
+    {
+        TeleportTo(position, Quaternion.LookRotation(position.Dir(lookTarget)));
+    }
+
+    public void TeleportTo(Vector3 position, Quaternion rotation)
+    {
+        targetPosition = position;
+        targetRotation = rotation;
 
         FinishTravelling();
     }

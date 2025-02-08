@@ -112,6 +112,12 @@ public class CameraPosition : MonoBehaviour
         [HideInInspector]
         public bool _foldout = true;
 
+        public Transition(float moveTime, float rotateTime)
+        {
+            this.moveTime = moveTime;
+            this.rotateTime = rotateTime;
+        }
+
         public Vector3 GetTargetForwardVector()
         {
             if (leadsToRotation == CameraDirection.Custom)
