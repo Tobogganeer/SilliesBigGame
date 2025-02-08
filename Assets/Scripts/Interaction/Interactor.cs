@@ -86,7 +86,6 @@ public class Interactor : MonoBehaviour
                 {
                     // Fill our list with the interactables on the new object
                     current = hitObject.GetComponents<IInteractable>();
-                    Debug.Log("Filled for " + currentObject.name);
 
                     CallEnterForAll();
 
@@ -108,6 +107,7 @@ public class Interactor : MonoBehaviour
         {
             // Hit nothing
             NoInteractableFound();
+            currentObject = null;
             currentCursor = null;
         }
     }
