@@ -6,16 +6,17 @@ using UnityEngine;
 public class ItemData : MonoBehaviour
 {
     public static ItemData instance;
-    private void Awake()
+    /*private void Awake()
     {
         instance = this;
     }
+    */
 
     public SerializableDictionary<string, ItemSO> items;
 
     public Dictionary<string, Dictionary<string, string>> itemData = new Dictionary<string, Dictionary<string, string>>();
 
-    private void Start()
+    private void Awake()
     {
         itemData.Add("Flashlight", new Dictionary<string, string> {
             {"itemDescription", "To venture in the dark, except it has no power." },
@@ -31,15 +32,15 @@ public class ItemData : MonoBehaviour
         });
         itemData.Add("Key", new Dictionary<string, string> {
             {"itemDescription", "Now you can leave." },
-            {"itemImage", "ItemSprites/flashlightTest"}
+            {"itemImage", "ItemSprites/flashlightTest"},
+            {"combination", string.Empty},
         });
         itemData.Add("Charged Flashlight", new Dictionary<string, string>
         {
             {"itemDescription", "Now you can See."},
-            {"itemImage", "ItemSprites/flashlightTest"}
+            {"itemImage", "ItemSprites/flashlightTest"},
+            {"combination", string.Empty},
         });
-
-        print(itemData.Keys);
     }
 
     // Usage (from anywhere): 'ItemData.GetItem("Battery").icon' etc

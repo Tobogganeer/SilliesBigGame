@@ -233,6 +233,7 @@ MonoBehaviour:
   inventorySlot: 1
   itemDataKey: 
   itemDescription: 
+  itemCombination: 
   itemImageSlot: {fileID: 0}
   ItemData: {fileID: 111905166}
   itemPanel: {fileID: 185378623}
@@ -324,6 +325,7 @@ MonoBehaviour:
   Camera: {fileID: 316476639}
   InventoryPanel: {fileID: 1464981492}
   ItemPanel: {fileID: 1704521645}
+  ItemData: {fileID: 111905166}
   heldItemKey: 
 --- !u!114 &111905166
 MonoBehaviour:
@@ -394,6 +396,7 @@ MonoBehaviour:
   inventorySlot: 8
   itemDataKey: 
   itemDescription: 
+  itemCombination: 
   itemImageSlot: {fileID: 0}
   ItemData: {fileID: 111905166}
   itemPanel: {fileID: 185378623}
@@ -887,6 +890,7 @@ MonoBehaviour:
   inventorySlot: 1
   itemDataKey: 
   itemDescription: 
+  itemCombination: 
   itemImageSlot: {fileID: 0}
   ItemData: {fileID: 111905166}
   itemPanel: {fileID: 185378623}
@@ -1444,6 +1448,7 @@ MonoBehaviour:
   inventorySlot: 1
   itemDataKey: Battery
   itemDescription: 
+  itemCombination: 
   itemImageSlot: {fileID: 0}
   ItemData: {fileID: 111905166}
   itemPanel: {fileID: 185378623}
@@ -1945,6 +1950,7 @@ MonoBehaviour:
   inventorySlot: 8
   itemDataKey: 
   itemDescription: 
+  itemCombination: 
   itemImageSlot: {fileID: 0}
   ItemData: {fileID: 111905166}
   itemPanel: {fileID: 185378623}
@@ -2097,6 +2103,7 @@ MonoBehaviour:
   inventorySlot: 1
   itemDataKey: 
   itemDescription: 
+  itemCombination: 
   itemImageSlot: {fileID: 0}
   ItemData: {fileID: 111905166}
   itemPanel: {fileID: 185378623}
@@ -2249,6 +2256,7 @@ MonoBehaviour:
   inventorySlot: 1
   itemDataKey: 
   itemDescription: 
+  itemCombination: 
   itemImageSlot: {fileID: 0}
   ItemData: {fileID: 111905166}
   itemPanel: {fileID: 185378623}
@@ -2514,6 +2522,7 @@ MonoBehaviour:
   inventorySlot: 0
   itemDataKey: 
   itemDescription: 
+  itemCombination: 
   itemImageSlot: {fileID: 0}
   ItemData: {fileID: 111905166}
   itemPanel: {fileID: 185378623}
@@ -2629,6 +2638,7 @@ MonoBehaviour:
   inventorySlot: 1
   itemDataKey: 
   itemDescription: 
+  itemCombination: 
   itemImageSlot: {fileID: 0}
   ItemData: {fileID: 111905166}
   itemPanel: {fileID: 185378623}
@@ -3168,6 +3178,7 @@ MonoBehaviour:
   inventorySlot: 1
   itemDataKey: 
   itemDescription: 
+  itemCombination: 
   itemImageSlot: {fileID: 0}
   ItemData: {fileID: 111905166}
   itemPanel: {fileID: 185378623}
@@ -4044,6 +4055,7 @@ MonoBehaviour:
   inventorySlot: 0
   itemDataKey: Flashlight
   itemDescription: 
+  itemCombination: 
   itemImageSlot: {fileID: 0}
   ItemData: {fileID: 111905166}
   itemPanel: {fileID: 185378623}

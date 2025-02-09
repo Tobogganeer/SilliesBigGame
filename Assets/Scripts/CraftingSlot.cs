@@ -14,7 +14,7 @@ public class CraftingSlot : ItemSlot
         CraftingScript craftingScript = CraftingPanel.GetComponent<CraftingScript>();
 
         itemImageSlot.sprite = null;
-        itemImageSlot.color = new Vector4(132, 113, 103, 221);
+        itemImageSlot.color = new Vector4(255, 255, 255, 0);
         itemDataKey = string.Empty;
         itemDescription = string.Empty;
 

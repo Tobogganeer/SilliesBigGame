@@ -27,6 +27,7 @@ public class CraftingScript : MonoBehaviour
                 if (ItemData.itemData[itemKey2]["combination"] == itemKey1)
                 {
                     ResultSlot.GetComponent<ItemSlot>().itemDataKey = ItemData.itemData[itemKey2]["combinationResult"];
+                    ResultSlot.GetComponent<ItemSlot>().Search(ResultSlot.GetComponent<ItemSlot>().itemDataKey);
                 }
             }
         }

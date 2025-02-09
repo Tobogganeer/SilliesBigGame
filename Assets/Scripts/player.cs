@@ -10,6 +10,8 @@ public class player : MonoBehaviour
     public GameObject InventoryPanel;
     public GameObject ItemPanel;
 
+    public ItemData ItemData;
+
     public string heldItemKey;
 
     // Start is called before the first frame update
@@ -36,8 +38,13 @@ public class player : MonoBehaviour
 
         if (heldItemKey != string.Empty)
         {
-            if (itemData.itemDataKey == string.Empty)
+            if (itemData.itemDataKey == string.Empty) // if the slot is empty
             {
+                if (itemData.inventorySlot == 10) return;
+                if (itemData.inventorySlot == 8 || itemData.inventorySlot == 9)
+                {
+                    if (ItemData.itemData[heldItemKey]["combination"] == string.Empty) return;
+                }
                 itemData.itemDataKey = heldItemKey;
 
                 heldItemKey = string.Empty;
@@ -48,8 +55,6 @@ public class player : MonoBehaviour
         else
         {
             heldItemKey = itemData.itemDataKey;
-
-            print(heldItemKey);
 
             itemData.Clear();
         }
