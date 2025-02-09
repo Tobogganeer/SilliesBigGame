@@ -2919,6 +2919,7 @@ GameObject:
   - component: {fileID: 1853702382}
   - component: {fileID: 1853702381}
   - component: {fileID: 1853702380}
+  - component: {fileID: 1853702383}
   m_Layer: 0
   m_Name: Crafting Panel
   m_TagString: Untagged
@@ -3011,6 +3012,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853702378}
   m_CullTransparentMesh: 1
+--- !u!114 &1853702383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853702378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee2b2a760b583f4787f2dba27caf352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Craftingslot1: {fileID: 152699073}
+  Craftingslot2: {fileID: 1440924813}
+  ResultSlot: {fileID: 1006976347}
 --- !u!1 &1884503138
 GameObject:
   m_ObjectHideFlags: 0
