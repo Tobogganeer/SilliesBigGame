@@ -39,6 +39,20 @@ public class MovementUI : MonoBehaviour
         }
     }
 
+    public static void SetUI(PosRot currentPosRot)
+    {
+        if (!CameraPosition.TryGetRotation(currentPosRot, out CameraPosition.CameraRotation rotation))
+        {
+            // TODO: Go back to known safe position?
+            Debug.LogError("Failed to get transitions from " + currentPosRot + "! (we need a fallback for this)");
+            return;
+        }
+
+        SetUI(rotation);
+    }
+
+    public static void ClearUI() => SetUI(null);
+
     public void DisableAll()
     {
         foreach (Button button in buttons.dictionary.Values)

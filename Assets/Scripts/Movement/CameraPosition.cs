@@ -10,7 +10,7 @@ using Tobo.Util;
 public class CameraPosition : MonoBehaviour
 {
     public List<CameraRotation> rotations;
-    Dictionary<PosRot, CameraRotation> posRotToRotation;
+    static Dictionary<PosRot, CameraRotation> posRotToRotation;
 
     public Vector3 position => transform.position;
 
@@ -63,9 +63,9 @@ public class CameraPosition : MonoBehaviour
         return false;
     }
 
-    public bool TryGetRotation(PosRot location, out CameraRotation outRotation) => posRotToRotation.TryGetValue(location, out outRotation);
+    public static bool TryGetRotation(PosRot location, out CameraRotation outRotation) => posRotToRotation.TryGetValue(location, out outRotation);
 
-    public bool GetTransitions(PosRot location, out List<Transition> transitions)
+    public static bool TryGetTransitions(PosRot location, out List<Transition> transitions)
     {
         if (TryGetRotation(location, out CameraRotation rot))
         {
@@ -138,19 +138,14 @@ public class CameraPosition : MonoBehaviour
         public CustomMoveTrigger moveTrigger; // If using a custom trigger (e.g. click on a doorway)
         public PosRot from;
         public PosRot to;
-        public Vector3 targetPosition => to.position;
-        public Quaternion targetRotation => to.rotation;
         public float moveTime = DefaultMoveTime;
         public float rotateTime = DefaultRotateTime;
 
         public const float DefaultMoveTime = 1.0f;
         public const float DefaultRotateTime = 0.5f;
 
-        public Transition(float moveTime, float rotateTime)
-        {
-            this.moveTime = moveTime;
-            this.rotateTime = rotateTime;
-        }
+        public Transition(PosRot from, PosRot to, float moveTime = DefaultMoveTime, float rotateTime = DefaultRotateTime)
+            : this(MoveDirection.None, from, to, null, moveTime, rotateTime) { }
 
         public Transition(MoveDirection direction, PosRot from, PosRot to, CustomMoveTrigger customTrigger = null, float moveTime = DefaultMoveTime, float rotateTime = DefaultRotateTime)
         {

@@ -15,48 +15,47 @@ public class PlayerMovement : MonoBehaviour
     float travelProgress;
     CameraPosition.Transition currentTransition;
 
-    Vector3 fromPosition;
-    Vector3 targetPosition;
     float moveTimer;
-    // Factor from 0 to 1 - returns 1 if we are supposed to move instantly
-    float moveFac => currentTransition.moveTime == 0 ? 1f : Mathf.Clamp01(moveTimer / currentTransition.moveTime);
-
-    Quaternion targetRotation;
-    Quaternion fromRotation;
     float rotateTimer;
-    // Factor from 0 to 1 - returns 1 if we are supposed to rotate instantly
+
+    // Factor from 0 to 1 - returns 1 if we are supposed to move/rotate instantly
+    float moveFac => currentTransition.moveTime == 0 ? 1f : Mathf.Clamp01(moveTimer / currentTransition.moveTime);
     float rotateFac => currentTransition.rotateTime == 0 ? 1f : Mathf.Clamp01(rotateTimer / currentTransition.rotateTime);
+
+    Vector3 fromPosition => currentTransition == null ? transform.position : currentTransition.from.position;
+    Vector3 targetPosition => currentTransition == null ? transform.position : currentTransition.to.position;
+    Quaternion fromRotation => currentTransition == null ? transform.rotation : currentTransition.from.rotation;
+    Quaternion targetRotation => currentTransition == null ? transform.rotation : currentTransition.to.rotation;
 
     public bool Travelling => currentTransition != null;
     public float TravelProgress => Mathf.Clamp01(travelProgress);
+    PosRot CurrentPosRot => new PosRot(transform.position, transform.rotation);
+
 
     public void Travel(CameraPosition.Transition transition, bool interruptCurrentTravel = false)
     {
-        Travel(transition.targetPosition, transition.targetRotation, transition.moveTime, transition.rotateTime, interruptCurrentTravel);
-    }
-
-    public void Travel(Vector3 position, Vector3 lookTarget, float moveTime = 1.0f, float rotateTime = 0.5f, bool interruptCurrentTravel = false)
-    {
-        Travel(position, Quaternion.LookRotation(position.Dir(lookTarget)), moveTime, rotateTime, interruptCurrentTravel);
-    }
-
-    public void Travel(Vector3 position, Quaternion rotation, float moveTime = 1.0f, float rotateTime = 0.5f, bool interruptCurrentTravel = false)
-    {
         // Don't interupt if we are travelling currently
-        if (currentTransition != null && !interruptCurrentTravel)
+        if (Travelling && !interruptCurrentTravel)
             return;
 
         // Assume our current position is fine
-        currentTransition = new CameraPosition.Transition(moveTime, rotateTime);
+        currentTransition = transition;
         travelProgress = 0f;
         moveTimer = 0f;
         rotateTimer = 0f;
 
-        // Where we are and where we are going
-        fromPosition = transform.position;
-        fromRotation = transform.rotation;
-        targetPosition = position;
-        targetRotation = rotation;
+        // Disable buttons
+        MovementUI.ClearUI();
+    }
+
+    public void Travel(Vector3 position, Vector3 lookTarget, float moveTime = 1.0f, float rotateTime = 0.5f, bool interruptCurrentTravel = false)
+    {
+        Travel(new CameraPosition.Transition(new PosRot(transform.position, transform.rotation), new PosRot(position, lookTarget), moveTime, rotateTime), interruptCurrentTravel);
+    }
+
+    public void Travel(Vector3 position, Quaternion rotation, float moveTime = 1.0f, float rotateTime = 0.5f, bool interruptCurrentTravel = false)
+    {
+        Travel(new CameraPosition.Transition(new PosRot(transform.position, transform.rotation), new PosRot(position, rotation), moveTime, rotateTime), interruptCurrentTravel);
     }
 
     private void Update()
@@ -99,11 +98,14 @@ public class PlayerMovement : MonoBehaviour
         transform.rotation = targetRotation;
 
         currentTransition = null;
+
+        // Update the current UI buttons
+        MovementUI.SetUI(CurrentPosRot);
     }
 
-    public void TeleportTo(CameraPosition position, CameraPosition.CameraRotation rotation)
+    public void TeleportTo(CameraPosition.CameraRotation rotation)
     {
-        TeleportTo(position.position, Quaternion.LookRotation(rotation.GetForwardVector(position.position)));
+        TeleportTo(rotation.position.position, Quaternion.LookRotation(rotation.GetForwardVector(rotation.position.position)));
     }
 
     public void TeleportTo(Vector3 position, Vector3 lookTarget)
@@ -113,8 +115,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void TeleportTo(Vector3 position, Quaternion rotation)
     {
-        targetPosition = position;
-        targetRotation = rotation;
+        currentTransition = new CameraPosition.Transition(new PosRot(position, rotation), new PosRot(position, rotation));
 
         FinishTravelling();
     }
