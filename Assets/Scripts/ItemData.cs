@@ -1,11 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using Tobo.Util;
 using UnityEngine;
 
 public class ItemData : MonoBehaviour
 {
-    public Dictionary<string, Dictionary<string, string>> itemData = new Dictionary<string, Dictionary<string, string>>();
+    public static ItemData instance;
+    private void Awake()
+    {
+        instance = this;
+    }
 
+    public SerializableDictionary<string, ItemSO> items;
+
+    public Dictionary<string, Dictionary<string, string>> itemData = new Dictionary<string, Dictionary<string, string>>();
 
     private void Start()
     {
@@ -22,6 +30,12 @@ public class ItemData : MonoBehaviour
             {"itemImage", "ItemSprites/flashlightTest"}
         });
 
+    }
+
+    // Usage (from anywhere): 'ItemData.GetItem("Battery").icon' etc
+    public static ItemSO GetItem(string id)
+    {
+        return instance.items[id];
     }
 
 }

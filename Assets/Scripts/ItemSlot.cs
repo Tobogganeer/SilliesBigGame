@@ -49,6 +49,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void Search(string itemKey)
     {
         itemDescription = ItemData.itemData[itemKey]["itemDescription"];
+        //itemDescription = ItemData.items[itemKey].description;
 
         itemImageSlot.color = Color.white;
 

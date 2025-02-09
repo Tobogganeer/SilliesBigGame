@@ -12,6 +12,5 @@ public class TextInteractable : MonoBehaviour, IInteractable
     public void OnClicked()
     {
         PopUp.Show(text, time);
-        Sound.UIClick.Play2D();
     }
 }
