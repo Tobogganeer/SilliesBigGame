@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     float travelProgress;
-    CameraPosition.InspectorTransition currentTransition;
+    CameraPosition.Transition currentTransition;
 
     Vector3 fromPosition;
     Vector3 targetPosition;
@@ -30,9 +30,9 @@ public class PlayerMovement : MonoBehaviour
     public bool Travelling => currentTransition != null;
     public float TravelProgress => Mathf.Clamp01(travelProgress);
 
-    public void Travel(CameraPosition.InspectorTransition transition, bool interruptCurrentTravel = false)
+    public void Travel(CameraPosition.Transition transition, bool interruptCurrentTravel = false)
     {
-        Travel(transition.leadsToPosition.position, Quaternion.LookRotation(transition.GetTargetForwardVector()), transition.moveTime, transition.rotateTime, interruptCurrentTravel);
+        Travel(transition.targetPosition, transition.targetRotation, transition.moveTime, transition.rotateTime, interruptCurrentTravel);
     }
 
     public void Travel(Vector3 position, Vector3 lookTarget, float moveTime = 1.0f, float rotateTime = 0.5f, bool interruptCurrentTravel = false)
@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
             return;
 
         // Assume our current position is fine
-        currentTransition = new CameraPosition.InspectorTransition(moveTime, rotateTime);
+        currentTransition = new CameraPosition.Transition(moveTime, rotateTime);
         travelProgress = 0f;
         moveTimer = 0f;
         rotateTimer = 0f;

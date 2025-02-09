@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Tobo.Util;
-using UnityEngine.Serialization;
 
 /// <summary>
 /// Represents a position for the camera to be in. Contains multiple rotations and transitions.
@@ -11,30 +10,18 @@ using UnityEngine.Serialization;
 public class CameraPosition : MonoBehaviour
 {
     public List<CameraRotation> rotations;
+    Dictionary<PosRot, CameraRotation> posRotToRotation;
 
     public Vector3 position => transform.position;
 
     private void Start()
     {
-        InitTransitions();
-    }
+        posRotToRotation = new Dictionary<PosRot, CameraRotation>(rotations.Count);
 
-    // Initializes from and to positions
-    private void InitTransitions()
-    {
         foreach (CameraRotation rotation in rotations)
         {
             rotation.Init(this);
-            rotation.position = this;
-
-            foreach (InspectorTransition transition in rotation.transitions)
-            {
-                transition.fromPosition = this;
-                transition.fromRotation = rotation;
-                // If we are just rotating, the end position is just this
-                if (transition.mode == InspectorTransition.Mode.AnotherRotation)
-                    transition.leadsToPosition = this;
-            }
+            posRotToRotation.Add(rotation.GetPosRot(), rotation);
         }
     }
 
@@ -76,6 +63,20 @@ public class CameraPosition : MonoBehaviour
         return false;
     }
 
+    public bool TryGetRotation(PosRot location, out CameraRotation outRotation) => posRotToRotation.TryGetValue(location, out outRotation);
+
+    public bool GetTransitions(PosRot location, out List<Transition> transitions)
+    {
+        if (TryGetRotation(location, out CameraRotation rot))
+        {
+            transitions = rot.transitions;
+            return true;
+        }
+
+        transitions = null;
+        return false;
+    }
+
 
     [Serializable]
     public class CameraRotation
@@ -97,6 +98,13 @@ public class CameraPosition : MonoBehaviour
             return Vector3.up; // This would look real funny in game - staring straight up
         }
 
+        public Quaternion GetRotation()
+        {
+            return Quaternion.LookRotation(GetForwardVector(position.position));
+        }
+
+        public PosRot GetPosRot() => new PosRot(position.position, GetRotation());
+
         /// <summary>
         /// Initializes transitions
         /// </summary>
@@ -106,17 +114,19 @@ public class CameraPosition : MonoBehaviour
             this.position = position;
 
             transitions = new List<Transition>(inspectorTransitions.Count);
-            foreach (InspectorTransition inspectorTransition in inspectorTransitions)
+            foreach (InspectorTransition inspTransition in inspectorTransitions)
             {
                 Vector3 targetPos = position.position;
-                if (inspectorTransition.mode == InspectorTransition.Mode.AnotherPosition && inspectorTransition.leadsToPosition != null)
-                    targetPos = inspectorTransition.leadsToPosition.position;
+                if (inspTransition.mode == InspectorTransition.Mode.AnotherPosition && inspTransition.leadsToPosition != null)
+                    targetPos = inspTransition.leadsToPosition.position;
 
-                Vector3 facingDirection = inspectorTransition.leadsToRotation.GetOffset();
-                if (inspectorTransition.leadsToRotation == CameraDirection.Custom && inspectorTransition.customFacingTarget != null)
-                    facingDirection = targetPos.Dir(inspectorTransition.customFacingTarget.position);
+                Vector3 facingDirection = inspTransition.leadsToRotation.GetOffset();
+                if (inspTransition.leadsToRotation == CameraDirection.Custom && inspTransition.customFacingTarget != null)
+                    facingDirection = targetPos.Dir(inspTransition.customFacingTarget.position);
 
                 Quaternion targetRot = Quaternion.LookRotation(facingDirection);
+                transitions.Add(new Transition(inspTransition.directionToClick, targetPos, targetRot,
+                    inspTransition.moveTrigger, inspTransition.moveTime, inspTransition.rotateTime));
             }
         }
     }
@@ -126,8 +136,10 @@ public class CameraPosition : MonoBehaviour
     {
         public MoveDirection directionToClick; // What direction we click on-screen to transition
         public CustomMoveTrigger moveTrigger; // If using a custom trigger (e.g. click on a doorway)
-        public Vector3 targetPosition;
-        public Quaternion targetRotation;
+        public PosRot from;
+        public PosRot to;
+        public Vector3 targetPosition => to.position;
+        public Quaternion targetRotation => to.rotation;
         public float moveTime = DefaultMoveTime;
         public float rotateTime = DefaultRotateTime;
 
@@ -140,12 +152,25 @@ public class CameraPosition : MonoBehaviour
             this.rotateTime = rotateTime;
         }
 
+        public Transition(MoveDirection direction, PosRot from, PosRot to, CustomMoveTrigger customTrigger = null, float moveTime = DefaultMoveTime, float rotateTime = DefaultRotateTime)
+        {
+            directionToClick = direction;
+            this.from = from;
+            this.to = to;
+            this.moveTrigger = customTrigger;
+            this.moveTime = DefaultMoveTime;
+            this.rotateTime = DefaultRotateTime;
+        }
+
+        public Transition(MoveDirection direction, Vector3 fromPosition, Quaternion fromRotation, Vector3 targetPosition, Quaternion targetRotation,
+            CustomMoveTrigger customTrigger = null, float moveTime = DefaultMoveTime, float rotateTime = DefaultRotateTime)
+            : this(direction, new PosRot(fromPosition, fromRotation), new PosRot(targetPosition, targetRotation), customTrigger, moveTime, rotateTime) { }
+
         public Transition(MoveDirection direction, Vector3 targetPosition, Quaternion targetRotation,
             CustomMoveTrigger customTrigger = null, float moveTime = DefaultMoveTime, float rotateTime = DefaultRotateTime)
         {
             this.directionToClick = direction;
-            this.targetPosition = targetPosition;
-            this.targetRotation = targetRotation;
+            to = new PosRot(targetPosition, targetRotation);
             this.moveTrigger = customTrigger;
             this.moveTime = moveTime;
             this.rotateTime = rotateTime;
@@ -216,7 +241,7 @@ public class CameraPosition : MonoBehaviour
             //Gizmos.color = Color.white;
             for (int i = 0; i < state.transitions.Count; i++)
             {
-                InspectorTransition trans = state.transitions[i];
+                InspectorTransition trans = state.inspectorTransitions[i];
 
                 // Small offset to see different connections
                 Vector3 locOff = UnityEngine.Random.insideUnitSphere * SmallLocalOffset;
@@ -289,6 +314,24 @@ public enum CameraDirection
     /// Towards a specified object
     /// </summary>
     Custom
+}
+
+public struct PosRot
+{
+    public Vector3 position;
+    public Quaternion rotation;
+
+    public PosRot(Vector3 position, Quaternion rotation)
+    {
+        this.position = position;
+        this.rotation = rotation;
+    }
+
+    public PosRot(Vector3 position, Vector3 lookAt)
+    {
+        this.position = position;
+        this.rotation = Quaternion.LookRotation(position.Dir(lookAt));
+    }
 }
 
 static class CameraDirectionExtensions
