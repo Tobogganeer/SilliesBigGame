@@ -7,7 +7,7 @@ public class CraftingScript : MonoBehaviour
 
     public GameObject Craftingslot1;
     public GameObject Craftingslot2;
-
+    public ItemData ItemData;
     public GameObject ResultSlot;
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,15 @@ public class CraftingScript : MonoBehaviour
     {
         if (Craftingslot1.GetComponent<ItemSlot>().itemDataKey != string.Empty && Craftingslot1.GetComponent<ItemSlot>().itemDataKey != string.Empty)
         {
-
+            string itemKey1 = Craftingslot1.GetComponent<ItemSlot>().itemDataKey;
+            string itemKey2 = Craftingslot2.GetComponent<ItemSlot>().itemDataKey;
+            if (ItemData.itemData[itemKey1]["combination"] == itemKey2)
+            {
+                if (ItemData.itemData[itemKey2]["combination"] == itemKey1)
+                {
+                    ResultSlot.GetComponent<ItemSlot>().itemDataKey = ItemData.itemData[itemKey2]["combinationResult"];
+                }
+            }
         }
     }
 }

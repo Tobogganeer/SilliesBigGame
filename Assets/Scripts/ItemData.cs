@@ -17,19 +17,29 @@ public class ItemData : MonoBehaviour
 
     private void Start()
     {
-        itemData.Add("Flashlight", new Dictionary<string, string> { 
-            { "itemDescription", "To venture in the dark" },
-            {"itemImage", "ItemSprites/flashlightTest"}
+        itemData.Add("Flashlight", new Dictionary<string, string> {
+            {"itemDescription", "To venture in the dark, except it has no power." },
+            {"itemImage", "ItemSprites/flashlightTest"},
+            {"combination", "Battery"},
+            {"combinationResult", "Charged Flashlight"}
         });
         itemData.Add("Battery", new Dictionary<string, string> {
-            { "itemDescription", "To power electronic objects" },
-            {"itemImage", "ItemSprites/flashlightTest"}
+            {"itemDescription", "To power electronic objects." },
+            {"itemImage", "ItemSprites/flashlightTest"},
+            {"combination", "Flashlight"},
+            {"combinationResult", "Charged Flashlight"}
         });
         itemData.Add("Key", new Dictionary<string, string> {
-            { "itemDescription", "Now you can leave" },
+            {"itemDescription", "Now you can leave." },
+            {"itemImage", "ItemSprites/flashlightTest"}
+        });
+        itemData.Add("Charged Flashlight", new Dictionary<string, string>
+        {
+            {"itemDescription", "Now you can See."},
             {"itemImage", "ItemSprites/flashlightTest"}
         });
 
+        print(itemData.Keys);
     }
 
     // Usage (from anywhere): 'ItemData.GetItem("Battery").icon' etc
