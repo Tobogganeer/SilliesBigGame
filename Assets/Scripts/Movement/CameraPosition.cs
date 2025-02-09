@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Tobo.Util;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// Represents a position for the camera to be in. Contains multiple rotations and transitions.
@@ -23,14 +24,15 @@ public class CameraPosition : MonoBehaviour
     {
         foreach (CameraRotation rotation in rotations)
         {
+            rotation.Init(this);
             rotation.position = this;
 
-            foreach (Transition transition in rotation.transitions)
+            foreach (InspectorTransition transition in rotation.transitions)
             {
                 transition.fromPosition = this;
                 transition.fromRotation = rotation;
                 // If we are just rotating, the end position is just this
-                if (transition.mode == Transition.Mode.AnotherRotation)
+                if (transition.mode == InspectorTransition.Mode.AnotherRotation)
                     transition.leadsToPosition = this;
             }
         }
@@ -80,9 +82,11 @@ public class CameraPosition : MonoBehaviour
     {
         public CameraDirection facing;
         public Transform customFacingTarget;
-        public List<Transition> transitions;
+        public List<InspectorTransition> inspectorTransitions;
         [HideInInspector, NonSerialized]
         public CameraPosition position;
+        [HideInInspector, NonSerialized]
+        public List<Transition> transitions;
 
         public Vector3 GetForwardVector(Vector3 from)
         {
@@ -92,28 +96,43 @@ public class CameraPosition : MonoBehaviour
                 return from.Dir(customFacingTarget.position);
             return Vector3.up; // This would look real funny in game - staring straight up
         }
+
+        /// <summary>
+        /// Initializes transitions
+        /// </summary>
+        /// <param name="position"></param>
+        public void Init(CameraPosition position)
+        {
+            this.position = position;
+
+            transitions = new List<Transition>(inspectorTransitions.Count);
+            foreach (InspectorTransition inspectorTransition in inspectorTransitions)
+            {
+                Vector3 targetPos = position.position;
+                if (inspectorTransition.mode == InspectorTransition.Mode.AnotherPosition && inspectorTransition.leadsToPosition != null)
+                    targetPos = inspectorTransition.leadsToPosition.position;
+
+                Vector3 facingDirection = inspectorTransition.leadsToRotation.GetOffset();
+                if (inspectorTransition.leadsToRotation == CameraDirection.Custom && inspectorTransition.customFacingTarget != null)
+                    facingDirection = targetPos.Dir(inspectorTransition.customFacingTarget.position);
+
+                Quaternion targetRot = Quaternion.LookRotation(facingDirection);
+            }
+        }
     }
 
     [Serializable]
     public class Transition
     {
-        [NonSerialized]
-        public CameraPosition fromPosition;
-        [NonSerialized]
-        public CameraRotation fromRotation;
         public MoveDirection directionToClick; // What direction we click on-screen to transition
         public CustomMoveTrigger moveTrigger; // If using a custom trigger (e.g. click on a doorway)
-        public Mode mode;
+        public Vector3 targetPosition;
+        public Quaternion targetRotation;
+        public float moveTime = DefaultMoveTime;
+        public float rotateTime = DefaultRotateTime;
 
-        public CameraDirection leadsToRotation;
-        public Transform customFacingTarget;
-        public CameraPosition leadsToPosition;
-        //public bool moveSmoothly = true; // We might want to snap in some cases?
-        public float moveTime = 1f;
-        public float rotateTime = 0.5f;
-
-        [HideInInspector]
-        public bool _foldout = true;
+        public const float DefaultMoveTime = 1.0f;
+        public const float DefaultRotateTime = 0.5f;
 
         public Transition(float moveTime, float rotateTime)
         {
@@ -121,14 +140,36 @@ public class CameraPosition : MonoBehaviour
             this.rotateTime = rotateTime;
         }
 
-        public Vector3 GetTargetForwardVector()
+        public Transition(MoveDirection direction, Vector3 targetPosition, Quaternion targetRotation,
+            CustomMoveTrigger customTrigger = null, float moveTime = DefaultMoveTime, float rotateTime = DefaultRotateTime)
         {
-            if (leadsToRotation == CameraDirection.Custom)
-                return customFacingTarget == null ? Vector3.zero :
-                    leadsToPosition.position.Dir(customFacingTarget.position);
-            else
-                return leadsToRotation.GetOffset();
+            this.directionToClick = direction;
+            this.targetPosition = targetPosition;
+            this.targetRotation = targetRotation;
+            this.moveTrigger = customTrigger;
+            this.moveTime = moveTime;
+            this.rotateTime = rotateTime;
         }
+
+        public Transition(MoveDirection direction, Vector3 targetPosition, Vector3 lookAt,
+            CustomMoveTrigger customTrigger = null, float moveTime = DefaultMoveTime, float rotateTime = DefaultRotateTime)
+            : this(direction, targetPosition, Quaternion.LookRotation(targetPosition.Dir(lookAt)), customTrigger, moveTime, rotateTime) { }
+    }
+
+    public class InspectorTransition
+    {
+        public MoveDirection directionToClick; // What direction we click on-screen to transition
+        public Mode mode;
+        public CameraDirection leadsToRotation;
+        public Transform customFacingTarget;
+        public CameraPosition leadsToPosition;
+
+        public CustomMoveTrigger moveTrigger; // If using a custom trigger (e.g. click on a doorway)
+        public float moveTime = 1f;
+        public float rotateTime = 0.5f;
+
+        [HideInInspector]
+        public bool _foldout = true;
 
         public enum Mode
         {
@@ -175,13 +216,13 @@ public class CameraPosition : MonoBehaviour
             //Gizmos.color = Color.white;
             for (int i = 0; i < state.transitions.Count; i++)
             {
-                Transition trans = state.transitions[i];
+                InspectorTransition trans = state.transitions[i];
 
                 // Small offset to see different connections
                 Vector3 locOff = UnityEngine.Random.insideUnitSphere * SmallLocalOffset;
 
                 // Another rotation on this object
-                if (trans.mode == Transition.Mode.AnotherRotation)
+                if (trans.mode == InspectorTransition.Mode.AnotherRotation)
                 {
                     Gizmos.DrawLine(GetPosition(state.facing, state.customFacingTarget) + locOff,
                         GetPosition(trans.leadsToRotation, trans.customFacingTarget) + locOff);

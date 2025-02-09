@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomPropertyDrawer(typeof(CameraPosition.Transition))]
+[CustomPropertyDrawer(typeof(CameraPosition.InspectorTransition))]
 public class TransitionPropertyDrawer : PropertyDrawer
 {
     // This function is terrible
@@ -12,7 +12,6 @@ public class TransitionPropertyDrawer : PropertyDrawer
         //base.OnGUI(position, property, label);
         EditorGUI.BeginProperty(pos, label, property);
 
-        SerializedProperty fromProp = Prop("fromPosition");
         SerializedProperty dirProp = Prop("directionToClick");
         SerializedProperty modeProp = Prop("mode");
         SerializedProperty toPosition = Prop("leadsToPosition");
@@ -21,7 +20,7 @@ public class TransitionPropertyDrawer : PropertyDrawer
         SerializedProperty customTarget = Prop("customFacingTarget");
 
         var moveDir = (CameraPosition.MoveDirection)dirProp.intValue;
-        var moveMode = (CameraPosition.Transition.Mode)modeProp.intValue;
+        var moveMode = (CameraPosition.InspectorTransition.Mode)modeProp.intValue;
 
         var endCameraDir = (CameraDirection)toRotation.intValue;
 
@@ -41,7 +40,7 @@ public class TransitionPropertyDrawer : PropertyDrawer
         else
             camDirText = endCameraDir.ToString();
 
-        if (moveMode == CameraPosition.Transition.Mode.AnotherPosition)
+        if (moveMode == CameraPosition.InspectorTransition.Mode.AnotherPosition)
         {
             CameraPosition to = toPosition.objectReferenceValue as CameraPosition;
             labelText = (to != null ? to.name : "(unset)") + " > " + camDirText;
@@ -75,7 +74,7 @@ public class TransitionPropertyDrawer : PropertyDrawer
             // Add a space
             rect.y += line;
 
-            if (moveMode == CameraPosition.Transition.Mode.AnotherPosition)
+            if (moveMode == CameraPosition.InspectorTransition.Mode.AnotherPosition)
                 EditorGUI.PropertyField(Increase(ref rect), toPosition, Label("New CameraPosition"));
             EditorGUI.PropertyField(Increase(ref rect), toRotation, Label("New Rotation"));
             if (endCameraDir == CameraDirection.Custom)
@@ -122,8 +121,8 @@ public class TransitionPropertyDrawer : PropertyDrawer
             height += line;
 
         SerializedProperty modeProp = property.FindPropertyRelative("mode");
-        var moveMode = (CameraPosition.Transition.Mode)modeProp.intValue;
-        if (moveMode == CameraPosition.Transition.Mode.AnotherPosition)
+        var moveMode = (CameraPosition.InspectorTransition.Mode)modeProp.intValue;
+        if (moveMode == CameraPosition.InspectorTransition.Mode.AnotherPosition)
             height += line;
 
         return height;

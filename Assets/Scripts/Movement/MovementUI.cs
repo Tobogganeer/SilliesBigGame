@@ -22,7 +22,7 @@ public class MovementUI : MonoBehaviour
         if (rotation == null)
             return;
 
-        foreach (CameraPosition.Transition trans in rotation.transitions)
+        foreach (CameraPosition.InspectorTransition trans in rotation.transitions)
         {
             if (instance.buttons.TryGetValue(trans.directionToClick, out Button button))
             {
