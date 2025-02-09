@@ -5,6 +5,7 @@ using UnityEngine;
 public class Billboard : MonoBehaviour
 {
     public Mode mode;
+    public Vector3 rotationOffset;
     Transform cam;
 
     private void Start()
@@ -18,6 +19,7 @@ public class Billboard : MonoBehaviour
             transform.LookAt(cam);
         else
             transform.forward = -cam.forward;
+        transform.Rotate(rotationOffset, Space.Self);
     }
 
     public enum Mode
