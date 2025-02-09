@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 
 [CustomPropertyDrawer(typeof(CameraPosition.InspectorTransition))]
-public class TransitionPropertyDrawer : PropertyDrawer
+public class InspectorTransitionPropertyDrawer : PropertyDrawer
 {
     // This function is terrible
     public override void OnGUI(Rect pos, SerializedProperty property, GUIContent label)
@@ -80,8 +80,11 @@ public class TransitionPropertyDrawer : PropertyDrawer
             if (endCameraDir == CameraDirection.Custom)
                 EditorGUI.PropertyField(Increase(ref rect), customTarget, Label("Look towards"));
             //EditorGUI.PropertyField(Increase(ref rect), Prop("moveSmoothly"));
-            EditorGUI.PropertyField(Increase(ref rect), Prop("moveTime"));
-            EditorGUI.PropertyField(Increase(ref rect), Prop("rotateTime"));
+            //EditorGUI.PropertyField(Increase(ref rect), Prop("moveTime"));
+            //EditorGUI.PropertyField(Increase(ref rect), Prop("rotateTime"));
+            EditorGUI.PropertyField(Increase(ref rect), Prop("moveInstantly"));
+            EditorGUI.PropertyField(Increase(ref rect), Prop("rotateInstantly"));
+
 
         }
 

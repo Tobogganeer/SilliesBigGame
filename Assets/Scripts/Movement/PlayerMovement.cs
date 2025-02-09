@@ -12,6 +12,15 @@ public class PlayerMovement : MonoBehaviour
         instance = this;
     }
 
+    public CameraPosition startingPosition;
+    public CameraDirection startingDirection;
+
+    private void Start()
+    {
+        TeleportTo(startingPosition.GetRotation(startingDirection));
+    }
+
+
     float travelProgress;
     CameraPosition.Transition currentTransition;
 
@@ -40,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Assume our current position is fine
         currentTransition = transition;
+        currentTransition.from = CurrentPosRot; // Manually override "from"
         travelProgress = 0f;
         moveTimer = 0f;
         rotateTimer = 0f;
