@@ -20,13 +20,13 @@ public class ItemData : MonoBehaviour
     {
         itemData.Add("Flashlight", new Dictionary<string, string> {
             {"itemDescription", "To venture in the dark, except it has no power." },
-            {"itemImage", "ItemSprites/flashlightTest"},
+            {"itemImage", "ItemSprites/flashlight"},
             {"combination", "Battery"},
             {"combinationResult", "Charged Flashlight"}
         });
         itemData.Add("Battery", new Dictionary<string, string> {
             {"itemDescription", "To power electronic objects." },
-            {"itemImage", "ItemSprites/flashlightTest"},
+            {"itemImage", "ItemSprites/Battery"},
             {"combination", "Flashlight"},
             {"combinationResult", "Charged Flashlight"}
         });
@@ -38,7 +38,7 @@ public class ItemData : MonoBehaviour
         itemData.Add("Charged Flashlight", new Dictionary<string, string>
         {
             {"itemDescription", "Now you can See."},
-            {"itemImage", "ItemSprites/flashlightTest"},
+            {"itemImage", "ItemSprites/flashlight"},
             {"combination", string.Empty},
         });
     }

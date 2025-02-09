@@ -2519,7 +2519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f311c2112f35c2948923b329900d1242, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventorySlot: 0
+  inventorySlot: 10
   itemDataKey: 
   itemDescription: 
   itemCombination: 
@@ -3886,6 +3886,7 @@ MonoBehaviour:
   Craftingslot2: {fileID: 856711461}
   ItemData: {fileID: 111905166}
   ResultSlot: {fileID: 1006976347}
+  slotsFilled: 0
 --- !u!1 &1913778768
 GameObject:
   m_ObjectHideFlags: 0

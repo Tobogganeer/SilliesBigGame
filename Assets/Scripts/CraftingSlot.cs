@@ -13,12 +13,17 @@ public class CraftingSlot : ItemSlot
     {
         CraftingScript craftingScript = CraftingPanel.GetComponent<CraftingScript>();
 
-        itemImageSlot.sprite = null;
-        itemImageSlot.color = new Vector4(255, 255, 255, 0);
-        itemDataKey = string.Empty;
-        itemDescription = string.Empty;
+        if (craftingScript.Craftingslot1.GetComponent<ItemSlot>().itemDataKey != string.Empty &&
+            craftingScript.Craftingslot2.GetComponent<ItemSlot>().itemDataKey != string.Empty)
+        {
 
-        craftingScript.Craftingslot1.GetComponent<ItemSlot>().Clear();
-        craftingScript.Craftingslot2.GetComponent<ItemSlot>().Clear();
+            itemImageSlot.sprite = null;
+            itemImageSlot.color = new Vector4(255, 255, 255, 0);
+            itemDataKey = string.Empty;
+            itemDescription = string.Empty;
+
+            craftingScript.Craftingslot1.GetComponent<ItemSlot>().Clear();
+            craftingScript.Craftingslot2.GetComponent<ItemSlot>().Clear();
+        }
     }
 }
