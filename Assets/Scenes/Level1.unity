@@ -3074,6 +3074,88 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 667356453}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &682545657
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 682545658}
+  - component: {fileID: 682545661}
+  - component: {fileID: 682545660}
+  - component: {fileID: 682545659}
+  m_Layer: 0
+  m_Name: Chem Cabinet Move Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &682545658
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682545657}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.043, y: -0.26, z: 0.105}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 882823434}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &682545659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682545657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f8b968de53ff0d4aa83fd0b6c454f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: I know this one - 2894
+  time: 3
+  oneTimeOnly: 1
+--- !u!65 &682545660
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682545657}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.1654058, y: 2.5365295, z: 0.1}
+  m_Center: {x: 6.102135e-26, y: 0.151151, z: -6.974355e-25}
+--- !u!114 &682545661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682545657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4df2f0036a481bc458189dabc0c88fda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &683703619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3535,6 +3617,7 @@ Transform:
   m_Children:
   - {fileID: 1405408212}
   - {fileID: 614563106}
+  - {fileID: 682545658}
   m_Father: {fileID: 2101104}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &898913814
@@ -4608,6 +4691,7 @@ GameObject:
   - component: {fileID: 1149371966}
   - component: {fileID: 1149371964}
   - component: {fileID: 1149371965}
+  - component: {fileID: 1149371967}
   m_Layer: 0
   m_Name: Move Trigger
   m_TagString: Untagged
@@ -4663,6 +4747,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 960734380}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1149371967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149371963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f8b968de53ff0d4aa83fd0b6c454f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: I forget what my password is...
+  time: 3
+  oneTimeOnly: 1
 --- !u!1 &1160542650
 GameObject:
   m_ObjectHideFlags: 0
@@ -5404,8 +5503,19 @@ MonoBehaviour:
       moveTrigger: {fileID: 0}
       moveTimeMode: 0
       rotateTimeMode: 0
-      moveTime: 0
-      rotateTime: 0
+      moveTime: 0.3
+      rotateTime: 0.3
+      _foldout: 0
+    - directionToClick: 5
+      mode: 1
+      leadsToRotation: 1
+      customFacingTarget: {fileID: 0}
+      leadsToPosition: {fileID: 2123130455}
+      moveTrigger: {fileID: 682545661}
+      moveTimeMode: 0
+      rotateTimeMode: 0
+      moveTime: 0.3
+      rotateTime: 0.3
       _foldout: 1
   - facing: 2
     customFacingTarget: {fileID: 0}
@@ -6637,6 +6747,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Keypad
       objectReference: {fileID: 0}
+    - target: {fileID: 2037684644099596614, guid: 2abcb2e618db9ad40815e276610eff86,
+        type: 3}
+      propertyPath: onCorrectPasscodeEntered.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5072678411874393732, guid: 2abcb2e618db9ad40815e276610eff86,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -6706,6 +6821,10 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 983975451135341287, guid: 2abcb2e618db9ad40815e276610eff86,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1705283264}
     - targetCorrespondingSourceObject: {fileID: 4525666614650349769, guid: 2abcb2e618db9ad40815e276610eff86,
         type: 3}
       insertIndex: -1
@@ -6761,6 +6880,38 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1705283260}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1705283262 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2037684644099596614, guid: 2abcb2e618db9ad40815e276610eff86,
+    type: 3}
+  m_PrefabInstance: {fileID: 1705283260}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705283263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46a6041b9309bf24d912514923757978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1705283263 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 983975451135341287, guid: 2abcb2e618db9ad40815e276610eff86,
+    type: 3}
+  m_PrefabInstance: {fileID: 1705283260}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1705283264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705283263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f000bb48676e14995fc12d7e4d8d23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keypad: {fileID: 1705283262}
+  passwordWeTellThemToEnter: 02000000080000000900000004000000
 --- !u!1001 &1734967424
 PrefabInstance:
   m_ObjectHideFlags: 0
