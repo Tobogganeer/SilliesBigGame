@@ -10,7 +10,8 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public int inventorySlot = 0;
     public string itemDataKey;
     public string itemDescription;
-    Image itemImageSlot;
+    public string itemCombination;
+    public Image itemImageSlot;
 
     public ItemData ItemData;
 
@@ -49,10 +50,24 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void Search(string itemKey)
     {
         itemDescription = ItemData.itemData[itemKey]["itemDescription"];
+        //itemDescription = ItemData.items[itemKey].description;
 
         itemImageSlot.color = Color.white;
+
+        itemCombination = ItemData.itemData[itemKey]["combination"];
 
         itemImageSlot.sprite = Resources.Load<Sprite>(ItemData.itemData[itemKey]["itemImage"]);
 
     }
+
+    public virtual void Clear()
+    {
+        itemImageSlot.sprite = null;
+        itemCombination = string.Empty;
+        itemImageSlot.color = new Vector4(255, 255, 255, 0);
+        itemDataKey = string.Empty;
+        itemDescription = string.Empty;
+    }
+
+    
 }
