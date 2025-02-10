@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class player : MonoBehaviour
+public class InventoryInteraction : MonoBehaviour
 {
 
-    public GameObject Camera;
     public GameObject InventoryPanel;
     public GameObject ItemPanel;
 
