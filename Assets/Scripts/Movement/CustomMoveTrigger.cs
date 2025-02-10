@@ -11,8 +11,14 @@ public class CustomMoveTrigger : MonoBehaviour, IInteractable
     Collider coll;
     private void Awake()
     {
-        coll = GetComponent<Collider>();
         SetColliderEnabled(false);
+    }
+
+    Collider GetCollider()
+    {
+        if (coll == null)
+            coll = GetComponent<Collider>();
+        return coll;
     }
 
     void IInteractable.OnClicked()
@@ -20,7 +26,7 @@ public class CustomMoveTrigger : MonoBehaviour, IInteractable
         OnClicked?.Invoke();
     }
 
-    public void SetColliderEnabled(bool enabled) => coll.enabled = enabled;
+    public void SetColliderEnabled(bool enabled) => GetCollider().enabled = enabled;
 
     public void RemoveAllListeners() => OnClicked = null;
 }
