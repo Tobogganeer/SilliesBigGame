@@ -3496,6 +3496,9 @@ MonoBehaviour:
   objectsToSwapBetween:
   - {fileID: 960734379}
   - {fileID: 152170837}
+  soundGoingToSecondState: {fileID: 0}
+  soundGoingToFirstState: {fileID: 0}
+  inDefaultState: 1
 --- !u!65 &494238605
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8672,6 +8675,7 @@ GameObject:
   - component: {fileID: 1516786417}
   - component: {fileID: 1516786419}
   - component: {fileID: 1516786418}
+  - component: {fileID: 1516786420}
   m_Layer: 0
   m_Name: Drawer
   m_TagString: Untagged
@@ -8708,9 +8712,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82ae0b1967ec9e40af4b125c5c451f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectsToSwapBetween:
-  - {fileID: 41632402}
-  - {fileID: 438062943}
   itemID: Battery
 --- !u!65 &1516786419
 BoxCollider:
@@ -8733,6 +8734,26 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.77989656, y: 0.36807048, z: 0.1}
   m_Center: {x: -1.1048155e-25, y: -0.023601592, z: 1.4300122e-25}
+--- !u!114 &1516786420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516786416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0cc39d467200504bad79317262008bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsToSwapBetween:
+  - {fileID: 41632402}
+  - {fileID: 438062943}
+  soundGoingToSecondState: {fileID: 11400000, guid: ac79774e29e98fb41a09ffe326076f1d,
+    type: 2}
+  soundGoingToFirstState: {fileID: 11400000, guid: 92c1d6ba2b2db9c4581aa5b1c1d28537,
+    type: 2}
+  inDefaultState: 0
 --- !u!1 &1519168076
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,32 +4,28 @@ using System.Collections.Generic;
 using Tobo.Audio;
 using UnityEngine;
 
-public class Drawer : MonoBehaviour, IInteractable
+[RequireComponent(typeof(SwapObjects))]
+public class Drawer : MonoBehaviour
 {
-    // Code copied from Swapper because I am lazy
-    public GameObject[] objectsToSwapBetween;
     public string itemID;
 
-    bool open;
     bool gaveItem;
 
     private void Start()
     {
-        objectsToSwapBetween[1].SetActive(false);
+        //objectsToSwapBetween[1].SetActive(false);
+        GetComponent<SwapObjects>().onTrySwap = OnTrySwap;
     }
 
-    public void OnClicked()
+    bool OnTrySwap(SwapObjects s)
     {
-        if (!open)
-            open = true;
-        else if (!gaveItem)
+        if (!s.inDefaultState && !gaveItem)
         {
             gaveItem = true;
             Inventory.GiveItem(itemID, true, Sound.ItemPickup);
-            return;
+            return false; // Don't close the drawer when we get the item
         }
 
-        objectsToSwapBetween[0].SetActive(objectsToSwapBetween[1].activeSelf); // Set first to second's current state
-        objectsToSwapBetween[1].SetActive(!objectsToSwapBetween[1].activeSelf); // Flip second's state
+        return true;
     }
 }
