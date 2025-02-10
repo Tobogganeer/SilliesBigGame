@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class LockedDoor : MonoBehaviour, IInteractable
 {
-    public CustomMoveTrigger moveTrigger;
+    public GameObject setActiveWhenUnlocked;
+    public bool enableObject = true;
     public string itemIDToOpen;
 
     bool locked = true;
@@ -19,7 +20,7 @@ public class LockedDoor : MonoBehaviour, IInteractable
         {
             locked = false;
             Inventory.ConsumeItem(itemIDToOpen);
-            moveTrigger.gameObject.SetActive(true);
+            setActiveWhenUnlocked.SetActive(enableObject);
             Sound.KeyUse.Play2D();
         }
         else
