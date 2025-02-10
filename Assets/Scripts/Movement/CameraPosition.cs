@@ -145,7 +145,7 @@ public class CameraPosition : MonoBehaviour
         public float rotateTime = DefaultRotateTime;
 
         public const float DefaultMoveTime = 1.0f;
-        public const float DefaultRotateTime = 0.5f;
+        public const float DefaultRotateTime = 0.3f;
 
         public Transition(PosRot from, PosRot to, float moveTime = DefaultMoveTime, float rotateTime = DefaultRotateTime)
             : this(MoveDirection.None, from, to, null, moveTime, rotateTime) { }
