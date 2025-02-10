@@ -31,6 +31,7 @@ namespace Tobo.Audio
             Locker = 1219129871,
             NoiseCooler = -869308199,
             NoiseFlourence = -699231602,
+            PatientBreathing = -1330351052,
             PcStartup = 1714687667,
             SlotHover = -1850161273,
             TurnStep_moveCamIDK_ = -1499080850,
@@ -57,6 +58,7 @@ namespace Tobo.Audio
         public static Sound Locker => Get(ID.Locker);
         public static Sound NoiseCooler => Get(ID.NoiseCooler);
         public static Sound NoiseFlourence => Get(ID.NoiseFlourence);
+        public static Sound PatientBreathing => Get(ID.PatientBreathing);
         public static Sound PcStartup => Get(ID.PcStartup);
         public static Sound SlotHover => Get(ID.SlotHover);
         public static Sound TurnStep_moveCamIDK_ => Get(ID.TurnStep_moveCamIDK_);
@@ -90,6 +92,7 @@ namespace Tobo.Audio
             { "Locker", Sound.ID.Locker },
             { "NoiseCooler", Sound.ID.NoiseCooler },
             { "NoiseFlourence", Sound.ID.NoiseFlourence },
+            { "PatientBreathing", Sound.ID.PatientBreathing },
             { "PcStartup", Sound.ID.PcStartup },
             { "SlotHover", Sound.ID.SlotHover },
             { "TurnStep(moveCamIDK)", Sound.ID.TurnStep_moveCamIDK_ },
