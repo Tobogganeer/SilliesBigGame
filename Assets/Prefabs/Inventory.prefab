@@ -119,9 +119,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Craftingslot1: {fileID: 6497117922285129662}
   Craftingslot2: {fileID: 2379135104562762874}
-  ItemData: {fileID: 0}
+  ItemData: {fileID: 4654307060970391885}
   ResultSlot: {fileID: 6562769470575795452}
-  ResultsScript: {fileID: 0}
+  ResultsScript: {fileID: 7927780232588427436}
 --- !u!1 &647728693587249411
 GameObject:
   m_ObjectHideFlags: 0
