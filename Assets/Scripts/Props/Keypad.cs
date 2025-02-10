@@ -13,27 +13,34 @@ public class Keypad : MonoBehaviour
     public List<int> correctOrder = new List<int>();
 
     public UnityEvent onCorrectPasscodeEntered;
+    public UnityEvent onWrongPasscodeEntered;
 
     List<int> current = new List<int>();
 
     public void KeyPressed(int value)
     {
         if (current.Count == correctOrder.Count)
-        {
-            if (current.SequenceEqual(correctOrder))
-            {
-                Sound.KeypadGood.Play2D();
-                onCorrectPasscodeEntered?.Invoke();
-            }
-            else
-                Sound.KeypadBad.Play2D();
-            current.Clear();
-        }
+            EnterPressed();
         // Add value after so player can see full input before "submitting"
         else
             current.Add(value);
 
         // Display current numbers
         text.text = string.Join(' ', current);
+    }
+
+    public void EnterPressed()
+    {
+        if (current.SequenceEqual(correctOrder))
+        {
+            Sound.KeypadGood.Play2D();
+            onCorrectPasscodeEntered?.Invoke();
+        }
+        else
+        {
+            Sound.KeypadBad.Play2D();
+            onWrongPasscodeEntered?.Invoke();
+        }
+        current.Clear();
     }
 }
