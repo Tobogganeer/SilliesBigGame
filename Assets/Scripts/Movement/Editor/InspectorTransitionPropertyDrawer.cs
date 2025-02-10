@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using static CameraPosition.InspectorTransition;
 
 [CustomPropertyDrawer(typeof(CameraPosition.InspectorTransition))]
 public class InspectorTransitionPropertyDrawer : PropertyDrawer
@@ -19,8 +20,14 @@ public class InspectorTransitionPropertyDrawer : PropertyDrawer
         SerializedProperty foldout = Prop("_foldout");
         SerializedProperty customTarget = Prop("customFacingTarget");
 
+        // SpeedMode
+        SerializedProperty moveTimeMode = Prop("moveTimeMode");
+        SerializedProperty rotateTimeMode = Prop("rotateTimeMode");
+        SerializedProperty moveTime = Prop("moveTime");
+        SerializedProperty rotateTime = Prop("rotateTime");
+
         var moveDir = (CameraPosition.MoveDirection)dirProp.intValue;
-        var moveMode = (CameraPosition.InspectorTransition.Mode)modeProp.intValue;
+        var moveMode = (Mode)modeProp.intValue;
 
         var endCameraDir = (CameraDirection)toRotation.intValue;
 
@@ -40,7 +47,7 @@ public class InspectorTransitionPropertyDrawer : PropertyDrawer
         else
             camDirText = endCameraDir.ToString();
 
-        if (moveMode == CameraPosition.InspectorTransition.Mode.AnotherPosition)
+        if (moveMode == Mode.AnotherPosition)
         {
             CameraPosition to = toPosition.objectReferenceValue as CameraPosition;
             labelText = (to != null ? to.name : "(unset)") + " > " + camDirText;
@@ -74,7 +81,7 @@ public class InspectorTransitionPropertyDrawer : PropertyDrawer
             // Add a space
             rect.y += line;
 
-            if (moveMode == CameraPosition.InspectorTransition.Mode.AnotherPosition)
+            if (moveMode == Mode.AnotherPosition)
                 EditorGUI.PropertyField(Increase(ref rect), toPosition, Label("New CameraPosition"));
             EditorGUI.PropertyField(Increase(ref rect), toRotation, Label("New Rotation"));
             if (endCameraDir == CameraDirection.Custom)
@@ -82,8 +89,37 @@ public class InspectorTransitionPropertyDrawer : PropertyDrawer
             //EditorGUI.PropertyField(Increase(ref rect), Prop("moveSmoothly"));
             //EditorGUI.PropertyField(Increase(ref rect), Prop("moveTime"));
             //EditorGUI.PropertyField(Increase(ref rect), Prop("rotateTime"));
-            EditorGUI.PropertyField(Increase(ref rect), Prop("moveInstantly"));
-            EditorGUI.PropertyField(Increase(ref rect), Prop("rotateInstantly"));
+            EditorGUI.PropertyField(Increase(ref rect), moveTimeMode, Label("Move Time"));
+            TimeMode mtMode = (TimeMode)moveTimeMode.intValue;
+            switch (mtMode)
+            {
+                case TimeMode.Default:
+                    moveTime.floatValue = CameraPosition.Transition.DefaultMoveTime;
+                    break;
+                case TimeMode.Instant:
+                    moveTime.floatValue = 0f;
+                    break;
+                case TimeMode.Custom:
+                    EditorGUI.PropertyField(Increase(ref rect), moveTime, Label("Custom Move Time"));
+                    break;
+            }
+
+            EditorGUI.PropertyField(Increase(ref rect), rotateTimeMode, Label("Rotate Time"));
+            TimeMode rtMode = (TimeMode)rotateTimeMode.intValue;
+            switch (rtMode)
+            {
+                case TimeMode.Default:
+                    rotateTime.floatValue = CameraPosition.Transition.DefaultRotateTime;
+                    break;
+                case TimeMode.Instant:
+                    rotateTime.floatValue = 0f;
+                    break;
+                case TimeMode.Custom:
+                    EditorGUI.PropertyField(Increase(ref rect), rotateTime, Label("Custom Rotate Time"));
+                    break;
+            }
+            //EditorGUI.PropertyField(Increase(ref rect), Prop("moveInstantly"));
+            //EditorGUI.PropertyField(Increase(ref rect), Prop("rotateInstantly"));
 
 
         }
@@ -124,8 +160,18 @@ public class InspectorTransitionPropertyDrawer : PropertyDrawer
             height += line;
 
         SerializedProperty modeProp = property.FindPropertyRelative("mode");
-        var moveMode = (CameraPosition.InspectorTransition.Mode)modeProp.intValue;
-        if (moveMode == CameraPosition.InspectorTransition.Mode.AnotherPosition)
+        var moveMode = (Mode)modeProp.intValue;
+        if (moveMode == Mode.AnotherPosition)
+            height += line;
+
+        SerializedProperty moveTimeModeProp = property.FindPropertyRelative("moveTimeMode");
+        var moveTimeMode = (TimeMode)moveTimeModeProp.intValue;
+        if (moveTimeMode == TimeMode.Custom)
+            height += line;
+
+        SerializedProperty rotateTimeModeProp = property.FindPropertyRelative("rotateTimeMode");
+        var rotateTimeMode = (TimeMode)rotateTimeModeProp.intValue;
+        if (rotateTimeMode == TimeMode.Custom)
             height += line;
 
         return height;

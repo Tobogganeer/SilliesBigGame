@@ -129,8 +129,7 @@ public class CameraPosition : MonoBehaviour
 
                 Quaternion targetRot = Quaternion.LookRotation(facingDirection);
                 transitions.Add(new Transition(inspTransition.directionToClick, targetPos, targetRot,
-                    inspTransition.moveTrigger, inspTransition.moveInstantly ? 0f : Transition.DefaultMoveTime,
-                    inspTransition.rotateInstantly ? 0f : Transition.DefaultRotateTime));
+                    inspTransition.moveTrigger, inspTransition.GetMoveTime(), inspTransition.GetRotateTime()));
             }
         }
     }
@@ -144,7 +143,7 @@ public class CameraPosition : MonoBehaviour
         public float moveTime = DefaultMoveTime;
         public float rotateTime = DefaultRotateTime;
 
-        public const float DefaultMoveTime = 1.0f;
+        public const float DefaultMoveTime = 0.3f;
         public const float DefaultRotateTime = 0.3f;
 
         public Transition(PosRot from, PosRot to, float moveTime = DefaultMoveTime, float rotateTime = DefaultRotateTime)
@@ -185,16 +184,41 @@ public class CameraPosition : MonoBehaviour
         public CustomMoveTrigger moveTrigger; // If using a custom trigger (e.g. click on a doorway)
         //public float moveTime = 1f;
         //public float rotateTime = 0.5f;
-        public bool moveInstantly = false;
-        public bool rotateInstantly = false;
+        public TimeMode moveTimeMode;
+        public TimeMode rotateTimeMode;
+        public float moveTime;
+        public float rotateTime;
 
         public bool _foldout = true;
         //public bool _overrideTimes
+
+        public float GetMoveTime() => moveTimeMode switch
+        {
+            TimeMode.Default => Transition.DefaultMoveTime,
+            TimeMode.Instant => 0f,
+            TimeMode.Custom => moveTime,
+            _ => throw new NotImplementedException(),
+        };
+
+        public float GetRotateTime() => rotateTimeMode switch
+        {
+            TimeMode.Default => Transition.DefaultRotateTime,
+            TimeMode.Instant => 0f,
+            TimeMode.Custom => rotateTime,
+            _ => throw new NotImplementedException(),
+        };
 
         public enum Mode
         {
             AnotherRotation,
             AnotherPosition
+        }
+
+        public enum TimeMode
+        {
+            Default,
+            Instant,
+            Custom,
         }
     }
 
@@ -217,7 +241,6 @@ public class CameraPosition : MonoBehaviour
         Gizmos.DrawSphere(transform.position, 0.2f);
 
         const float Offset = 1f;
-        const float CustomLookTargetLength = 0.5f;
         const float SmallLocalOffset = 0.02f;
 
         int stateNum = 0;
@@ -230,7 +253,7 @@ public class CameraPosition : MonoBehaviour
             Vector3 pos = GetPosition(state.facing, state.customFacingTarget);
             Gizmos.DrawSphere(pos, 0.1f);
             if (state.facing == CameraDirection.Custom && state.customFacingTarget != null)
-                Gizmos.DrawLine(pos, pos + pos.Dir(state.customFacingTarget.position) * CustomLookTargetLength);
+                Gizmos.DrawLine(pos, pos + pos.DirectionTo_NoNormalize(state.customFacingTarget.position));
 
             // Draw connections
             //Gizmos.color = Color.white;
