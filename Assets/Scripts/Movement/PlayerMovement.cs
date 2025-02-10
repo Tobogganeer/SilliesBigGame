@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool Travelling => currentTransition != null;
     public float TravelProgress => Mathf.Clamp01(travelProgress);
-    PosRot CurrentPosRot => new PosRot(transform.position, transform.rotation);
+    public PosRot CurrentPosRot => new PosRot(transform.position, transform.rotation);
 
 
     public void Travel(CameraPosition.Transition transition, bool interruptCurrentTravel = false)
@@ -70,6 +70,13 @@ public class PlayerMovement : MonoBehaviour
     public void Travel(Vector3 position, Quaternion rotation, float moveTime = 1.0f, float rotateTime = 0.5f, bool interruptCurrentTravel = false)
     {
         Travel(new CameraPosition.Transition(new PosRot(transform.position, transform.rotation), new PosRot(position, rotation), moveTime, rotateTime), interruptCurrentTravel);
+    }
+
+    public void Travel(CameraPosition position, CameraDirection direction, Transform customTarget = null, float moveTime = 1.0f, float rotateTime = 0.5f, bool interruptCurrentTravel = false)
+    {
+        Travel(new CameraPosition.Transition(new PosRot(transform.position, transform.rotation),
+            new PosRot(position.position, position.GetRotation(direction, customTarget).GetRotation()),
+            moveTime, rotateTime), interruptCurrentTravel);
     }
 
     private void Update()

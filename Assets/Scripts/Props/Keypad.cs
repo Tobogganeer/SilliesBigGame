@@ -4,12 +4,15 @@ using System.Linq;
 using UnityEngine;
 using TMPro;
 using Tobo.Audio;
+using UnityEngine.Events;
 
 public class Keypad : MonoBehaviour
 {
     public TMP_Text text;
 
     public List<int> correctOrder = new List<int>();
+
+    public UnityEvent onCorrectPasscodeEntered;
 
     List<int> current = new List<int>();
 
@@ -20,6 +23,7 @@ public class Keypad : MonoBehaviour
             if (current.SequenceEqual(correctOrder))
             {
                 Sound.KeypadGood.Play2D();
+                onCorrectPasscodeEntered?.Invoke();
             }
             else
                 Sound.KeypadBad.Play2D();
@@ -28,8 +32,6 @@ public class Keypad : MonoBehaviour
         // Add value after so player can see full input before "submitting"
         else
             current.Add(value);
-
-
 
         // Display current numbers
         text.text = string.Join(' ', current);
