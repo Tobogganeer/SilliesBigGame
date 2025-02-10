@@ -2064,6 +2064,12 @@ MonoBehaviour:
   originalPosition: {fileID: 1801138479}
   originalDirection: 1
   unlockedInteraction: {fileID: 494238601}
+--- !u!1 &317474169 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7493471232340107117, guid: 619df69bf263acb43a8798c97132a69f,
+    type: 3}
+  m_PrefabInstance: {fileID: 25535466}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &339524913
 GameObject:
   m_ObjectHideFlags: 0
@@ -3579,7 +3585,15 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e9d7be19ece990438498ebb7591141d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1727434156}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e9d7be19ece990438498ebb7591141d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1727434157}
   m_SourcePrefab: {fileID: 100100000, guid: 8e9d7be19ece990438498ebb7591141d, type: 3}
 --- !u!4 &771472569 stripped
 Transform:
@@ -6928,6 +6942,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keypad: {fileID: 1705283262}
   passwordWeTellThemToEnter: 02000000080000000900000004000000
+--- !u!1 &1727434153 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e9d7be19ece990438498ebb7591141d,
+    type: 3}
+  m_PrefabInstance: {fileID: 771472568}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1727434156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727434153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beeb9094acfac924188696de821eada3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 317474169}
+  enable: 1
+--- !u!65 &1727434157
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727434153}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.593223, y: 0.75133836, z: 0.1}
+  m_Center: {x: -0.00000011920929, y: -2.1707437e-30, z: 0.00000023841855}
 --- !u!1001 &1734967424
 PrefabInstance:
   m_ObjectHideFlags: 0
