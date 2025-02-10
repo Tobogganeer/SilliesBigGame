@@ -10,11 +10,6 @@ public class MovementUI : MonoBehaviour
     private void Awake()
     {
         instance = this;
-
-        // Turn off colliders for all move triggers, even those that start off
-        // (They can't use Awake or anything)
-        foreach (var moveTrigger in FindObjectsByType<CustomMoveTrigger>(FindObjectsInactive.Include, FindObjectsSortMode.None))
-            moveTrigger.SetColliderEnabled(false);
     }
 
     public SerializableDictionary<CameraPosition.MoveDirection, Button> buttons;
