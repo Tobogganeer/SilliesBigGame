@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         float easedMoveFac = Ease.SmoothStep3(moveFac);
-        float easedRotateFac= Ease.SmoothStop3(rotateFac);
+        float easedRotateFac= Ease.SmoothStep3(rotateFac);
 
         transform.position = Vector3.Lerp(fromPosition, targetPosition, easedMoveFac);
         transform.rotation = Quaternion.Slerp(fromRotation, targetRotation, easedRotateFac);

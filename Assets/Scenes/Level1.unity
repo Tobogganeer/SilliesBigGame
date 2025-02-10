@@ -3292,8 +3292,10 @@ MonoBehaviour:
       customFacingTarget: {fileID: 0}
       leadsToPosition: {fileID: 1356216483}
       moveTrigger: {fileID: 0}
-      moveInstantly: 0
-      rotateInstantly: 0
+      moveTimeMode: 0
+      rotateTimeMode: 0
+      moveTime: 0
+      rotateTime: 0
       _foldout: 1
 --- !u!1 &1044683773
 GameObject:
@@ -4240,8 +4242,10 @@ MonoBehaviour:
       customFacingTarget: {fileID: 0}
       leadsToPosition: {fileID: 0}
       moveTrigger: {fileID: 0}
-      moveInstantly: 0
-      rotateInstantly: 0
+      moveTimeMode: 0
+      rotateTimeMode: 0
+      moveTime: 0
+      rotateTime: 0
       _foldout: 0
     - directionToClick: 1
       mode: 0
@@ -4249,8 +4253,10 @@ MonoBehaviour:
       customFacingTarget: {fileID: 0}
       leadsToPosition: {fileID: 0}
       moveTrigger: {fileID: 0}
-      moveInstantly: 0
-      rotateInstantly: 0
+      moveTimeMode: 0
+      rotateTimeMode: 0
+      moveTime: 0
+      rotateTime: 0
       _foldout: 0
     - directionToClick: 5
       mode: 1
@@ -4258,8 +4264,10 @@ MonoBehaviour:
       customFacingTarget: {fileID: 1074797578}
       leadsToPosition: {fileID: 1002365370}
       moveTrigger: {fileID: 454049553}
-      moveInstantly: 0
-      rotateInstantly: 0
+      moveTimeMode: 0
+      rotateTimeMode: 0
+      moveTime: 0.3
+      rotateTime: 0.3
       _foldout: 1
   - facing: 1
     customFacingTarget: {fileID: 0}
@@ -4270,8 +4278,10 @@ MonoBehaviour:
       customFacingTarget: {fileID: 0}
       leadsToPosition: {fileID: 0}
       moveTrigger: {fileID: 0}
-      moveInstantly: 0
-      rotateInstantly: 0
+      moveTimeMode: 0
+      rotateTimeMode: 0
+      moveTime: 0
+      rotateTime: 0
       _foldout: 0
     - directionToClick: 1
       mode: 0
@@ -4279,8 +4289,10 @@ MonoBehaviour:
       customFacingTarget: {fileID: 0}
       leadsToPosition: {fileID: 0}
       moveTrigger: {fileID: 0}
-      moveInstantly: 0
-      rotateInstantly: 0
+      moveTimeMode: 0
+      rotateTimeMode: 0
+      moveTime: 0
+      rotateTime: 0
       _foldout: 1
   - facing: 2
     customFacingTarget: {fileID: 0}
@@ -4291,8 +4303,10 @@ MonoBehaviour:
       customFacingTarget: {fileID: 0}
       leadsToPosition: {fileID: 0}
       moveTrigger: {fileID: 0}
-      moveInstantly: 0
-      rotateInstantly: 0
+      moveTimeMode: 0
+      rotateTimeMode: 0
+      moveTime: 0.3
+      rotateTime: 0.3
       _foldout: 1
     - directionToClick: 2
       mode: 0
@@ -4300,8 +4314,10 @@ MonoBehaviour:
       customFacingTarget: {fileID: 0}
       leadsToPosition: {fileID: 0}
       moveTrigger: {fileID: 0}
-      moveInstantly: 0
-      rotateInstantly: 0
+      moveTimeMode: 0
+      rotateTimeMode: 0
+      moveTime: 0.3
+      rotateTime: 0.3
       _foldout: 1
     - directionToClick: 5
       mode: 1
@@ -4309,8 +4325,10 @@ MonoBehaviour:
       customFacingTarget: {fileID: 0}
       leadsToPosition: {fileID: 1801138479}
       moveTrigger: {fileID: 379075227}
-      moveInstantly: 0
-      rotateInstantly: 0
+      moveTimeMode: 2
+      rotateTimeMode: 0
+      moveTime: 1
+      rotateTime: 0.3
       _foldout: 1
   - facing: 3
     customFacingTarget: {fileID: 0}
@@ -4321,8 +4339,10 @@ MonoBehaviour:
       customFacingTarget: {fileID: 0}
       leadsToPosition: {fileID: 0}
       moveTrigger: {fileID: 0}
-      moveInstantly: 0
-      rotateInstantly: 0
+      moveTimeMode: 0
+      rotateTimeMode: 0
+      moveTime: 0
+      rotateTime: 0
       _foldout: 1
     - directionToClick: 2
       mode: 0
@@ -4330,8 +4350,10 @@ MonoBehaviour:
       customFacingTarget: {fileID: 0}
       leadsToPosition: {fileID: 0}
       moveTrigger: {fileID: 0}
-      moveInstantly: 0
-      rotateInstantly: 0
+      moveTimeMode: 0
+      rotateTimeMode: 0
+      moveTime: 0
+      rotateTime: 0
       _foldout: 1
 --- !u!1 &1391601842
 GameObject:
@@ -5507,8 +5529,10 @@ MonoBehaviour:
       customFacingTarget: {fileID: 0}
       leadsToPosition: {fileID: 0}
       moveTrigger: {fileID: 0}
-      moveInstantly: 0
-      rotateInstantly: 0
+      moveTimeMode: 0
+      rotateTimeMode: 0
+      moveTime: 0
+      rotateTime: 0
       _foldout: 0
     - directionToClick: 1
       mode: 0
@@ -5516,8 +5540,10 @@ MonoBehaviour:
       customFacingTarget: {fileID: 0}
       leadsToPosition: {fileID: 0}
       moveTrigger: {fileID: 0}
-      moveInstantly: 0
-      rotateInstantly: 0
+      moveTimeMode: 0
+      rotateTimeMode: 0
+      moveTime: 0
+      rotateTime: 0
       _foldout: 0
     - directionToClick: 5
       mode: 1
@@ -5525,8 +5551,10 @@ MonoBehaviour:
       customFacingTarget: {fileID: 0}
       leadsToPosition: {fileID: 1356216483}
       moveTrigger: {fileID: 1179518958}
-      moveInstantly: 0
-      rotateInstantly: 0
+      moveTimeMode: 2
+      rotateTimeMode: 0
+      moveTime: 1
+      rotateTime: 0.3
       _foldout: 1
   - facing: 1
     customFacingTarget: {fileID: 0}
@@ -5537,8 +5565,10 @@ MonoBehaviour:
       customFacingTarget: {fileID: 0}
       leadsToPosition: {fileID: 0}
       moveTrigger: {fileID: 0}
-      moveInstantly: 0
-      rotateInstantly: 0
+      moveTimeMode: 0
+      rotateTimeMode: 0
+      moveTime: 0
+      rotateTime: 0
       _foldout: 0
     - directionToClick: 1
       mode: 0
@@ -5546,8 +5576,10 @@ MonoBehaviour:
       customFacingTarget: {fileID: 0}
       leadsToPosition: {fileID: 0}
       moveTrigger: {fileID: 0}
-      moveInstantly: 0
-      rotateInstantly: 0
+      moveTimeMode: 0
+      rotateTimeMode: 0
+      moveTime: 0
+      rotateTime: 0
       _foldout: 1
   - facing: 2
     customFacingTarget: {fileID: 0}
@@ -5558,8 +5590,10 @@ MonoBehaviour:
       customFacingTarget: {fileID: 0}
       leadsToPosition: {fileID: 0}
       moveTrigger: {fileID: 0}
-      moveInstantly: 0
-      rotateInstantly: 0
+      moveTimeMode: 0
+      rotateTimeMode: 0
+      moveTime: 0
+      rotateTime: 0
       _foldout: 1
     - directionToClick: 2
       mode: 0
@@ -5567,8 +5601,10 @@ MonoBehaviour:
       customFacingTarget: {fileID: 0}
       leadsToPosition: {fileID: 0}
       moveTrigger: {fileID: 0}
-      moveInstantly: 0
-      rotateInstantly: 0
+      moveTimeMode: 0
+      rotateTimeMode: 0
+      moveTime: 0
+      rotateTime: 0
       _foldout: 1
   - facing: 3
     customFacingTarget: {fileID: 0}
@@ -5579,8 +5615,10 @@ MonoBehaviour:
       customFacingTarget: {fileID: 0}
       leadsToPosition: {fileID: 0}
       moveTrigger: {fileID: 0}
-      moveInstantly: 0
-      rotateInstantly: 0
+      moveTimeMode: 0
+      rotateTimeMode: 0
+      moveTime: 0
+      rotateTime: 0
       _foldout: 1
     - directionToClick: 2
       mode: 0
@@ -5588,8 +5626,10 @@ MonoBehaviour:
       customFacingTarget: {fileID: 0}
       leadsToPosition: {fileID: 0}
       moveTrigger: {fileID: 0}
-      moveInstantly: 0
-      rotateInstantly: 0
+      moveTimeMode: 0
+      rotateTimeMode: 0
+      moveTime: 0
+      rotateTime: 0
       _foldout: 1
 --- !u!1 &1813729166
 GameObject:
