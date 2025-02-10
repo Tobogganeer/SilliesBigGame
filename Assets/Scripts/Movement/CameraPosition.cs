@@ -217,7 +217,6 @@ public class CameraPosition : MonoBehaviour
         Gizmos.DrawSphere(transform.position, 0.2f);
 
         const float Offset = 1f;
-        const float CustomLookTargetLength = 0.5f;
         const float SmallLocalOffset = 0.02f;
 
         int stateNum = 0;
@@ -230,7 +229,7 @@ public class CameraPosition : MonoBehaviour
             Vector3 pos = GetPosition(state.facing, state.customFacingTarget);
             Gizmos.DrawSphere(pos, 0.1f);
             if (state.facing == CameraDirection.Custom && state.customFacingTarget != null)
-                Gizmos.DrawLine(pos, pos + pos.Dir(state.customFacingTarget.position) * CustomLookTargetLength);
+                Gizmos.DrawLine(pos, pos + pos.DirectionTo_NoNormalize(state.customFacingTarget.position));
 
             // Draw connections
             //Gizmos.color = Color.white;
