@@ -7,6 +7,12 @@ using UnityEngine.InputSystem;
 
 public class Interactor : MonoBehaviour
 {
+    private static Interactor instance;
+    private void Awake()
+    {
+        instance = this;
+    }
+
     public CursorTypes cursors;
 
     public bool useInteractHandWhenNoCustomCursorProvided = true;
@@ -117,6 +123,17 @@ public class Interactor : MonoBehaviour
         // Call OnCursorExit on all current interactables
         CallExitForAll();
         current = null;
+    }
+
+    /// <summary>
+    /// Call when you remove a component at runtime (e.g. single time TextInteractable)
+    /// </summary>
+    public static void RecalculateInteractionForCurrentObject()
+    {
+        if (instance.currentObject == null)
+            instance.current = null;
+        else
+            instance.current = instance.currentObject.GetComponents<IInteractable>();
     }
 
     #region Shorthands to call functions on all current interactables

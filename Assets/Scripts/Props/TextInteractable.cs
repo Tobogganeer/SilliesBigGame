@@ -8,14 +8,15 @@ public class TextInteractable : MonoBehaviour, IInteractable
     public float time = 3f;
     public bool oneTimeOnly = false;
 
-    bool activated = false;
-
     public void OnClicked()
     {
-        if (oneTimeOnly && activated)
-            return;
-
-        activated = true;
         PopUp.Show(text, time);
+
+        if (oneTimeOnly)
+        {
+            // Off ourselves
+            Destroy(this);
+            Interactor.RecalculateInteractionForCurrentObject();
+        }
     }
 }

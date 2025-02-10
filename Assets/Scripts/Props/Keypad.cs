@@ -17,6 +17,8 @@ public class Keypad : MonoBehaviour
 
     List<int> current = new List<int>();
 
+    public List<int> Current => current;
+
     public void KeyPressed(int value)
     {
         if (current.Count == correctOrder.Count)
