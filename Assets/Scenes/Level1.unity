@@ -689,6 +689,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 619df69bf263acb43a8798c97132a69f, type: 3}
+--- !u!1 &41632402 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e9d7be19ece990438498ebb7591141d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2120449481}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &50423269
 GameObject:
   m_ObjectHideFlags: 0
@@ -3067,6 +3073,12 @@ Transform:
   - {fileID: 1516786417}
   m_Father: {fileID: 111461779}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &438062943 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e9d7be19ece990438498ebb7591141d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1622942465}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &454049551
 GameObject:
   m_ObjectHideFlags: 0
@@ -3768,8 +3780,7 @@ GameObject:
   - component: {fileID: 582444204}
   - component: {fileID: 582444208}
   - component: {fileID: 582444207}
-  - component: {fileID: 582444206}
-  - component: {fileID: 582444205}
+  - component: {fileID: 582444209}
   m_Layer: 0
   m_Name: R2 Door Locked Interaction
   m_TagString: Untagged
@@ -3792,33 +3803,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 995600749}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &582444205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 582444203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 475ae5b5a9a51974f8d0d7dbcfa386d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sound: {fileID: 11400000, guid: d6697276b1ace0d4fbf8d00d533c8842, type: 2}
---- !u!114 &582444206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 582444203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f8b968de53ff0d4aa83fd0b6c454f3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: Locked...
-  time: 1
 --- !u!114 &582444207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3853,6 +3837,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 6.2610817, y: 0.1, z: 8.06461}
   m_Center: {x: 0, y: 0, z: 0.9677063}
+--- !u!114 &582444209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582444203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7c193e2dfb23da4cb796e3a5cbac660, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveTrigger: {fileID: 1179518958}
 --- !u!1001 &614563105
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8673,6 +8670,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1516786417}
+  - component: {fileID: 1516786419}
+  - component: {fileID: 1516786418}
   m_Layer: 0
   m_Name: Drawer
   m_TagString: Untagged
@@ -8697,6 +8696,43 @@ Transform:
   - {fileID: 2120449482}
   m_Father: {fileID: 429200985}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1516786418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516786416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d82ae0b1967ec9e40af4b125c5c451f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsToSwapBetween:
+  - {fileID: 41632402}
+  - {fileID: 438062943}
+  itemID: Battery
+--- !u!65 &1516786419
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516786416}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.77989656, y: 0.36807048, z: 0.1}
+  m_Center: {x: -1.1048155e-25, y: -0.023601592, z: 1.4300122e-25}
 --- !u!1 &1519168076
 GameObject:
   m_ObjectHideFlags: 0
