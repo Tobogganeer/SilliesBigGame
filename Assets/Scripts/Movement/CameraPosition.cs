@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Tobo.Util;
+using Tobo.Attributes;
 
 /// <summary>
 /// Represents a position for the camera to be in. Contains multiple rotations and transitions.
@@ -10,14 +11,12 @@ using Tobo.Util;
 public class CameraPosition : MonoBehaviour
 {
     public List<CameraRotation> rotations;
-    static Dictionary<PosRot, CameraRotation> posRotToRotation;
+    static Dictionary<PosRot, CameraRotation> posRotToRotation = new Dictionary<PosRot, CameraRotation>();
 
     public Vector3 position => transform.position;
 
     private void Awake()
     {
-        posRotToRotation = new Dictionary<PosRot, CameraRotation>(rotations.Count);
-
         foreach (CameraRotation rotation in rotations)
         {
             rotation.Init(this);
