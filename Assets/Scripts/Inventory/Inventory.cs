@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Tobo.Audio;
 
 public class Inventory : MonoBehaviour
 {
@@ -24,10 +25,16 @@ public class Inventory : MonoBehaviour
         slot.Clear();
     }
 
-    public static void GiveItem(string itemID)
+    public static void GiveItem(string itemID, bool notify = true, Sound sound = null)
     {
         ItemSlot slot = instance.slots.First((slot) => slot.itemDataKey == string.Empty);
         slot.itemDataKey = itemID;
         slot.Search(itemID);
+
+        if (notify)
+            PopUp.Show("Picked up " + itemID, 3f);
+
+        if (sound != null)
+            sound.Play2D();
     }
 }

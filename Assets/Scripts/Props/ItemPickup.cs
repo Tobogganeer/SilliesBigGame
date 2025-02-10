@@ -11,12 +11,7 @@ public class ItemPickup : MonoBehaviour, IInteractable
 
     public void OnClicked()
     {
-        Inventory.GiveItem(itemID);
-        if (showPickedUpMessage)
-            PopUp.Show("Picked up " + itemID, 3f);
-
-        if (pickupSound != null)
-            pickupSound.Play2D();
+        Inventory.GiveItem(itemID, showPickedUpMessage, pickupSound);
 
         Destroy(gameObject);
     }
