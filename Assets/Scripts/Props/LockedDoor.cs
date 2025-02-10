@@ -6,6 +6,7 @@ using UnityEngine;
 public class LockedDoor : MonoBehaviour, IInteractable
 {
     public CustomMoveTrigger moveTrigger;
+    public string itemIDToOpen;
 
     bool locked = true;
 
@@ -14,10 +15,10 @@ public class LockedDoor : MonoBehaviour, IInteractable
         if (!locked)
             return;
 
-        if (Inventory.HasItem("Door Keys"))
+        if (Inventory.HasItem(itemIDToOpen))
         {
             locked = false;
-            Inventory.ConsumeItem("Door Keys");
+            Inventory.ConsumeItem(itemIDToOpen);
             moveTrigger.gameObject.SetActive(true);
             Sound.KeyUse.Play2D();
         }
