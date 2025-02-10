@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Tobo.Audio;
 using Tobo.Util;
 using UnityEngine;
 
@@ -50,12 +51,15 @@ public class PlayerMovement : MonoBehaviour
         // Assume our current position is fine
         currentTransition = transition;
         currentTransition.from = CurrentPosRot; // Manually override "from"
+        if (currentTransition.from.position == currentTransition.to.position)
+            currentTransition.moveTime = 0f; // Start and end at the same place - we aren't moving
         travelProgress = 0f;
         moveTimer = 0f;
         rotateTimer = 0f;
 
         // Disable buttons
         MovementUI.ClearUI();
+        Sound.TurnStep_moveCamIDK_.Play2D();
     }
 
     public void Travel(Vector3 position, Vector3 lookTarget, float moveTime = 1.0f, float rotateTime = 0.5f, bool interruptCurrentTravel = false)
