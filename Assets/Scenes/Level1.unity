@@ -5030,6 +5030,72 @@ MonoBehaviour:
       moveTime: 0
       rotateTime: 0
       _foldout: 1
+--- !u!1 &1013246794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1013246795}
+  - component: {fileID: 1013246797}
+  - component: {fileID: 1013246796}
+  m_Layer: 0
+  m_Name: Patient
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1013246795
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013246794}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1918028288}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1013246796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013246794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42738cc7ca1f951438080f54d12fce47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &1013246797
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013246794}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.7921617, y: 1.0955054, z: 0.13804531}
+  m_Center: {x: -0.28847086, y: 0.51555187, z: 0.086874485}
 --- !u!1 &1044683773
 GameObject:
   m_ObjectHideFlags: 0
@@ -8585,7 +8651,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1918028288}
   - component: {fileID: 1918028289}
-  - component: {fileID: 1918028290}
   m_Layer: 0
   m_Name: Patient Container
   m_TagString: Untagged
@@ -8609,6 +8674,7 @@ Transform:
   - {fileID: 119924032}
   - {fileID: 199983121}
   - {fileID: 454049552}
+  - {fileID: 1013246795}
   m_Father: {fileID: 2101104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1918028289
@@ -8626,18 +8692,6 @@ MonoBehaviour:
   amount: 0.01
   mask: {x: 1, y: 1, z: 0}
   delay: 0.1
---- !u!114 &1918028290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1918028287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42738cc7ca1f951438080f54d12fce47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1919450816
 GameObject:
   m_ObjectHideFlags: 0
