@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 /// <summary>
 /// Makes a UI object interact with the Interactable system
 /// </summary>
-public class UIInteractable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class UIInteractable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerMoveHandler
 {
     public static UIInteractable CurrentlyHovered;
 
@@ -20,5 +20,11 @@ public class UIInteractable : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         // Only set to null if we are still hovered
         if (CurrentlyHovered == this)
             CurrentlyHovered = null;
+    }
+
+    public void OnPointerMove(PointerEventData eventData)
+    {
+        // If there is an object on top of us we won't detect OnPointerEnter again
+        CurrentlyHovered = this;
     }
 }

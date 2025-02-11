@@ -1258,7 +1258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventorySlot: 1
-  itemDataKey: Battery
+  itemDataKey: 
   itemDescription: 
   itemCombination: 
   itemImageSlot: {fileID: 0}
@@ -1817,7 +1817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventorySlot: 0
-  itemDataKey: Flashlight
+  itemDataKey: 
   itemDescription: 
   itemCombination: 
   itemImageSlot: {fileID: 0}
@@ -2223,6 +2223,7 @@ GameObject:
   - component: {fileID: 3666039079810235181}
   - component: {fileID: 4654307060970391885}
   - component: {fileID: 2186587914737007420}
+  - component: {fileID: 4172899066563549347}
   m_Layer: 0
   m_Name: Inventory
   m_TagString: Untagged
@@ -2249,7 +2250,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 300, y: 570}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4654307060970391885
 MonoBehaviour:
@@ -2281,6 +2282,27 @@ MonoBehaviour:
   ItemPanel: {fileID: 808067892398340408}
   ItemData: {fileID: 4654307060970391885}
   heldItemKey: 
+--- !u!114 &4172899066563549347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5358598796313618684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcfecf3e03642b948907991a0e99f3a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slots:
+  - {fileID: 6735206859804939868}
+  - {fileID: 177766287150932848}
+  - {fileID: 4024420903320754449}
+  - {fileID: 3470572468186302530}
+  - {fileID: 4091308319661304525}
+  - {fileID: 850302923371472787}
+  - {fileID: 2372821692766536129}
+  - {fileID: 9079339208263604473}
 --- !u!1 &5511657015343707148
 GameObject:
   m_ObjectHideFlags: 0

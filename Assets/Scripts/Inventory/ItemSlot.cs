@@ -52,6 +52,9 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         itemDescription = ItemData.itemData[itemKey]["itemDescription"];
         //itemDescription = ItemData.items[itemKey].description;
 
+        if (itemImageSlot == null)
+            itemImageSlot = gameObject.transform.GetChild(0).gameObject.GetComponent<Image>();
+
         itemImageSlot.color = Color.white;
 
         itemCombination = ItemData.itemData[itemKey]["combination"];
@@ -62,6 +65,9 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public virtual void Clear()
     {
+        if (itemImageSlot == null)
+            itemImageSlot = gameObject.transform.GetChild(0).gameObject.GetComponent<Image>();
+
         itemImageSlot.sprite = null;
         itemCombination = string.Empty;
         itemImageSlot.color = new Vector4(255, 255, 255, 0);
