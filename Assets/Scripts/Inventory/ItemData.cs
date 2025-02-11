@@ -59,7 +59,8 @@ public class ItemData : MonoBehaviour
         {
             {"itemDescription", "A Red Flask"},
             {"itemImage", "ItemSprites/Flask1A"},
-            {"combination", "Syringe"},
+            {"combination", "Teal Flask"},
+            {"combinationResult", "Syringe"},
         });
         itemData.Add("Green Flask", new Dictionary<string, string>
         {
@@ -83,7 +84,8 @@ public class ItemData : MonoBehaviour
         {
             {"itemDescription", "A Teal Flask"},
             {"itemImage", "ItemSprites/Flask2B"},
-            {"combination", "Syringe"},
+            {"combination", "Red Flask"},
+            {"combinationResult", "Syringe"},
         });
         itemData.Add("Yellow Flask", new Dictionary<string, string>
         {
