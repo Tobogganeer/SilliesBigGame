@@ -44,5 +44,6 @@ public class Keypad : MonoBehaviour
             onWrongPasscodeEntered?.Invoke();
         }
         current.Clear();
+        text.text = string.Join(' ', current);
     }
 }
