@@ -9,22 +9,14 @@ public class InventoryInteraction : MonoBehaviour
     public GameObject InventoryPanel;
     public GameObject ItemPanel;
 
+    [Space]
     public ItemData ItemData;
 
+    [Space]
     public string heldItemKey;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
+    [Space]
+    public DraggedItemGUI draggedItem;
 
     public void InventoryToggle()
     {
@@ -49,11 +41,19 @@ public class InventoryInteraction : MonoBehaviour
                 heldItemKey = string.Empty;
 
                 itemData.Search(itemData.itemDataKey);
+
+                draggedItem.Disable();
             }
         }
         else
         {
             heldItemKey = itemData.itemDataKey;
+
+            if (heldItemKey != string.Empty)
+            {
+                Sprite sprite = Resources.Load<Sprite>(ItemData.itemData[heldItemKey]["itemImage"]);
+                draggedItem.Enable(sprite);
+            }
 
             itemData.Clear();
         }
