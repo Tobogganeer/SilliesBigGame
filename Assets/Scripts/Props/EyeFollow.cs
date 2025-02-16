@@ -27,11 +27,14 @@ public class EyeFollow : MonoBehaviour
         // Set z so the world position is accurate
         cursorScreenPos.z = Vector3.Distance(GetStartingPosition(), cam.transform.position);
 
+        // Get vector from current position to cursor's position in world
         Vector3 cursorPos = cam.ScreenToWorldPoint(cursorScreenPos);
         Vector3 offset = cursorPos - GetStartingPosition();
 
+        // Divide the offset (eyes move less towards cursor) and clamp (max travel)
         offset = Vector3.ClampMagnitude(offset * multiplier, maxAmount);
 
+        // Apply offset
         transform.position = GetStartingPosition() + offset;
     }
 }
