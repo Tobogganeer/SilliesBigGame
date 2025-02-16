@@ -1621,17 +1621,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 8e9d7be19ece990438498ebb7591141d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.1596
+      value: -1.1475
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8e9d7be19ece990438498ebb7591141d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8031
+      value: 0.8065
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8e9d7be19ece990438498ebb7591141d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.012
+      value: -0.0079
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8e9d7be19ece990438498ebb7591141d,
         type: 3}
@@ -1686,7 +1686,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8e9d7be19ece990438498ebb7591141d,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 64
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1721,10 +1721,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a925996b6aad425f8fea5db73c03d2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 0.00001
-  mask: {x: 1, y: 1, z: 0}
-  delay: 0.2
-  position: {x: 0, y: 0, z: 0}
+  multiplier: 0.03
+  maxAmount: 0.01
 --- !u!1 &205822468
 GameObject:
   m_ObjectHideFlags: 0
