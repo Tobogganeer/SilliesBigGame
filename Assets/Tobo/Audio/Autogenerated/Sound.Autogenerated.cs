@@ -17,12 +17,14 @@ namespace Tobo.Audio
             None = 0,
             CabinetClosed = -180397299,
             CabinetOpen = 67212331,
+            CoatPickup = 2089786482,
             DoorLocked = -1361169457,
             DoorOpen = -1650486193,
             DrawerClosed = 1162377076,
             DrawerOpen = -257647022,
             FlashlightButton = -50425809,
             GetKey = 1067224608,
+            GlassPickup = 895153281,
             ItemPickup = 1222083302,
             KeypadBad = 603097914,
             KeypadGood = 1516329000,
@@ -44,12 +46,14 @@ namespace Tobo.Audio
 
         public static Sound CabinetClosed => Get(ID.CabinetClosed);
         public static Sound CabinetOpen => Get(ID.CabinetOpen);
+        public static Sound CoatPickup => Get(ID.CoatPickup);
         public static Sound DoorLocked => Get(ID.DoorLocked);
         public static Sound DoorOpen => Get(ID.DoorOpen);
         public static Sound DrawerClosed => Get(ID.DrawerClosed);
         public static Sound DrawerOpen => Get(ID.DrawerOpen);
         public static Sound FlashlightButton => Get(ID.FlashlightButton);
         public static Sound GetKey => Get(ID.GetKey);
+        public static Sound GlassPickup => Get(ID.GlassPickup);
         public static Sound ItemPickup => Get(ID.ItemPickup);
         public static Sound KeypadBad => Get(ID.KeypadBad);
         public static Sound KeypadGood => Get(ID.KeypadGood);
@@ -78,12 +82,14 @@ namespace Tobo.Audio
             { "None", Sound.ID.None },
             { "CabinetClosed", Sound.ID.CabinetClosed },
             { "CabinetOpen", Sound.ID.CabinetOpen },
+            { "CoatPickup", Sound.ID.CoatPickup },
             { "DoorLocked", Sound.ID.DoorLocked },
             { "DoorOpen", Sound.ID.DoorOpen },
             { "DrawerClosed", Sound.ID.DrawerClosed },
             { "DrawerOpen", Sound.ID.DrawerOpen },
             { "FlashlightButton", Sound.ID.FlashlightButton },
             { "GetKey", Sound.ID.GetKey },
+            { "GlassPickup", Sound.ID.GlassPickup },
             { "ItemPickup", Sound.ID.ItemPickup },
             { "KeypadBad", Sound.ID.KeypadBad },
             { "KeypadGood", Sound.ID.KeypadGood },

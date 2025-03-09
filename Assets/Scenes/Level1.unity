@@ -3236,7 +3236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: Teal Flask
   showPickedUpMessage: 1
-  pickupSound: {fileID: 11400000, guid: 182d006f49e71bd4fb03f5b865d267f2, type: 2}
+  pickupSound: {fileID: 11400000, guid: b964a4901441f2e4f9ee915bc93fbf23, type: 2}
 --- !u!1 &494238601
 GameObject:
   m_ObjectHideFlags: 0
@@ -3531,7 +3531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: Red Flask
   showPickedUpMessage: 1
-  pickupSound: {fileID: 11400000, guid: 182d006f49e71bd4fb03f5b865d267f2, type: 2}
+  pickupSound: {fileID: 11400000, guid: b964a4901441f2e4f9ee915bc93fbf23, type: 2}
 --- !u!1 &521975902
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,12 +15,14 @@ MonoBehaviour:
   sounds:
   - {fileID: 11400000, guid: 1b61b9f718499c44db2721e7920c0999, type: 2}
   - {fileID: 11400000, guid: d3842e23feb478243920335d3ed55d8c, type: 2}
+  - {fileID: 11400000, guid: 1d652b3dddb3cae49b256fbfda9553ee, type: 2}
   - {fileID: 11400000, guid: d6697276b1ace0d4fbf8d00d533c8842, type: 2}
   - {fileID: 11400000, guid: 5618cdd27d82e6947a67fddb6bb97421, type: 2}
   - {fileID: 11400000, guid: 92c1d6ba2b2db9c4581aa5b1c1d28537, type: 2}
   - {fileID: 11400000, guid: ac79774e29e98fb41a09ffe326076f1d, type: 2}
   - {fileID: 11400000, guid: 8158ce048b52dde44b756284f2779d94, type: 2}
   - {fileID: 11400000, guid: 832e493afc0e2f44ba8511966f502f60, type: 2}
+  - {fileID: 11400000, guid: b964a4901441f2e4f9ee915bc93fbf23, type: 2}
   - {fileID: 11400000, guid: 182d006f49e71bd4fb03f5b865d267f2, type: 2}
   - {fileID: 11400000, guid: c37840ba7ea02a344860bfe484088957, type: 2}
   - {fileID: 11400000, guid: c95507a7dbb0a7c40bbde2c54e880dc5, type: 2}
