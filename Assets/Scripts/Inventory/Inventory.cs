@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using Tobo.Audio;
+using static ItemPickup;
 
 public class Inventory : MonoBehaviour
 {
@@ -36,5 +37,18 @@ public class Inventory : MonoBehaviour
 
         if (sound != null)
             sound.Play2D();
+
+        //log item pickup in telemetry server
+        var data = new ItemPickupEventData()
+        {
+            itemName = itemID
+        };
+        TelemetryLogger.Log(instance, "Item picked up", data);
+    }
+
+    [System.Serializable]
+    public struct ItemPickupEventData
+    {
+        public string itemName;
     }
 }
