@@ -20,6 +20,6 @@ public class Closet : MonoBehaviour, IInteractable
                 PopUp.Show("Nothing else in here...", 1.5f);
         }
         else
-            PopUp.Show("Lights are dead. Of course. Can’t find shit without a flashlight.\nI should have one in my locker.", 6f);
+            PopUp.Show("Lights are dead. Of course. Can't find shit without a flashlight.\nI should have one in my locker.", 6f);
     }
 }

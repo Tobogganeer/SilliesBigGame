@@ -284,6 +284,15 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1623203667694870549, guid: 619df69bf263acb43a8798c97132a69f,
+        type: 3}
+      propertyPath: text
+      value: '"Dr. Francesca Hyde"
+
+        "Employee 21-675"
+
+        "DOB: 02/14/1992"'
+      objectReference: {fileID: 0}
     - target: {fileID: 2584693620054601644, guid: 619df69bf263acb43a8798c97132a69f,
         type: 3}
       propertyPath: m_AnchorMax.y
