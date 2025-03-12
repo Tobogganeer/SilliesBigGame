@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
         // Don't interupt if we are travelling currently
         if (Travelling && !interruptCurrentTravel)
             return;
-
+        TelemetryLogger.Log(this, "Moving");
         // Assume our current position is fine
         currentTransition = transition;
         currentTransition.from = CurrentPosRot; // Manually override "from"

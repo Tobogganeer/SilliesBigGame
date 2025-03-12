@@ -76,6 +76,7 @@ public class Interactor : MonoBehaviour
                 // Check if we are trying to interact
                 if (Mouse.current.leftButton.wasPressedThisFrame)
                 {
+                    TelemetryLogger.Log(this, "Interacted", hitObject.name);
                     // Do it
                     CallOnClickedForAll();
                 }
@@ -93,13 +94,17 @@ public class Interactor : MonoBehaviour
                     // Fill our list with the interactables on the new object
                     current = hitObject.GetComponents<IInteractable>();
 
+                    
+
                     CallEnterForAll();
 
                     // Check if we are trying to interact
                     if (Mouse.current.leftButton.wasPressedThisFrame)
                     {
+                        TelemetryLogger.Log(this, "Interacted", hitObject.name);
                         // Do it
                         CallOnClickedForAll();
+                        
                     }
                 }
                 else NoInteractableFound();
