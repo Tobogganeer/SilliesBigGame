@@ -21,12 +21,12 @@ public class LockedDoor : MonoBehaviour, IInteractable
             locked = false;
             Inventory.ConsumeItem(itemIDToOpen);
             setActiveWhenUnlocked.SetActive(enableObject);
-            Sound.KeyUse.Play2D();
+            Sound.KeyUse.PlayDirect();
         }
         else
         {
             PopUp.Show("Locked...", 1f);
-            Sound.DoorLocked.Play(transform.position);
+            Sound.DoorLocked.PlayAtPosition(transform.position);
         }
     }
 }

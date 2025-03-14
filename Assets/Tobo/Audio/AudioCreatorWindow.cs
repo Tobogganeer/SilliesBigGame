@@ -18,7 +18,6 @@ namespace Tobo.Audio.Editor
         [SerializeField]
         List<AudioClip> clips = new List<AudioClip>();
         string fileName;
-        bool is2D = false;
         AudioCategory category = AudioCategory.SFX;
 
         bool batchMode = true;
@@ -99,7 +98,6 @@ namespace Tobo.Audio.Editor
 
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Sound Data", EditorStyles.boldLabel);
-            is2D = EditorGUILayout.Toggle("Sound is 2D", is2D);
             category = (AudioCategory)EditorGUILayout.EnumPopup("Audio Category", category);
             EditorGUILayout.Space();
             doCodegen = EditorGUILayout.Toggle(new GUIContent("Generate Sound.ID code",
@@ -118,7 +116,7 @@ namespace Tobo.Audio.Editor
         {
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
-            Sound s = Sound.CreateInternal(fileName, clips, is2D, category);
+            Sound s = Sound.CreateInternal(fileName, clips, category);
             fileName += ".asset";
             AssetDatabase.CreateAsset(s, Combine(path, fileName));
             AssetDatabase.Refresh();
@@ -134,7 +132,7 @@ namespace Tobo.Audio.Editor
             {
                 List<AudioClip> _new = new List<AudioClip>();
                 _new.Add(clips[i]);
-                Sound s = Sound.CreateInternal(clips[i].name, _new, is2D, category);
+                Sound s = Sound.CreateInternal(clips[i].name, _new, category);
                 AssetDatabase.CreateAsset(s, Combine(path, clips[i].name + ".asset"));
             }
             AssetDatabase.Refresh();

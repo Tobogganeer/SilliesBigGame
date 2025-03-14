@@ -11,6 +11,6 @@ public class Key : MonoBehaviour, IInteractable
     public void OnClicked()
     {
         kp.KeyPressed(value);
-        Sound.KeypadPress.Play2D();
+        Sound.KeypadPress.PlayDirect();
     }
 }

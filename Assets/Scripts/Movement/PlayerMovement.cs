@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Disable buttons
         MovementUI.ClearUI();
-        Sound.TurnStep_moveCamIDK_.Play2D();
+        Sound.TurnStep_moveCamIDK_.PlayDirect();
     }
 
     public void Travel(Vector3 position, Vector3 lookTarget, float moveTime = 1.0f, float rotateTime = 0.5f, bool interruptCurrentTravel = false)

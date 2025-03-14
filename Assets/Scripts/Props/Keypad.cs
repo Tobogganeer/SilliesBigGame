@@ -35,12 +35,12 @@ public class Keypad : MonoBehaviour
     {
         if (current.SequenceEqual(correctOrder))
         {
-            Sound.KeypadGood.Play2D();
+            Sound.KeypadGood.PlayDirect();
             onCorrectPasscodeEntered?.Invoke();
         }
         else
         {
-            Sound.KeypadBad.Play2D();
+            Sound.KeypadBad.PlayDirect();
             onWrongPasscodeEntered?.Invoke();
         }
         current.Clear();

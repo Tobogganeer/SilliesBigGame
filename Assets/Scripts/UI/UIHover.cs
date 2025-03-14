@@ -17,7 +17,7 @@ public class UIHover : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
     {
         if (lastHoverAudioTime - Time.time < -HOVER_MIN_DELAY)
         {
-            Sound.SlotHover.Play2D();
+            Sound.SlotHover.PlayDirect();
             lastHoverAudioTime = Time.time;
         }
     }
@@ -26,7 +26,7 @@ public class UIHover : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
     {
         if (lastClickAudioTime - Time.time < -CLICK_MIN_DELAY)
         {
-            Sound.UIClick2.Play2D();
+            Sound.UIClick2.PlayDirect();
             lastClickAudioTime = Time.time;
         }
     }

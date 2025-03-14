@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static Tobo.Audio.Sound;
 
 namespace Tobo.Audio
@@ -15,7 +16,6 @@ namespace Tobo.Audio
         [SerializeField] private float volume = 1.0f;
         [SerializeField] private float minPitch = 0.85f;
         [SerializeField] private float maxPitch = 1.1f;
-        [SerializeField] private bool is2d = false;
 
         public ID SoundID => soundID;
         public AudioClip[] Clips => clips;
@@ -24,80 +24,125 @@ namespace Tobo.Audio
         public float Volume => volume;
         public float MinPitch => minPitch;
         public float MaxPitch => maxPitch;
-        public bool Is2d => is2d;
 
-        public static Sound Get(string sound)
+        /// <summary>
+        /// Gets the Sound with the given <paramref name="name"/>.
+        /// </summary>
+        /// <param name="name">The name of the Sound ScriptableObject</param>
+        /// <returns></returns>
+        public static Sound Get(string name)
         {
-            if (!SoundIDNameToSoundID.TryGetValue(sound, out ID id))
-                if (FilenameToSoundIDName.TryGetValue(sound, out sound))
-                    id = SoundIDNameToSoundID[sound];
+            // See if the passed name is a SoundID directly (similar, but different to file name)
+            if (!SoundIDNameToSoundID.TryGetValue(name, out ID id))
+                // Check if the file name converts
+                if (FilenameToSoundIDName.TryGetValue(name, out name))
+                    id = SoundIDNameToSoundID[name];
                 else
                 {
-                    Debug.LogWarning("Couldn't find sound with ID: " + sound);
+                    Debug.LogWarning("Couldn't find sound with ID: " + name);
                     return Get(ID.None);
                 }
             return Get(id);
         }
 
-        public static Audio Override(string sound)
-        {
-            return Get(sound).Override();
-        }
-
+        /// <summary>
+        /// Gets the Sound with the given <paramref name="id"/>.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static Sound Get(ID id)
         {
             return AudioManager.GetSound(id);
         }
 
+        /// <summary>
+        /// Starts overriding the default settings on the Sound with the given <paramref name="name"/>.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        /// <remarks>Follow with calls to SetPosition(), SetVolume(), etc.</remarks>
+        public static Audio Override(string name)
+        {
+            return Get(name).Override();
+        }
+
+        /// <summary>
+        /// Starts overriding the default settings on the Sound with the given <paramref name="id"/>.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <remarks>Follow with calls to SetPosition(), SetVolume(), etc.</remarks>
         public static Audio Override(ID id)
         {
             return Get(id).Override();
         }
 
+        /// <summary>
+        /// Starts overriding the default settings on this Sound.
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>Follow with calls to SetPosition(), SetVolume(), etc.</remarks>
         public Audio Override()
         {
             return GetAudio();
         }
-
-        public Audio GetAudio()
+        
+        private Audio GetAudio()
         {
             return new Audio(this);
         }
 
-        //public static bool Exists(ID id) => AudioManager.SoundExists(id);
-
         #region Play
-        public void Play(Vector3 position)
+        /// <summary>
+        /// Plays this Sound at the given <paramref name="position"/> in world space.
+        /// </summary>
+        /// <param name="position">Position in world space</param>
+        /// <param name="parent">Object to parent the Sound to</param>
+        /// <returns>The spawned AudioSource</returns>
+        public PooledAudioSource PlayAtPosition(Vector3 position, Transform parent = null)
         {
-            AudioManager.Play(this, position);
+            return AudioManager.PlayAudio(GetAudio().SetPosition(position).SetParent(parent));
         }
 
-        public PooledAudioSource Play2D()
+        /// <summary>
+        /// Plays this Sound directly into the listener's ears (i.e. not in world space).
+        /// </summary>
+        /// <returns>The spawned AudioSource</returns>
+        public PooledAudioSource PlayDirect()
         {
-            return AudioManager.Play2D(this);
+            return AudioManager.PlayAudio(GetAudio().Set2D());
         }
 
 #if TOBO_NET
-        public void PlayLocal(Vector3 position)
+        /// <summary>
+        /// Plays this Sound locally at the given <paramref name="position"/> in world space. It will not be networked.
+        /// </summary>
+        /// <param name="position">Position in world space</param>
+        /// <param name="parent">Object to parent the Sound to</param>
+        /// <returns>The spawned AudioSource</returns>
+        public PooledAudioSource PlayAtPositionLocal(Vector3 position, Transform parent = null)
         {
-            AudioManager.PlayLocal(this, position);
+            return AudioManager.PlayAudioLocal(GetAudio().SetPosition(position).SetParent(parent));
         }
 
-        public void PlayLocal2D()
+        /// <summary>
+        /// Plays this Sound locally directly into the listener's ears (i.e. not in world space). It will not be networked.
+        /// </summary>
+        /// <returns>The spawned AudioSource</returns>
+        public PooledAudioSource PlayDirectLocal()
         {
-            AudioManager.PlayLocal2D(this);
+            return AudioManager.PlayAudioLocal(GetAudio().Set2D());
         }
 #endif
-#endregion
+        #endregion
 
-        internal static Sound CreateInternal(string name, List<AudioClip> clips, bool is2D, AudioCategory category)
+        internal static Sound CreateInternal(string name, List<AudioClip> clips, AudioCategory category)
         {
             Sound s = CreateInstance<Sound>();
 
             s.name = name;
             s.soundID = (ID)AudioCodegen.GetSoundIDBeforeCompilation(name);
             s.clips = clips.ToArray();
-            s.is2d = is2D;
             s.category = category;
 
             return s;
@@ -106,30 +151,56 @@ namespace Tobo.Audio
 
     public static class SoundIDExtensions
     {
-        public static Audio Override(this Sound.ID id)
+        /// <summary>
+        /// Starts overriding the default settings on the Sound with the given <paramref name="id"/>.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <remarks>Follow with calls to SetPosition(), SetVolume(), etc.</remarks>
+        public static Audio Override(this ID id)
         {
             return Sound.Override(id);
         }
 
-        public static void Play(this Sound.ID id, Vector3 position)
+        /// <summary>
+        /// Plays this Sound at the given <paramref name="position"/> in world space.
+        /// </summary>
+        /// <param name="position">Position in world space</param>
+        /// <param name="parent">Object to parent the Sound to</param>
+        /// <returns>The spawned AudioSource</returns>
+        public static PooledAudioSource PlayAtPosition(this ID id, Vector3 position, Transform parent = null)
         {
-            AudioManager.Play(id, position);
+            return Sound.Get(id).PlayAtPosition(position, parent);
         }
 
-        public static void Play2D(this Sound.ID id)
+        /// <summary>
+        /// Plays this Sound directly into the listener's ears (i.e. not in world space).
+        /// </summary>
+        /// <returns>The spawned AudioSource</returns>
+        public static PooledAudioSource PlayDirect(this ID id)
         {
-            AudioManager.Play2D(id);
+            return Sound.Get(id).PlayDirect();
         }
 
 #if TOBO_NET
-        public static void PlayLocal(this Sound.ID id, Vector3 position)
+        /// <summary>
+        /// Plays this Sound locally at the given <paramref name="position"/> in world space. It will not be networked.
+        /// </summary>
+        /// <param name="position">Position in world space</param>
+        /// <param name="parent">Object to parent the Sound to</param>
+        /// <returns>The spawned AudioSource</returns>
+        public static void PlayAtPositionLocal(this Sound.ID id, Vector3 position)
         {
-            AudioManager.PlayLocal(id, position);
+            return Sound.Get(id).PlayAtPositionLocal(position, parent);
         }
 
-        public static void PlayLocal2D(this Sound.ID id)
+        /// <summary>
+        /// Plays this Sound locally directly into the listener's ears (i.e. not in world space). It will not be networked.
+        /// </summary>
+        /// <returns>The spawned AudioSource</returns>
+        public static void PlayDirectLocal(this Sound.ID id)
         {
-            AudioManager.PlayLocal2D(id);
+            return Sound.Get(id).PlayDirectLocal();
         }
 #endif
     }

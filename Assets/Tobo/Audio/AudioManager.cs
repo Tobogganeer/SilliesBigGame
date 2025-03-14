@@ -273,7 +273,8 @@ namespace Tobo.Audio
             Category = sound.Category;
             Volume = sound.Volume;
             Pitch = Random.Range(sound.MinPitch, sound.MaxPitch);
-            if (sound.Is2d) Flags = AudioFlags.Global;
+            //if (sound.Is2d) Flags = AudioFlags.Global;
+            Flags = AudioFlags.Global; // Will be un-set when a position is set
             if (sound.Clips.Length > 1)
             {
                 Flags |= AudioFlags.Index;
@@ -293,6 +294,7 @@ namespace Tobo.Audio
         public Audio SetPosition(Vector3 position)
         {
             Position = position;
+            Flags &= ~AudioFlags.Global; // Remove global flag
             return this;
         }
 
