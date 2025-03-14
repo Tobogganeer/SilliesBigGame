@@ -18,7 +18,7 @@ namespace Tobo.Audio.Editor
         [SerializeField]
         List<AudioClip> clips = new List<AudioClip>();
         string fileName;
-        bool is2D = true;
+        bool is2D = false;
         AudioCategory category = AudioCategory.SFX;
 
         bool batchMode = true;
