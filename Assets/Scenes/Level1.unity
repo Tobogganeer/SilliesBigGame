@@ -358,6 +358,11 @@ PrefabInstance:
       propertyPath: itemDataKey
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3440422368487621142, guid: 619df69bf263acb43a8798c97132a69f,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3639668637965141759, guid: 619df69bf263acb43a8798c97132a69f,
         type: 3}
       propertyPath: m_Pivot.x
