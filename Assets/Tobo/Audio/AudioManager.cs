@@ -361,6 +361,24 @@ namespace Tobo.Audio
 
         #endregion
 
+        /// <summary>
+        /// Plays this Audio with the current settings.
+        /// </summary>
+        /// <returns>The spawned AudioSource</returns>
+        public PooledAudioSource Play()
+        {
+            return AudioManager.PlayAudio(this);
+        }
+
+        /// <summary>
+        /// Plays this Audio, calling SetPosition() and SetParent().
+        /// </summary>
+        /// <returns>The spawned AudioSource</returns>
+        public PooledAudioSource PlayAtPosition(Vector3 position, Transform parent = null)
+        {
+            return AudioManager.PlayAudio(SetPosition(position).SetParent(parent));
+        }
+
         #region Net
 #if TOBO_NET
         public void Serialize(ByteBuffer message)
