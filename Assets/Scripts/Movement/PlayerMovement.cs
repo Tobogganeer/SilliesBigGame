@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     float travelProgress;
-    CameraPosition.Transition currentTransition;
+    CameraTransition currentTransition;
 
     float moveTimer;
     float rotateTimer;
@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
     public PosRot CurrentPosRot => new PosRot(transform.position, transform.rotation);
 
 
-    public void Travel(CameraPosition.Transition transition, bool interruptCurrentTravel = false)
+    public void Travel(CameraTransition transition, bool interruptCurrentTravel = false)
     {
         // Don't interupt if we are travelling currently
         if (Travelling && !interruptCurrentTravel)
@@ -64,17 +64,17 @@ public class PlayerMovement : MonoBehaviour
 
     public void Travel(Vector3 position, Vector3 lookTarget, float moveTime = 1.0f, float rotateTime = 0.5f, bool interruptCurrentTravel = false)
     {
-        Travel(new CameraPosition.Transition(new PosRot(transform.position, transform.rotation), new PosRot(position, lookTarget), moveTime, rotateTime), interruptCurrentTravel);
+        Travel(new CameraTransition(new PosRot(transform.position, transform.rotation), new PosRot(position, lookTarget), moveTime, rotateTime), interruptCurrentTravel);
     }
 
     public void Travel(Vector3 position, Quaternion rotation, float moveTime = 1.0f, float rotateTime = 0.5f, bool interruptCurrentTravel = false)
     {
-        Travel(new CameraPosition.Transition(new PosRot(transform.position, transform.rotation), new PosRot(position, rotation), moveTime, rotateTime), interruptCurrentTravel);
+        Travel(new CameraTransition(new PosRot(transform.position, transform.rotation), new PosRot(position, rotation), moveTime, rotateTime), interruptCurrentTravel);
     }
 
     public void Travel(CameraPosition position, CameraDirection direction, Transform customTarget = null, float moveTime = 1.0f, float rotateTime = 0.5f, bool interruptCurrentTravel = false)
     {
-        Travel(new CameraPosition.Transition(new PosRot(transform.position, transform.rotation),
+        Travel(new CameraTransition(new PosRot(transform.position, transform.rotation),
             new PosRot(position.position, position.GetRotation(direction, customTarget).GetRotation()),
             moveTime, rotateTime), interruptCurrentTravel);
     }
@@ -124,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
         MovementUI.SetUI(CurrentPosRot);
     }
 
-    public void TeleportTo(CameraPosition.CameraRotation rotation)
+    public void TeleportTo(CameraRotation rotation)
     {
         TeleportTo(rotation.position.position, Quaternion.LookRotation(rotation.GetForwardVector(rotation.position.position)));
     }
@@ -136,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void TeleportTo(Vector3 position, Quaternion rotation)
     {
-        currentTransition = new CameraPosition.Transition(new PosRot(position, rotation), new PosRot(position, rotation));
+        currentTransition = new CameraTransition(new PosRot(position, rotation), new PosRot(position, rotation));
 
         FinishTravelling();
     }
