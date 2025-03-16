@@ -33,4 +33,10 @@ public class ChemCabinetKeypad : MonoBehaviour
             PopUp.Show("It was " + string.Join("", passwordWeTellThemToEnter));
         }
     }
+
+    public void WongPassAgain()
+    {
+        PopUp.Show("Management must've done that monthly password change again and didn't tell me...", 5f);
+    }
+
 }
