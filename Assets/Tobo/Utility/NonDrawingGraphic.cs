@@ -16,6 +16,7 @@ namespace Tobo.Util
     /// A concrete subclass of the Unity UI `Graphic` class that just skips drawing.
     /// Useful for providing a raycast target without actually drawing anything.
     /// </summary>
+    [RequireComponent(typeof(CanvasRenderer))]
     public class NonDrawingGraphic : Graphic
     {
         public override void SetMaterialDirty() { return; }
