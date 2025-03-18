@@ -23,6 +23,11 @@ public class Interactor : MonoBehaviour
 
     GameObject currentObject; // The object we are currently hovered over
 
+    bool isEnabled = true;
+
+    public static GameObject CurrentObject => instance.currentObject;
+    public static bool Enabled { get => instance.isEnabled; set => instance.isEnabled = value; }
+
     private void Start()
     {
         cam = Camera.main;
@@ -30,6 +35,18 @@ public class Interactor : MonoBehaviour
 
     private void Update()
     {
+        if (!isEnabled)
+        {
+            // Set default cursor
+            cursors.SetCursorType(CursorType.Default);
+
+            // Remove all current interactables
+            NoInteractableFound();
+            currentObject = null;
+            currentCursor = null;
+            return;
+        }
+
         CastRay();
         // Set the current cursor type if we are hovering over something
         if (currentCursor == null)

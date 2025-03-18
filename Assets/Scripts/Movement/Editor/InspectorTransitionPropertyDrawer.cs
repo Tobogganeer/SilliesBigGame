@@ -26,7 +26,7 @@ public class InspectorTransitionPropertyDrawer : PropertyDrawer
         SerializedProperty moveTime = Prop("moveTime");
         SerializedProperty rotateTime = Prop("rotateTime");
 
-        var moveDir = (CameraPosition.MoveDirection)dirProp.intValue;
+        var moveDir = (MoveDirection)dirProp.intValue;
         var moveMode = (Mode)modeProp.intValue;
 
         var endCameraDir = (CameraDirection)toRotation.intValue;
@@ -73,7 +73,7 @@ public class InspectorTransitionPropertyDrawer : PropertyDrawer
 
             EditorGUI.PropertyField(Increase(ref rect), dirProp);
 
-            if (moveDir == CameraPosition.MoveDirection.Custom)
+            if (moveDir == MoveDirection.Custom)
                 EditorGUI.PropertyField(Increase(ref rect), Prop("moveTrigger"), Label("Custom Move Trigger"));
 
             EditorGUI.PropertyField(Increase(ref rect), modeProp, Label("Leads to"));
@@ -94,7 +94,7 @@ public class InspectorTransitionPropertyDrawer : PropertyDrawer
             switch (mtMode)
             {
                 case TimeMode.Default:
-                    moveTime.floatValue = CameraPosition.Transition.DefaultMoveTime;
+                    moveTime.floatValue = CameraTransition.DefaultMoveTime;
                     break;
                 case TimeMode.Instant:
                     moveTime.floatValue = 0f;
@@ -109,7 +109,7 @@ public class InspectorTransitionPropertyDrawer : PropertyDrawer
             switch (rtMode)
             {
                 case TimeMode.Default:
-                    rotateTime.floatValue = CameraPosition.Transition.DefaultRotateTime;
+                    rotateTime.floatValue = CameraTransition.DefaultRotateTime;
                     break;
                 case TimeMode.Instant:
                     rotateTime.floatValue = 0f;
@@ -155,8 +155,8 @@ public class InspectorTransitionPropertyDrawer : PropertyDrawer
             height += line;
 
         SerializedProperty dirProp = property.FindPropertyRelative("directionToClick");
-        var moveDir = (CameraPosition.MoveDirection)dirProp.intValue;
-        if (moveDir == CameraPosition.MoveDirection.Custom)
+        var moveDir = (MoveDirection)dirProp.intValue;
+        if (moveDir == MoveDirection.Custom)
             height += line;
 
         SerializedProperty modeProp = property.FindPropertyRelative("mode");

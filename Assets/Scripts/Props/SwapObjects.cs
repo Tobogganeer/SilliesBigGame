@@ -32,9 +32,9 @@ public class SwapObjects : MonoBehaviour, IInteractable
 
         inDefaultState = !inDefaultState;
         if (inDefaultState && soundGoingToFirstState != null)
-            soundGoingToFirstState.Play(transform.position);
+            soundGoingToFirstState.PlayAtPosition(transform.position);
         else if (!inDefaultState && soundGoingToSecondState != null)
-            soundGoingToSecondState.Play(transform.position);
+            soundGoingToSecondState.PlayAtPosition(transform.position);
 
         objectsToSwapBetween[0].SetActive(objectsToSwapBetween[1].activeSelf); // Set first to second's current state
         objectsToSwapBetween[1].SetActive(!objectsToSwapBetween[1].activeSelf); // Flip second's state

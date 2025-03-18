@@ -35,6 +35,6 @@ public class Inventory : MonoBehaviour
             PopUp.Show("Picked up " + itemID, 3f);
 
         if (sound != null)
-            sound.Play2D();
+            sound.PlayDirect();
     }
 }

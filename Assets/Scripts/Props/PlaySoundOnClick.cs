@@ -10,6 +10,6 @@ public class PlaySoundOnClick : MonoBehaviour, IInteractable
     public void OnClicked()
     {
         if (sound != null)
-            sound.Play(transform.position);
+            sound.PlayAtPosition(transform.position);
     }
 }
