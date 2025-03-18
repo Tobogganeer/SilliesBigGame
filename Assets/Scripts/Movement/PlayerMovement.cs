@@ -60,6 +60,8 @@ public class PlayerMovement : MonoBehaviour
         // Disable buttons
         MovementUI.ClearUI();
         Sound.TurnStep_moveCamIDK_.PlayDirect();
+        
+        TelemetryLogger.Log(this, "Move", new MovePacket(currentTransition));
     }
 
     public void Travel(Vector3 position, Vector3 lookTarget, float moveTime = 1.0f, float rotateTime = 0.5f, bool interruptCurrentTravel = false)
@@ -139,5 +141,51 @@ public class PlayerMovement : MonoBehaviour
         currentTransition = new CameraTransition(new PosRot(position, rotation), new PosRot(position, rotation));
 
         FinishTravelling();
+    }
+}
+
+[Serializable]
+public struct MovePacket
+{
+    public PosRot from;
+    public PosRot to;
+    public CameraPosition.MoveDirection input; // What we pressed
+
+    // May be null if we aren't moving based on set CameraPositions
+    public string fromDirection;
+    public string fromFacing;
+
+    public string toDirection;
+    public string toFacing;
+
+    public MovePacket(CameraPosition.Transition transition)
+    {
+        from = transition.from;
+        to = transition.to;
+        input = transition.directionToClick;
+
+        // If our start position is a CameraRotation in the scene, pull its direction and custom facing target
+        if (CameraPosition.TryGetRotation(from, out var fromRot))
+        {
+            fromDirection = fromRot.facing.ToString();
+            fromFacing = fromRot.facing == CameraDirection.Custom ? fromRot.customFacingTarget.name : string.Empty;
+        }
+        else
+        {
+            fromDirection = string.Empty;
+            fromFacing = string.Empty;
+        }
+
+        // If our end position is a CameraRotation in the scene, pull its direction and custom facing target
+        if (CameraPosition.TryGetRotation(to, out var toRot))
+        {
+            toDirection = toRot.facing.ToString();
+            toFacing = toRot.facing == CameraDirection.Custom ? toRot.customFacingTarget.name : string.Empty;
+        }
+        else
+        {
+            toDirection = string.Empty;
+            toFacing = string.Empty;
+        }
     }
 }

@@ -242,6 +242,7 @@ public enum MoveDirection
     Custom
 }
 
+[Serializable]
 public struct PosRot
 {
     public Vector3 position;
