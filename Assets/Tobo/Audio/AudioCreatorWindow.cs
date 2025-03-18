@@ -26,6 +26,7 @@ namespace Tobo.Audio.Editor
         SerializedObject target;
 
         [MenuItem("Audio/Import new AudioClips")]
+        [MenuItem("Assets/Create/Audio/Import new AudioClips")]
         public static void ShowWindow()
         {
             AudioCreatorWindow window = EditorWindow.GetWindow<AudioCreatorWindow>();

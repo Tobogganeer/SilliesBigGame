@@ -8,7 +8,7 @@ using Tobo.Util.Editor;
 
 namespace Tobo.Audio
 {
-    [CreateAssetMenu(menuName = "Scriptable Objects/Sound Library")]
+    //[CreateAssetMenu(menuName = "Scriptable Objects/Sound Library")]
     public class SoundLibrary : ScriptableObject
     {
         // Doing this because I was getting some weird serialization bugs when
