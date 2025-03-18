@@ -234,7 +234,8 @@ namespace Tobo.Audio
             source.Play();
 
             PooledAudioSource pooledSource = sourceObj.GetComponent<PooledAudioSource>();
-            pooledSource.DisableAfterTime(source.clip.length / audio.Pitch + 0.25f); // 0.25 seconds extra for good measure
+            pooledSource.Init(audio.ID);//, audio.Parent, !audio.Flags.HasFlag(Audio.AudioFlags.Global));
+            pooledSource.ReturnToPoolAfterTime(source.clip.length / audio.Pitch + 0.25f); // 0.25 seconds extra for good measure
             return pooledSource;
         }
 
