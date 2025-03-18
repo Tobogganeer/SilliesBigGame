@@ -3238,7 +3238,7 @@ GameObject:
   - component: {fileID: 1901410987554223058}
   - component: {fileID: 3440422368487621142}
   m_Layer: 5
-  m_Name: Instructions
+  m_Name: Session ID
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3260,8 +3260,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 30, y: -82}
-  m_SizeDelta: {x: 652.8672, y: 240.476}
+  m_AnchoredPosition: {x: 98.6, y: -20}
+  m_SizeDelta: {x: 391.9462, y: 60}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1901410987554223058
 CanvasRenderer:
@@ -3291,12 +3291,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Instructions:
-
-    - Point and click to move and interact
-
-    - Combine
-    items in your inventory using the crafting slots'
+  m_text: 'Session ID: '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fb6c1b8f05a634c4b97514f720fe9877, type: 2}
   m_sharedMaterial: {fileID: 1385478736714440571, guid: fb6c1b8f05a634c4b97514f720fe9877,
@@ -3324,8 +3319,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5636,7 +5631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6817708865366889055
 RectTransform:
   m_ObjectHideFlags: 0
