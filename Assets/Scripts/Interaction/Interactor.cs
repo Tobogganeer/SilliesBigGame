@@ -167,7 +167,7 @@ public class Interactor : MonoBehaviour
     {
         CallFunctionOnAll((inter) => inter.OnClicked());
         if (current != null)
-            TelemetryLogger.Log(instance, "Interact", currentObject.name);
+            Telemetry.Interaction(currentObject);
     }
 
     void CallEnterForAll() => CallFunctionOnAll((inter) => inter.OnCursorEnter());
