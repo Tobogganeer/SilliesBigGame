@@ -9317,7 +9317,7 @@ PrefabInstance:
         type: 3}
       propertyPath: startingPosition
       value: 
-      objectReference: {fileID: 1356216483}
+      objectReference: {fileID: 1801138479}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
