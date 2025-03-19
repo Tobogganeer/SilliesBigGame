@@ -11,6 +11,8 @@ public class CraftingScript : MonoBehaviour
     public GameObject ResultSlot;
     public ItemSlot ResultsScript;
 
+    //bool isDone = false; // May not need this
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,13 @@ public class CraftingScript : MonoBehaviour
         {
             string itemKey1 = Craftingslot1.GetComponent<ItemSlot>().itemDataKey;
             string itemKey2 = Craftingslot2.GetComponent<ItemSlot>().itemDataKey;
+
+            //if (!isDone)
+            //{
+            //    TelemetryLogger.Log(this, "Successful Crafting"); // This logs when a successful craft happens
+            //    isDone = true;
+            //}
+
             if (ItemData.itemData[itemKey1]["combination"] == itemKey2)
             {;
 
@@ -32,7 +41,7 @@ public class CraftingScript : MonoBehaviour
                 {
                     ResultSlot.GetComponent<ItemSlot>().itemDataKey = ItemData.itemData[itemKey2]["combinationResult"];
                     ResultSlot.GetComponent<ItemSlot>().Search(ResultSlot.GetComponent<ItemSlot>().itemDataKey);
-                    
+
                 }
             }
         }
@@ -42,6 +51,7 @@ public class CraftingScript : MonoBehaviour
             ResultsScript.itemImageSlot.color = new Vector4(255, 255, 255, 0);
             ResultsScript.itemDataKey = string.Empty;
             ResultsScript.itemDescription = string.Empty;
+            //isDone = false;
         }
     }
 }
