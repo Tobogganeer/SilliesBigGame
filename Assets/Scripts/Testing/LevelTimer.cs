@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelTimer : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float levelTimer;
+    public static float levelTimer;
     public int timeStarted = 1;
     void Start()
     {

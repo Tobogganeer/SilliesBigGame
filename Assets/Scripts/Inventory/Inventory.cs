@@ -21,12 +21,16 @@ public class Inventory : MonoBehaviour
 
     public static void ConsumeItem(string itemID)
     {
+        TelemetryLogger.Log(instance, "Used an item"); // This log when the player uses an item
+
         ItemSlot slot = instance.slots.First((slot) => slot.itemDataKey == itemID);
         slot.Clear();
     }
 
     public static void GiveItem(string itemID, bool notify = true, Sound sound = null)
     {
+        TelemetryLogger.Log(instance, "Retrieved Item"); // This log when the player picks up an item
+
         ItemSlot slot = instance.slots.First((slot) => slot.itemDataKey == string.Empty);
         slot.itemDataKey = itemID;
         slot.Search(itemID);

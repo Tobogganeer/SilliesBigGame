@@ -16,6 +16,7 @@ public class CraftingSlot : ItemSlot
         if (craftingScript.Craftingslot1.GetComponent<ItemSlot>().itemDataKey != string.Empty &&
             craftingScript.Craftingslot2.GetComponent<ItemSlot>().itemDataKey != string.Empty)
         {
+            TelemetryLogger.Log(this, "Successful Crafting"); // This logs when a successful craft happens
 
             itemImageSlot.sprite = null;
             itemImageSlot.color = new Vector4(255, 255, 255, 0);
