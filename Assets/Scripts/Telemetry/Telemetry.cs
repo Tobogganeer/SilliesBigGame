@@ -30,6 +30,7 @@ public class Telemetry
         public PosRot currentPosRot;
         public string cameraPos;
         public string cameraRot;
+        public string hoveredObject;
 
         public BadTimePacket(PosRot currentPosRot)
         {
@@ -44,6 +45,8 @@ public class Telemetry
                 cameraPos = string.Empty;
                 cameraRot = string.Empty;
             }
+
+            hoveredObject = Interactor.CurrentObject == null ? string.Empty : Interactor.CurrentObject.name;
         }
     }
 
