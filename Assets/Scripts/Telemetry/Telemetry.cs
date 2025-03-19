@@ -2,18 +2,49 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Telemetry
 {
+    public static Scene CurrentScene => SceneManager.GetActiveScene();
+
     public static void Interaction(GameObject clickedObject)
     {
-        TelemetryLogger.Log(null, "Interact", clickedObject.name);
+        TelemetryLogger.Log(CurrentScene, "Interact", clickedObject.name);
     }
 
     // TODO: Seperate out move vs rotate
     public static void Move(CameraTransition transition)
     {
         TelemetryLogger.Log(PlayerMovement.instance, "Move", new MovePacket(transition));
+    }
+
+    public static void BadTimeButtonPressed()
+    {
+        TelemetryLogger.Log(CurrentScene, "BadTime", new BadTimePacket(PlayerMovement.instance.CurrentPosRot));
+    }
+
+    [Serializable]
+    public struct BadTimePacket
+    {
+        public PosRot currentPosRot;
+        public string cameraPos;
+        public string cameraRot;
+
+        public BadTimePacket(PosRot currentPosRot)
+        {
+            this.currentPosRot = currentPosRot;
+            if (CameraPosition.TryGetRotation(currentPosRot, out var rot))
+            {
+                cameraPos = rot.position.name;
+                cameraRot = rot.facing.ToString();
+            }
+            else
+            {
+                cameraPos = string.Empty;
+                cameraRot = string.Empty;
+            }
+        }
     }
 
     [Serializable]
@@ -61,5 +92,4 @@ public class Telemetry
             }
         }
     }
-
 }
