@@ -50,6 +50,7 @@ namespace Tobo.DevConsole
             this.console = console;
         }
 
+        // https://discussions.unity.com/t/gui-window-resize-window/3841/5
         public void Update()
         {
             if (autoCompleteTrigger)
