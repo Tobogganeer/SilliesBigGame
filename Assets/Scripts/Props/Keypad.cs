@@ -19,6 +19,8 @@ public class Keypad : MonoBehaviour
 
     public List<int> Current => current;
 
+    int incorrectKeycodeEntered = 0;
+
     public void KeyPressed(int value)
     {
         if (current.Count == correctOrder.Count)
@@ -36,11 +38,14 @@ public class Keypad : MonoBehaviour
         if (current.SequenceEqual(correctOrder))
         {
             Sound.KeypadGood.PlayDirect();
+            TelemetryLogger.Log(this, "Locker puzzle solved. Amount of incorrect attempts: " + incorrectKeycodeEntered);
             onCorrectPasscodeEntered?.Invoke();
         }
         else
         {
             Sound.KeypadBad.PlayDirect();
+            incorrectKeycodeEntered += 1;
+            TelemetryLogger.Log(this, "Incorrect locker keypad code entered. Amount of incorrect attempts: " + incorrectKeycodeEntered);
             onWrongPasscodeEntered?.Invoke();
         }
         current.Clear();
