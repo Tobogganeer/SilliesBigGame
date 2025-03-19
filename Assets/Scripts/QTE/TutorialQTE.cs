@@ -40,6 +40,7 @@ public class TutorialQTE : MonoBehaviour
         if (Mouse.current.leftButton.wasPressedThisFrame && hoveringOverTarget)
         {
             PopUp.Show("Start cutscene now... (END OF DEMO)", 3f);
+            TelemetryLogger.Log(this, "Level 1 Completed - QTE hit");
             cg.SetActive(false);
         }
     }
