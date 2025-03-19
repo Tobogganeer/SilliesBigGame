@@ -13,10 +13,15 @@ public class Telemetry
         TelemetryLogger.Log(CurrentScene, "Interact", clickedObject.name);
     }
 
-    // TODO: Seperate out move vs rotate
     public static void Move(CameraTransition transition)
     {
-        TelemetryLogger.Log(PlayerMovement.instance, "Move", new MovePacket(transition));
+        // Move packet if we move
+        if (transition.from.position != transition.to.position)
+            TelemetryLogger.Log(PlayerMovement.instance, "Move", new MovePacket(transition));
+        
+        // Rotate packet if we rotate
+        if (transition.from.rotation != transition.to.rotation)
+            TelemetryLogger.Log(PlayerMovement.instance, "Rotate", new RotatePacket(transition));
     }
 
     public static void BadTimeButtonPressed()
@@ -53,6 +58,27 @@ public class Telemetry
     [Serializable]
     public struct MovePacket
     {
+        public string from;
+        public string to;
+
+        public MovePacket(CameraTransition transition)
+        {
+            if (!CameraPosition.TryGetRotation(transition.from, out CameraRotation fromRot) ||
+            !CameraPosition.TryGetRotation(transition.to, out CameraRotation toRot))
+            {
+                Debug.LogError("Invalid move telemetry packet!");
+                from = to = string.Empty;
+                return;
+            }
+
+            from = fromRot.position.name;
+            to = toRot.position.name;
+        }
+    }
+
+    [Serializable]
+    public struct RotatePacket
+    {
         public PosRot from;
         public PosRot to;
         public MoveDirection input; // What we pressed
@@ -64,7 +90,7 @@ public class Telemetry
         public string toDirection;
         public string toFacing;
 
-        public MovePacket(CameraTransition transition)
+        public RotatePacket(CameraTransition transition)
         {
             from = transition.from;
             to = transition.to;
