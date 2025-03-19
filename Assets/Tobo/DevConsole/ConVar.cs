@@ -35,15 +35,15 @@ namespace Tobo.DevConsole
         /// <summary>
         /// The minimum value, if it has one.
         /// </summary>
-        public readonly float? Min;
+        public float? Min { get; set; }
         /// <summary>
         /// The maxiumum value, if it has one.
         /// </summary>
-        public readonly float? Max;
+        public float? Max { get; set; }
         /// <summary>
         /// Called when this convar is changed.
         /// </summary>
-        private readonly ConVarChangedCallback OnChanged;
+        public event ConVarChangedCallback OnChanged;
 
         //string oldValue;
 

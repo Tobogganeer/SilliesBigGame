@@ -23,9 +23,15 @@ namespace Tobo.DevConsole
             cl_testcheat = new ConVar("cl_testcheat", "0", CVarFlags.Cheat, "test", CVarType.Bool);
             cl_test = new ConVar("cl_test", "test value", CVarFlags.None, "test");
             mp_thing = new ConVar("mp_thing", "idk", CVarFlags.None, "test");
-            fps_max = new ConVar("fps_max", "144", CVarFlags.None, "test (does nothing)");
+            fps_max = new ConVar("fps_max", "144", CVarFlags.None, "test (does nothing)", 5, 600, OnMaxFPSChanged, CVarType.Int);
 
             help = new ConCommand("help", Help, "Prints help for a command, or all commands if none are specified.", CVarFlags.None, HelpCompletion);
+        }
+
+        private static void OnMaxFPSChanged(ConVar cVar, string strOldValue, float flOldValue)
+        {
+            Debug.Log("Set max fps to " + cVar.IntValue);
+            Application.targetFrameRate = cVar.IntValue;
         }
 
         static void Help(CmdArgs args)
@@ -38,5 +44,7 @@ namespace Tobo.DevConsole
             // Completion doesn't work yet
             throw new NotImplementedException();
         }
+
+
     }
 }

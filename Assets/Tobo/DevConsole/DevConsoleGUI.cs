@@ -74,6 +74,7 @@ namespace Tobo.DevConsole
             if (!inited)
                 Init();
 
+
             using (new GUIBackgroundColour(console.windowColour))
                 GUI.Box(new Rect(console.position, console.size), "", boxStyle);
 
