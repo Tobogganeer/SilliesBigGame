@@ -6,6 +6,7 @@ public class LevelTimer : MonoBehaviour
 {
     // Start is called before the first frame update
     public float levelTimer;
+    public int timeStarted = 1;
     void Start()
     {
         
@@ -14,11 +15,15 @@ public class LevelTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        levelTimer += Time.deltaTime;
+        levelTimer += Time.deltaTime * timeStarted;
 
         if (PauseMenu.IsPaused)
         {
-            TelemetryLogger.Log(this, "Game Paused - Time in Seconds:" + levelTimer);
+            timeStarted = 0;
+        }
+        else
+        {
+            timeStarted = 1;
         }
 
         
