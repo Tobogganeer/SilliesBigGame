@@ -26,6 +26,10 @@ public class PauseMenu : MonoBehaviour
 
     public void TogglePauseMenu()
     {
+        if (!IsPaused)
+        {
+            TelemetryLogger.Log(this, "Game Paused.", "Time: " + LevelTimer.levelTimer);
+        }
         pauseMenu.SetActive(!pauseMenu.activeSelf);
     }
 
