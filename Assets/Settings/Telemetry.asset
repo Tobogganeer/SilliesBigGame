@@ -16,6 +16,6 @@ MonoBehaviour:
   secret: attendant chill
   _version: sillies-playtest
   _serverURL: https://telemetry-js-792bae8f0c9a.herokuapp.com/
-  serverCommunication: 1
+  serverCommunication: 2
   debugLogging: 0
   <SetupId>k__BackingField: OA-S141-11 > SilliesBigGame / SilliesBigGame @ daveikis-138080315
