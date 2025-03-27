@@ -14,10 +14,18 @@ public class ExitDoor : MonoBehaviour, IInteractable
 
     public TextInteractable dialog;
     public GameObject crowbar;
+    public GameObject miniGame;
 
+    public BoxCollider moveTriggerBoxCollider;
+    
 
     void IInteractable.OnClicked()
     {
+        if (!jammed)
+        {
+            // roll credits
+            return;
+        }
         if (!buttonPressed)
         {
             dialog.text = "Won't open unless I press the button...";
@@ -25,7 +33,21 @@ public class ExitDoor : MonoBehaviour, IInteractable
         }
         else
         {
-            StartMiniGame();
+            if (!miniGameStarted)
+            {
+                miniGameStarted = true;
+                crowbar.SetActive(true);
+                miniGame.SetActive(true);
+            }
+        }
+    }
+
+    public void Update()
+    {
+        if (moveTriggerBoxCollider.enabled)
+        {
+            crowbar.SetActive(false);
+            miniGame.SetActive(false);
         }
     }
 
@@ -42,9 +64,10 @@ public class ExitDoor : MonoBehaviour, IInteractable
         
     }
 
-    public void StartMiniGame()
+    public void FinishMiniGame()
     {
-        miniGameStarted = true;
-        crowbar.SetActive(true);
+        jammed = false;
+        crowbar.SetActive(false);
+        miniGame.SetActive(false);
     }
 }
