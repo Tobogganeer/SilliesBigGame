@@ -764,6 +764,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab5698d3ad5aa4772ba849ae5ebe0d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  procedureDropdown: {fileID: 1687819309}
+  equipmentDropdown: {fileID: 1920107868}
+  medicationDropdown: {fileID: 1129001350}
+  durationDropdown: {fileID: 598554933}
+  responseText: {fileID: 871508714}
+  surgeryIDText: {fileID: 138073525}
+  surgeries:
+  - procedure: 0
+    equipment: 0
+    medication: 0
+    duration: 1
+    response: 2
+  - procedure: 1
+    equipment: 1
+    medication: 1
+    duration: 2
+    response: 2
+  - procedure: 2
+    equipment: 2
+    medication: 2
+    duration: 3
+    response: 1
+  - procedure: 3
+    equipment: 3
+    medication: 3
+    duration: 0
+    response: 2
+  - procedure: 4
+    equipment: 4
+    medication: 4
+    duration: 1
+    response: 2
+  surgeryID: 
 --- !u!1 &152170837 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7023717249796377439, guid: 51e566deedc6b894bbba9dd443a2458c,
@@ -4062,8 +4095,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -230, y: -310}
-  m_SizeDelta: {x: 260, y: 50}
+  m_AnchoredPosition: {x: -45, y: -385}
+  m_SizeDelta: {x: 630, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &871508714
 MonoBehaviour:
@@ -9612,6 +9645,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 202806138}
     m_Modifications:
+    - target: {fileID: 94787222707495908, guid: 9fd31c567edad7541a39edf9a863e782,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 94787222707495908, guid: 9fd31c567edad7541a39edf9a863e782,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 94787222707495908, guid: 9fd31c567edad7541a39edf9a863e782,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 138073527}
+    - target: {fileID: 94787222707495908, guid: 9fd31c567edad7541a39edf9a863e782,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 94787222707495908, guid: 9fd31c567edad7541a39edf9a863e782,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GenerateID
+      objectReference: {fileID: 0}
+    - target: {fileID: 94787222707495908, guid: 9fd31c567edad7541a39edf9a863e782,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SurgeryID, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 94787222707495908, guid: 9fd31c567edad7541a39edf9a863e782,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2382559834243146694, guid: 9fd31c567edad7541a39edf9a863e782,
         type: 3}
       propertyPath: m_text
