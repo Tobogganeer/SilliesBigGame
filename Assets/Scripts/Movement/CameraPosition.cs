@@ -10,7 +10,7 @@ using Tobo.Attributes;
 /// </summary>
 public class CameraPosition : MonoBehaviour
 {
-    public List<CameraRotation> rotations;
+    public List<CameraRotation> rotations = new List<CameraRotation>();
     static Dictionary<PosRot, CameraRotation> posRotToRotation = new Dictionary<PosRot, CameraRotation>();
 
     public Vector3 position => transform.position;
