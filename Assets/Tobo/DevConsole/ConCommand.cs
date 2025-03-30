@@ -35,7 +35,7 @@ namespace Tobo.DevConsole
         private readonly CommandCompletionCallback CompletionCallback;
 
         public delegate void CommandCallback(CmdArgs args);
-        public delegate void CommandCompletionCallback(string partialFirstArg, string[] resultBuffer);
+        public delegate List<string> CommandCompletionCallback(string partialFirstArg);
 
         public static Dictionary<string, ConCommand> cCommands = new Dictionary<string, ConCommand>();
 
@@ -81,9 +81,9 @@ namespace Tobo.DevConsole
             Callback(args);
         }
 
-        public void GetFirstArgumentAutoCompletionOptions(string partialFirstArg, string[] resultBuffer)
+        public List<string> GetFirstArgumentAutoCompletionOptions(string partialFirstArg)
         {
-            CompletionCallback?.Invoke(partialFirstArg, resultBuffer);
+            return CompletionCallback?.Invoke(partialFirstArg);
         }
 
         public static bool TryGet(string token, out ConCommand cCommand)

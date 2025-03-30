@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -334,7 +335,7 @@ namespace Tobo.DevConsole
 
             foreach (ConVar cVar in ConVar.cVars.Values)
             {
-                if (cVar.Name.StartsWith(partialString))
+                if (cVar.Name.StartsWith(partialString, StringComparison.InvariantCultureIgnoreCase))
                 {
                     // Add a space onto everything so it's easier to type arguments
                     autoCompleteStrings.Add(cVar.Name + space);
@@ -345,7 +346,7 @@ namespace Tobo.DevConsole
             }
             foreach (ConCommand command in ConCommand.cCommands.Values)
             {
-                if (command.Name.StartsWith(partialString))
+                if (command.Name.StartsWith(partialString, StringComparison.InvariantCultureIgnoreCase))
                 {
                     autoCompleteStrings.Add(command.Name + space);
                     matches++;
@@ -357,7 +358,7 @@ namespace Tobo.DevConsole
             foreach (ConVar cVar in ConVar.cVars.Values)
             {
                 // These might have been added already
-                if (cVar.Name.Contains(partialString) && !autoCompleteStrings.Contains(cVar.Name + space))
+                if (cVar.Name.Contains(partialString, StringComparison.InvariantCultureIgnoreCase) && !autoCompleteStrings.Contains(cVar.Name + space))
                 {
                     autoCompleteStrings.Add(cVar.Name + space);
                     matches++;
@@ -367,11 +368,56 @@ namespace Tobo.DevConsole
             }
             foreach (ConCommand command in ConCommand.cCommands.Values)
             {
-                if (command.Name.Contains(partialString) && !autoCompleteStrings.Contains(command.Name + space))
+                if (command.Name.Contains(partialString, StringComparison.InvariantCultureIgnoreCase) && !autoCompleteStrings.Contains(command.Name + space))
                 {
                     autoCompleteStrings.Add(command.Name + space);
                     matches++;
                     if (matches == MaxAutoCompleteStrings)
+                        return;
+                }
+            }
+        }
+
+        public static void FillAutoCompleteArgList(string partialString, List<string> validOptions, List<string> returnValues, int max)
+        {
+            if (returnValues == null) return;
+
+            returnValues.Clear();
+
+            if (validOptions == null || validOptions.Count == 0)
+            {
+                Debug.LogWarning($"Tried to get auto complete with no valid options! ({partialString})");
+                return;
+            }
+
+
+            if (partialString == null || partialString.Trim().Length == 0)
+                return;
+
+            partialString = partialString.ToLower().Trim();
+
+            int matches = 0;
+
+            foreach (string option in validOptions)
+            {
+                if (option.StartsWith(partialString, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    // Add a space onto everything so it's easier to type arguments
+                    returnValues.Add(option);
+                    matches++;
+                    if (matches == max)
+                        return;
+                }
+            }
+
+            foreach (string option in validOptions)
+            {
+                if (option.Contains(partialString, StringComparison.InvariantCultureIgnoreCase) && !returnValues.Contains(option))
+                {
+                    // Add a space onto everything so it's easier to type arguments
+                    returnValues.Add(option);
+                    matches++;
+                    if (matches == max)
                         return;
                 }
             }
