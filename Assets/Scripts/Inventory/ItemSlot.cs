@@ -10,7 +10,17 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public int inventorySlot = 0;
     public string itemDataKey;
     public string itemDescription;
-    public Image itemImageSlot;
+    
+    Image itemImageSlot
+    {
+        get
+        {
+            if (_image == null)
+                _image = transform.GetChild(0).GetComponent<Image>();
+            return _image;
+        }
+    }
+    Image _image;
 
     public GameObject itemPanel;
 
@@ -21,8 +31,6 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     void Start()
     {
-        itemImageSlot = gameObject.transform.GetChild(0).gameObject.GetComponent<Image>();
-
         UpdateGraphics();
 
         itemNameText = itemPanel.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();

@@ -11,11 +11,11 @@ public class CraftingSlot : ItemSlot
 
     public override void Clear()
     {
+        base.Clear();
+
         // When we take this item, clear/delete the ingredients too
         if (!craftingSystem.craftingSlot1.Empty && !craftingSystem.craftingSlot2.Empty)
         {
-            base.Clear();
-
             craftingSystem.craftingSlot1.Clear();
             craftingSystem.craftingSlot2.Clear();
         }

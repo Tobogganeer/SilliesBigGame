@@ -2352,6 +2352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryPanel: {fileID: 4232008861599157760}
   ItemPanel: {fileID: 808067892398340408}
+  craftingSlot: {fileID: 7927780232588427436}
   heldItemKey: 
   draggedItem: {fileID: 8410917257678341171}
 --- !u!114 &4172899066563549347

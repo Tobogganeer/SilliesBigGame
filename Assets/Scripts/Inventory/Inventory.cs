@@ -14,6 +14,8 @@ public class Inventory : MonoBehaviour
 
     public List<ItemSlot> slots;
 
+    public static string CurrentlyHeldItem => InventoryInteraction.CurrentHeldItem;
+
     public static bool HasItem(string itemID)
     {
         return instance.slots.Any((slot) => slot.itemDataKey == itemID) || InventoryInteraction.CurrentHeldItem == itemID;

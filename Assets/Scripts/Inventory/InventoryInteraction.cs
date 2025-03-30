@@ -13,6 +13,7 @@ public class InventoryInteraction : MonoBehaviour
 
     public GameObject InventoryPanel;
     public GameObject ItemPanel;
+    public ItemSlot craftingSlot;
 
     [Space]
     public string heldItemKey = string.Empty;
@@ -59,10 +60,15 @@ public class InventoryInteraction : MonoBehaviour
         {
             heldItemKey = slot.itemDataKey;
 
+            // Show our held item
             if (heldItemKey != string.Empty)
                 draggedItem.Enable(ItemSprites.Get(heldItemKey));
 
             slot.Clear();
+
+            // Clear the crafting output when we pick up an ingredient
+            if (slot.inventorySlot == CraftingSlot1 || slot.inventorySlot == CraftingSlot2)
+                craftingSlot.Clear();
         }
     }
 
