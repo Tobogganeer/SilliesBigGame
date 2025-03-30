@@ -8823,7 +8823,7 @@ MonoBehaviour:
     m_Options:
     - m_Text: General Surgery
       m_Image: {fileID: 0}
-    - m_Text: Cardiothoriac
+    - m_Text: Cardiothoracic
       m_Image: {fileID: 0}
     - m_Text: Neurosurgery
       m_Image: {fileID: 0}

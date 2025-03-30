@@ -95,7 +95,7 @@ public class Surgery
 public enum Procedure
 {
     GeneralSurgery,
-    Cardiothoriac,
+    Cardiothoracic,
     Neurosurgery,
     Urology,
     Orthopaedic
