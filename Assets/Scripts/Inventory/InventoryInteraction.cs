@@ -5,59 +5,70 @@ using UnityEngine.UI;
 
 public class InventoryInteraction : MonoBehaviour
 {
+    private static InventoryInteraction instance;
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public GameObject InventoryPanel;
     public GameObject ItemPanel;
 
     [Space]
-    public ItemData ItemData;
-
-    [Space]
-    public string heldItemKey;
+    public string heldItemKey = string.Empty;
 
     [Space]
     public DraggedItemGUI draggedItem;
 
-    public void InventoryToggle()
+    const int CraftResultSlot = 10;
+    const int CraftingSlot1 = 8;
+    const int CraftingSlot2 = 9;
+
+    public static string CurrentHeldItem => instance == null ? string.Empty : instance.heldItemKey;
+
+    public void OnToggleButtonClicked()
     {
         InventoryPanel.SetActive(!InventoryPanel.activeInHierarchy);
     }
 
-    public void HeldItem(GameObject itemSlot)
+    public void OnItemSlotClicked(GameObject itemSlot)
     {
-        ItemSlot itemData = itemSlot.GetComponent<ItemSlot>();
+        ItemSlot slot = itemSlot.GetComponent<ItemSlot>();
 
+        // Check if we are holding an item right now
         if (heldItemKey != string.Empty)
         {
-            if (itemData.itemDataKey == string.Empty) // if the slot is empty
+            if (slot.itemDataKey == string.Empty) // if the slot is empty
             {
-                if (itemData.inventorySlot == 10) return;
-                if (itemData.inventorySlot == 8 || itemData.inventorySlot == 9)
+                if (slot.inventorySlot == CraftResultSlot) return;
+                if (slot.inventorySlot == CraftingSlot1 || slot.inventorySlot == CraftingSlot2)
                 {
-                    if (ItemData.itemData[heldItemKey]["combination"] == string.Empty) return;
+                    // Can't put an item with no recipes into a crafting slot
+                    if (ItemData.GetData(heldItemKey)["combination"] == string.Empty) return;
                 }
-                itemData.itemDataKey = heldItemKey;
 
-                heldItemKey = string.Empty;
+                // Put held item into slot
+                slot.itemDataKey = heldItemKey;
+                slot.UpdateGraphics();
 
-                itemData.Search(itemData.itemDataKey);
-
-                draggedItem.Disable();
+                ConsumeHeldItem();
             }
         }
+        // Not holding an item - pick it up
         else
         {
-            heldItemKey = itemData.itemDataKey;
+            heldItemKey = slot.itemDataKey;
 
             if (heldItemKey != string.Empty)
-            {
-                Sprite sprite = Resources.Load<Sprite>(ItemData.itemData[heldItemKey]["itemImage"]);
-                draggedItem.Enable(sprite);
-            }
+                draggedItem.Enable(ItemSprites.Get(heldItemKey));
 
-            itemData.Clear();
+            slot.Clear();
         }
+    }
 
-        
+    public static void ConsumeHeldItem()
+    {
+        instance.heldItemKey = string.Empty;
+        instance.draggedItem.Disable();
     }
 }

@@ -16,11 +16,18 @@ public class Inventory : MonoBehaviour
 
     public static bool HasItem(string itemID)
     {
-        return instance.slots.Any((slot) => slot.itemDataKey == itemID);
+        return instance.slots.Any((slot) => slot.itemDataKey == itemID) || InventoryInteraction.CurrentHeldItem == itemID;
     }
 
     public static void ConsumeItem(string itemID)
     {
+        // Check if we are holding the item we want to consume
+        if (InventoryInteraction.CurrentHeldItem == itemID)
+        {
+            InventoryInteraction.ConsumeHeldItem();
+            return;
+        }
+
         ItemSlot slot = instance.slots.First((slot) => slot.itemDataKey == itemID);
         slot.Clear();
     }
@@ -29,7 +36,7 @@ public class Inventory : MonoBehaviour
     {
         ItemSlot slot = instance.slots.First((slot) => slot.itemDataKey == string.Empty);
         slot.itemDataKey = itemID;
-        slot.Search(itemID);
+        slot.UpdateGraphics();
 
         if (notify)
             PopUp.Show("Picked up " + itemID, 3f);
