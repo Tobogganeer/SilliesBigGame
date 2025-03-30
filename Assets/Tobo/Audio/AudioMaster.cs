@@ -104,6 +104,7 @@ namespace Tobo.Audio
         public static void OnAudioSourceDestroyed(PooledAudioSource src)
         {
             if (Instance == null) return;
+            // Spawn a new source if it was parented to another object (to avoid infinite spawning when game closes)
             if (src.transform.parent != Instance.transform)
                 Instance.audioSources.Enqueue(Instantiate(Instance.audioSourcePrefab, Instance.transform));
         }

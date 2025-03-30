@@ -14,6 +14,7 @@ public class Closet : MonoBehaviour, IInteractable
             if (!gaveKeys)
             {
                 Inventory.GiveItem("Door Keys", true, Sound.GetKey);
+                Sound.CoatPickup.PlayDirect();
                 gaveKeys = true;
             }
             else

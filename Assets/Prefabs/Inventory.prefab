@@ -117,11 +117,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee2b2a760b583f4787f2dba27caf352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Craftingslot1: {fileID: 6497117922285129662}
-  Craftingslot2: {fileID: 2379135104562762874}
-  ItemData: {fileID: 4654307060970391885}
-  ResultSlot: {fileID: 6562769470575795452}
-  ResultsScript: {fileID: 7927780232588427436}
+  craftingSlot1: {fileID: 7821204971113829042}
+  craftingSlot2: {fileID: 5583807035494378388}
+  resultSlot: {fileID: 7927780232588427436}
 --- !u!1 &647728693587249411
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,9 +289,7 @@ MonoBehaviour:
   inventorySlot: 7
   itemDataKey: 
   itemDescription: 
-  itemCombination: 
   itemImageSlot: {fileID: 0}
-  ItemData: {fileID: 4654307060970391885}
   itemPanel: {fileID: 8534211632919116412}
 --- !u!114 &1449794875239569721
 MonoBehaviour:
@@ -341,7 +337,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2186587914737007420}
         m_TargetAssemblyTypeName: InventoryInteraction, Assembly-CSharp
-        m_MethodName: HeldItem
+        m_MethodName: OnItemSlotClicked
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 743637418713994122}
@@ -1015,9 +1011,7 @@ MonoBehaviour:
   inventorySlot: 2
   itemDataKey: 
   itemDescription: 
-  itemCombination: 
   itemImageSlot: {fileID: 0}
-  ItemData: {fileID: 4654307060970391885}
   itemPanel: {fileID: 8534211632919116412}
 --- !u!114 &7715033777820160735
 MonoBehaviour:
@@ -1064,8 +1058,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2186587914737007420}
-        m_TargetAssemblyTypeName: InventoryInteractionF, Assembly-CSharp
-        m_MethodName: HeldItem
+        m_TargetAssemblyTypeName: InventoryInteraction, Assembly-CSharp
+        m_MethodName: OnItemSlotClicked
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2218604806712185457}
@@ -1182,9 +1176,7 @@ MonoBehaviour:
   inventorySlot: 9
   itemDataKey: 
   itemDescription: 
-  itemCombination: 
   itemImageSlot: {fileID: 0}
-  ItemData: {fileID: 4654307060970391885}
   itemPanel: {fileID: 8534211632919116412}
 --- !u!114 &8067474213156596838
 MonoBehaviour:
@@ -1232,7 +1224,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2186587914737007420}
         m_TargetAssemblyTypeName: InventoryInteraction, Assembly-CSharp
-        m_MethodName: HeldItem
+        m_MethodName: OnItemSlotClicked
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2379135104562762874}
@@ -1349,9 +1341,7 @@ MonoBehaviour:
   inventorySlot: 1
   itemDataKey: 
   itemDescription: 
-  itemCombination: 
   itemImageSlot: {fileID: 0}
-  ItemData: {fileID: 4654307060970391885}
   itemPanel: {fileID: 8534211632919116412}
 --- !u!114 &254004651485337745
 MonoBehaviour:
@@ -1398,8 +1388,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2186587914737007420}
-        m_TargetAssemblyTypeName: InventoryInteractionF, Assembly-CSharp
-        m_MethodName: HeldItem
+        m_TargetAssemblyTypeName: InventoryInteraction, Assembly-CSharp
+        m_MethodName: OnItemSlotClicked
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2403209775488350026}
@@ -1666,9 +1656,7 @@ MonoBehaviour:
   inventorySlot: 3
   itemDataKey: 
   itemDescription: 
-  itemCombination: 
   itemImageSlot: {fileID: 0}
-  ItemData: {fileID: 4654307060970391885}
   itemPanel: {fileID: 8534211632919116412}
 --- !u!114 &7242759756196756878
 MonoBehaviour:
@@ -1715,8 +1703,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2186587914737007420}
-        m_TargetAssemblyTypeName: InventoryInteractionF, Assembly-CSharp
-        m_MethodName: HeldItem
+        m_TargetAssemblyTypeName: InventoryInteraction, Assembly-CSharp
+        m_MethodName: OnItemSlotClicked
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 3678582866972238273}
@@ -1908,9 +1896,7 @@ MonoBehaviour:
   inventorySlot: 0
   itemDataKey: 
   itemDescription: 
-  itemCombination: 
   itemImageSlot: {fileID: 0}
-  ItemData: {fileID: 4654307060970391885}
   itemPanel: {fileID: 8534211632919116412}
 --- !u!114 &2303746590225698131
 MonoBehaviour:
@@ -1957,8 +1943,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2186587914737007420}
-        m_TargetAssemblyTypeName: InventoryInteractionF, Assembly-CSharp
-        m_MethodName: HeldItem
+        m_TargetAssemblyTypeName: InventoryInteraction, Assembly-CSharp
+        m_MethodName: OnItemSlotClicked
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 3995840714456721697}
@@ -2075,9 +2061,7 @@ MonoBehaviour:
   inventorySlot: 5
   itemDataKey: 
   itemDescription: 
-  itemCombination: 
   itemImageSlot: {fileID: 0}
-  ItemData: {fileID: 4654307060970391885}
   itemPanel: {fileID: 8534211632919116412}
 --- !u!114 &4119238421277634809
 MonoBehaviour:
@@ -2124,8 +2108,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2186587914737007420}
-        m_TargetAssemblyTypeName: InventoryInteractionF, Assembly-CSharp
-        m_MethodName: HeldItem
+        m_TargetAssemblyTypeName: InventoryInteraction, Assembly-CSharp
+        m_MethodName: OnItemSlotClicked
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 4104619775230861289}
@@ -2354,8 +2338,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 705ca717ff8279c4ab8c106d5fd2e534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items:
-    values: []
 --- !u!114 &2186587914737007420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2370,7 +2352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryPanel: {fileID: 4232008861599157760}
   ItemPanel: {fileID: 808067892398340408}
-  ItemData: {fileID: 4654307060970391885}
+  craftingSlot: {fileID: 7927780232588427436}
   heldItemKey: 
   draggedItem: {fileID: 8410917257678341171}
 --- !u!114 &4172899066563549347
@@ -2518,7 +2500,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2186587914737007420}
         m_TargetAssemblyTypeName: InventoryInteraction, Assembly-CSharp
-        m_MethodName: InventoryToggle
+        m_MethodName: OnToggleButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2710,9 +2692,7 @@ MonoBehaviour:
   inventorySlot: 8
   itemDataKey: 
   itemDescription: 
-  itemCombination: 
   itemImageSlot: {fileID: 0}
-  ItemData: {fileID: 4654307060970391885}
   itemPanel: {fileID: 8534211632919116412}
 --- !u!114 &5950047651478691168
 MonoBehaviour:
@@ -2760,7 +2740,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2186587914737007420}
         m_TargetAssemblyTypeName: InventoryInteraction, Assembly-CSharp
-        m_MethodName: HeldItem
+        m_MethodName: OnItemSlotClicked
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 6497117922285129662}
@@ -2877,11 +2857,9 @@ MonoBehaviour:
   inventorySlot: 10
   itemDataKey: 
   itemDescription: 
-  itemCombination: 
   itemImageSlot: {fileID: 0}
-  ItemData: {fileID: 4654307060970391885}
   itemPanel: {fileID: 8534211632919116412}
-  CraftingPanel: {fileID: 330553284311250754}
+  craftingSystem: {fileID: 4254406614819410330}
 --- !u!114 &2105835480308252665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2928,7 +2906,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2186587914737007420}
         m_TargetAssemblyTypeName: InventoryInteraction, Assembly-CSharp
-        m_MethodName: HeldItem
+        m_MethodName: OnItemSlotClicked
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 6562769470575795452}
@@ -3120,9 +3098,7 @@ MonoBehaviour:
   inventorySlot: 4
   itemDataKey: 
   itemDescription: 
-  itemCombination: 
   itemImageSlot: {fileID: 0}
-  ItemData: {fileID: 4654307060970391885}
   itemPanel: {fileID: 8534211632919116412}
 --- !u!114 &110062530700012133
 MonoBehaviour:
@@ -3169,8 +3145,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2186587914737007420}
-        m_TargetAssemblyTypeName: InventoryInteractionF, Assembly-CSharp
-        m_MethodName: HeldItem
+        m_TargetAssemblyTypeName: InventoryInteraction, Assembly-CSharp
+        m_MethodName: OnItemSlotClicked
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 6841874124774415161}
@@ -3555,9 +3531,7 @@ MonoBehaviour:
   inventorySlot: 6
   itemDataKey: 
   itemDescription: 
-  itemCombination: 
   itemImageSlot: {fileID: 0}
-  ItemData: {fileID: 4654307060970391885}
   itemPanel: {fileID: 8534211632919116412}
 --- !u!114 &6547526158901367551
 MonoBehaviour:
@@ -3604,8 +3578,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2186587914737007420}
-        m_TargetAssemblyTypeName: InventoryInteractionF, Assembly-CSharp
-        m_MethodName: HeldItem
+        m_TargetAssemblyTypeName: InventoryInteraction, Assembly-CSharp
+        m_MethodName: OnItemSlotClicked
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 7776691356469808165}

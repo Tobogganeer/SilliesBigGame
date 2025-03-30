@@ -10,66 +10,67 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public int inventorySlot = 0;
     public string itemDataKey;
     public string itemDescription;
-    public string itemCombination;
-    public Image itemImageSlot;
-
-    public ItemData ItemData;
+    
+    Image itemImageSlot
+    {
+        get
+        {
+            if (_image == null)
+                _image = transform.GetChild(0).GetComponent<Image>();
+            return _image;
+        }
+    }
+    Image _image;
 
     public GameObject itemPanel;
 
+    TextMeshProUGUI itemNameText;
+    TextMeshProUGUI itemDescriptionText;
+
+    public bool Empty => string.IsNullOrEmpty(itemDataKey);
+
     void Start()
     {
-        itemImageSlot = gameObject.transform.GetChild(0).gameObject.GetComponent<Image>();
+        UpdateGraphics();
 
-        if (itemDataKey != string.Empty)
-        {
-            Search(itemDataKey);
-        }
-        else
-        {
-            itemImageSlot.color = new Vector4(255, 255, 255, 0);
-        }
+        itemNameText = itemPanel.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
+        itemDescriptionText = itemPanel.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        itemPanel.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = itemDataKey.ToString();
-
-        itemPanel.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = itemDescription.ToString();
+        itemNameText.text = itemDataKey.ToString();
+        itemDescriptionText.text = itemDescription.ToString();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-
-        itemPanel.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = string.Empty;
-
-        itemPanel.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = string.Empty;
+        itemNameText.text = string.Empty;
+        itemDescriptionText.text = string.Empty;
     }
 
 
-    public void Search(string itemKey)
+    public void UpdateGraphics()
     {
-        itemDescription = ItemData.itemData[itemKey]["itemDescription"];
-        //itemDescription = ItemData.items[itemKey].description;
+        if (string.IsNullOrEmpty(itemDataKey))
+        {
+            // Make item sprite clear
+            itemImageSlot.color = new Vector4(255, 255, 255, 0);
+            return;
+        }
 
-        if (itemImageSlot == null)
-            itemImageSlot = gameObject.transform.GetChild(0).gameObject.GetComponent<Image>();
+        itemDescription = ItemData.GetData(itemDataKey)["itemDescription"];
 
+        // Make non-transparent
         itemImageSlot.color = Color.white;
 
-        itemCombination = ItemData.itemData[itemKey]["combination"];
-
-        itemImageSlot.sprite = Resources.Load<Sprite>(ItemData.itemData[itemKey]["itemImage"]);
+        itemImageSlot.sprite = ItemSprites.Get(itemDataKey);
 
     }
 
     public virtual void Clear()
     {
-        if (itemImageSlot == null)
-            itemImageSlot = gameObject.transform.GetChild(0).gameObject.GetComponent<Image>();
-
         itemImageSlot.sprite = null;
-        itemCombination = string.Empty;
         itemImageSlot.color = new Vector4(255, 255, 255, 0);
         itemDataKey = string.Empty;
         itemDescription = string.Empty;

@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static Tobo.Audio.Sound;
 
 namespace Tobo.Audio
 {
-    [CreateAssetMenu(menuName = "Scriptable Objects/Sound")]
+    [CreateAssetMenu(menuName = "Audio/Sound")]
     public partial class Sound : ScriptableObject
     {
         [SerializeField] private ID soundID;
         [SerializeField] private AudioClip[] clips;
         [SerializeField] private float maxDistance = 35f;
         [SerializeField] private AudioCategory category = AudioCategory.SFX;
+        [Range(0f, 1f)]
         [SerializeField] private float volume = 1.0f;
         [SerializeField] private float minPitch = 0.85f;
         [SerializeField] private float maxPitch = 1.1f;
@@ -157,7 +156,7 @@ namespace Tobo.Audio
         /// <param name="id"></param>
         /// <returns></returns>
         /// <remarks>Follow with calls to SetPosition(), SetVolume(), etc.</remarks>
-        public static Audio Override(this ID id)
+        public static Audio Override(this Sound.ID id)
         {
             return Sound.Override(id);
         }
@@ -168,7 +167,7 @@ namespace Tobo.Audio
         /// <param name="position">Position in world space</param>
         /// <param name="parent">Object to parent the Sound to</param>
         /// <returns>The spawned AudioSource</returns>
-        public static PooledAudioSource PlayAtPosition(this ID id, Vector3 position, Transform parent = null)
+        public static PooledAudioSource PlayAtPosition(this Sound.ID id, Vector3 position, Transform parent = null)
         {
             return Sound.Get(id).PlayAtPosition(position, parent);
         }
@@ -177,7 +176,7 @@ namespace Tobo.Audio
         /// Plays this Sound directly into the listener's ears (i.e. not in world space).
         /// </summary>
         /// <returns>The spawned AudioSource</returns>
-        public static PooledAudioSource PlayDirect(this ID id)
+        public static PooledAudioSource PlayDirect(this Sound.ID id)
         {
             return Sound.Get(id).PlayDirect();
         }
