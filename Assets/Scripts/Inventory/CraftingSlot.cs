@@ -7,23 +7,17 @@ using UnityEngine.UI;
 
 public class CraftingSlot : ItemSlot
 {
-    public GameObject CraftingPanel;
+    public CraftingScript craftingSystem;
 
     public override void Clear()
     {
-        CraftingScript craftingScript = CraftingPanel.GetComponent<CraftingScript>();
+        base.Clear();
 
-        if (craftingScript.Craftingslot1.GetComponent<ItemSlot>().itemDataKey != string.Empty &&
-            craftingScript.Craftingslot2.GetComponent<ItemSlot>().itemDataKey != string.Empty)
+        // When we take this item, clear/delete the ingredients too
+        if (!craftingSystem.craftingSlot1.Empty && !craftingSystem.craftingSlot2.Empty)
         {
-
-            itemImageSlot.sprite = null;
-            itemImageSlot.color = new Vector4(255, 255, 255, 0);
-            itemDataKey = string.Empty;
-            itemDescription = string.Empty;
-
-            craftingScript.Craftingslot1.GetComponent<ItemSlot>().Clear();
-            craftingScript.Craftingslot2.GetComponent<ItemSlot>().Clear();
+            craftingSystem.craftingSlot1.Clear();
+            craftingSystem.craftingSlot2.Clear();
         }
     }
 }
