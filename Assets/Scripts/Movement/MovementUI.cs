@@ -44,7 +44,8 @@ public class MovementUI : MonoBehaviour
         if (!CameraPosition.TryGetRotation(currentPosRot, out CameraRotation rotation))
         {
             // TODO: Go back to known safe position?
-            Debug.LogError("Failed to get transitions from " + currentPosRot + "! (we need a fallback for this)");
+            //Debug.LogError("Failed to get transitions from " + currentPosRot + "! (we need a fallback for this)");
+            // EDIT: Hiding spots have to transitions/rotations - just silently accept the error (it will disable all UI)
             return;
         }
 
