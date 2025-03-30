@@ -5,12 +5,10 @@ using UnityEngine;
 
 namespace NodeCanvas.Tasks.Actions {
 
-	public class SearchAT : ActionTask {
+	public class LeaveAT : ActionTask {
 
-		public float timer;
-		public float timeLimit = 10f;
-
-		public BBParameter<bool> foundPlayer = false;
+		public BBParameter<int> currentRoom;
+		public BBParameter<bool> sameRoom;
 
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
@@ -22,26 +20,28 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-			
-		}
+            if (currentRoom.value == 1)
+            {
+                int nextRoom = Random.Range(1, 3);
+                currentRoom.value = nextRoom;
+            }
+            else if (currentRoom.value == 4)
+            {
+                int nextRoom = Random.Range(3, 5);
+                currentRoom.value = nextRoom;
+            }
+            else
+            {
+                int nextRoom = Random.Range(currentRoom.value - 1, currentRoom.value + 2);
+                currentRoom.value = nextRoom;
+            }
+			sameRoom.value = false;
+			EndAction(true);
+        }
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
-
-			timer += 1 * Time.deltaTime;
-
-			if (timer > timeLimit)
-			{
-				timer = 0;
-				EndAction(true);
-			}
-
-			/*if (!HidingSpot.IsPlayerHidden)
-			{
-				foundPlayer.value = true;
-			}*/
-
-
+			
 		}
 
 		//Called when the task is disabled.

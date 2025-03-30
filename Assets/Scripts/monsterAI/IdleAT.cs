@@ -43,12 +43,6 @@ namespace NodeCanvas.Tasks.Actions {
                 sameRoom.value = true;
             }
 
-
-            if (sameRoom.value == true)
-			{
-				EndAction(true);
-			}
-
 		}
 
 		//Called when the task is disabled.

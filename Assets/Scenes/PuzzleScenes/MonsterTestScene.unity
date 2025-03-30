@@ -5811,6 +5811,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5782506487730418855, guid: 71d90f10374011948828e2741eb5d11e,
         type: 3}
+      propertyPath: currentRoom
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782506487730418855, guid: 71d90f10374011948828e2741eb5d11e,
+        type: 3}
       propertyPath: startingPosition
       value: 
       objectReference: {fileID: 1765687238}
@@ -6950,7 +6955,7 @@ GameObject:
   m_Layer: 0
   m_Name: MonsterAI
   m_TagString: Untagged
-  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -6967,15 +6972,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parentBlackboard: {fileID: 0}
-  _serializedBlackboard: '{"_variables":{"currentRoom":{"_value":3,"_name":"currentRoom","_id":"87cf9a85-c481-49cf-9a4a-7fb13bd44f9a","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+  _serializedBlackboard: '{"_variables":{"currentRoom":{"_value":2,"_name":"currentRoom","_id":"87cf9a85-c481-49cf-9a4a-7fb13bd44f9a","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"player":{"_value":1,"_name":"player","_id":"48fd10b9-3f4d-4e0f-b1d0-d46564e7146c","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"sameRoom":{"_name":"sameRoom","_id":"414ef01f-9709-47d5-ada7-97f7fb232366","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"foundPlayer":{"_name":"foundPlayer","_id":"b3e2b351-df66-4772-af5b-fe6c4ea6cc78","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
   _objectReferences:
   - {fileID: 0}
   - {fileID: 633829709}
   _serializedVariables:
-  - _json: '{"_value":3,"_name":"currentRoom","_id":"87cf9a85-c481-49cf-9a4a-7fb13bd44f9a","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+  - _json: '{"_value":2,"_name":"currentRoom","_id":"87cf9a85-c481-49cf-9a4a-7fb13bd44f9a","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
   - _json: '{"_value":1,"_name":"player","_id":"48fd10b9-3f4d-4e0f-b1d0-d46564e7146c","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
@@ -6984,6 +6990,9 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 633829709}
   - _json: '{"_name":"sameRoom","_id":"414ef01f-9709-47d5-ada7-97f7fb232366","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
+    _references: []
+  - _json: '{"_name":"foundPlayer","_id":"b3e2b351-df66-4772-af5b-fe6c4ea6cc78","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
 --- !u!114 &1562930860
@@ -6999,7 +7008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _serializedExposedParameters: []
-  _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"timeLimit":5.0,"player":{"_name":"player","_targetVariableID":"48fd10b9-3f4d-4e0f-b1d0-d46564e7146c"},"currentRoom":{"_name":"currentRoom","_targetVariableID":"87cf9a85-c481-49cf-9a4a-7fb13bd44f9a"},"sameRoom":{"_name":"sameRoom","_targetVariableID":"414ef01f-9709-47d5-ada7-97f7fb232366"},"$type":"NodeCanvas.Tasks.Actions.IdleAT"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Idle","_position":{"x":362.0,"y":217.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"player":{"_name":"player","_targetVariableID":"48fd10b9-3f4d-4e0f-b1d0-d46564e7146c"},"currentRoom":{"_name":"currentRoom","_targetVariableID":"87cf9a85-c481-49cf-9a4a-7fb13bd44f9a"},"sameRoom":{"_name":"sameRoom","_targetVariableID":"414ef01f-9709-47d5-ada7-97f7fb232366"},"$type":"NodeCanvas.Tasks.Actions.MoveRoomAT"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"MoveRoom","_position":{"x":515.1285,"y":103.0438},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_nestedFSM":{"_value":1},"_position":{"x":584.8322,"y":363.8033},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"2"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"valueA":{"_name":"sameRoom","_targetVariableID":"414ef01f-9709-47d5-ada7-97f7fb232366"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
+  _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"timeLimit":5.0,"player":{"_name":"player","_targetVariableID":"48fd10b9-3f4d-4e0f-b1d0-d46564e7146c"},"currentRoom":{"_name":"currentRoom","_targetVariableID":"87cf9a85-c481-49cf-9a4a-7fb13bd44f9a"},"sameRoom":{"_name":"sameRoom","_targetVariableID":"414ef01f-9709-47d5-ada7-97f7fb232366"},"$type":"NodeCanvas.Tasks.Actions.IdleAT"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Idle","_position":{"x":362.0,"y":217.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"player":{"_name":"player","_targetVariableID":"48fd10b9-3f4d-4e0f-b1d0-d46564e7146c"},"currentRoom":{"_name":"currentRoom","_targetVariableID":"87cf9a85-c481-49cf-9a4a-7fb13bd44f9a"},"sameRoom":{"_name":"sameRoom","_targetVariableID":"414ef01f-9709-47d5-ada7-97f7fb232366"},"$type":"NodeCanvas.Tasks.Actions.MoveRoomAT"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"MoveRoom","_position":{"x":515.1285,"y":103.0438},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_nestedFSM":{"_value":1},"_position":{"x":584.8321,"y":363.8033},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"2"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"valueA":{"_name":"sameRoom","_targetVariableID":"414ef01f-9709-47d5-ada7-97f7fb232366"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
   _boundGraphObjectReferences:
   - {fileID: 0}
   - {fileID: 11400000, guid: 318308c806bb8a84ba51cb4c18efe69e, type: 2}
@@ -7026,7 +7035,7 @@ Transform:
   m_GameObject: {fileID: 1562930858}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.64, y: 0, z: 0}
+  m_LocalPosition: {x: -8.64, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
