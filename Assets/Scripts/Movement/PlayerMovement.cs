@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    // Help the monster check what room the player is in
+    public int currentRoom;
+
     public static PlayerMovement instance;
     private void Awake()
     {
