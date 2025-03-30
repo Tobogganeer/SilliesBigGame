@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool Travelling => currentTransition != null;
     public float TravelProgress => Mathf.Clamp01(travelProgress);
+    public PosRot PreviousPosRot { get; private set; }
     public PosRot CurrentPosRot => new PosRot(transform.position, transform.rotation);
 
 
@@ -54,6 +55,9 @@ public class PlayerMovement : MonoBehaviour
         // Assume our current position is fine
         currentTransition = transition;
         currentTransition.from = CurrentPosRot; // Manually override "from"
+
+        PreviousPosRot = currentTransition.from; // Store our "last" position - useful for hiding
+
         if (currentTransition.from.position == currentTransition.to.position)
             currentTransition.moveTime = 0f; // Start and end at the same place - we aren't moving
         travelProgress = 0f;
@@ -84,6 +88,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        Interactor.Enabled = !Travelling;
+
         if (!Travelling)
             return;
 

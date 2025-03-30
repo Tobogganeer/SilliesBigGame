@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerLocker : MonoBehaviour
 {
     public CustomMoveTrigger lockerZoomInTrigger;
-    public CameraPosition originalPosition;
-    public CameraDirection originalDirection;
 
     [Space]
     public GameObject unlockedInteraction;
@@ -14,7 +12,7 @@ public class PlayerLocker : MonoBehaviour
     public void OnCorrectCodeEntered()
     {
         // Go back to the main view
-        PlayerMovement.instance.Travel(originalPosition, originalDirection);
+        PlayerMovement.instance.Travel(PlayerMovement.instance.PreviousPosRot.position, PlayerMovement.instance.PreviousPosRot.rotation);
         lockerZoomInTrigger.gameObject.SetActive(false); // We can never go back to locker zoomed in view
         unlockedInteraction.SetActive(true);
 
