@@ -15,13 +15,13 @@ public class Commands : MonoBehaviour
 
     void Give(CmdArgs args)
     {
-        if (args.ArgC > 1 && ItemData.instance.itemData.ContainsKey(args.Args[1])) // Check if they put in an item
-            Inventory.GiveItem(args.Args[1]);
+        if (ItemData.instance.itemData.ContainsKey(args.ArgsString)) // Check if they put in an item
+            Inventory.GiveItem(args.ArgsString);
     }
 
     List<string> GetGiveArgs(string partialFirstArg)
     {
-        return new List<string>() { "flashlight" };
-        //return ItemData.instance.itemData.Keys.ToList();
+        //return new List<string>() { "flashlight" };
+        return ItemData.instance.itemData.Keys.ToList();
     }
 }

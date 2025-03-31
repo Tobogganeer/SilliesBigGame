@@ -56,15 +56,14 @@ namespace Tobo.DevConsole
 
         public void Update()
         {
-            CheckForFirstArgAutocomplete();
-
             if (updateAutoCompleteTrigger)
             {
+                CheckForFirstArgAutocomplete();
+
                 updateAutoCompleteTrigger = false;
                 // Are we auto-completing the first argument or the command itself?
                 if (firstArgAutoComplete)
-                    FillAutoCompleteArgList(input, commandForFirstArg.GetFirstArgumentAutoCompletionOptions(input),
-                        autoCompleteStrings, MaxAutoCompleteStrings);
+                    FillFirstArgAutoCompleteStrings(input, commandForFirstArg.GetFirstArgumentAutoCompletionOptions(input));
                 else
                     FillCommandAutoCompleteStrings(input);
                 bufferSelectionIndex = -1; // Everytime we change autocomplete, reset the buffer index (previous commands)
@@ -80,11 +79,20 @@ namespace Tobo.DevConsole
         void CheckForFirstArgAutocomplete()
         {
             // Check if what we have typed in is a command that has autocomplete
-            string potentialCommand = input.Trim();
+            string trimmedStartInput = input.TrimStart();
+            string[] pieces = trimmedStartInput.Split(' ');
+
+            if (pieces.Length == 0)
+            {
+                firstArgAutoComplete = false;
+                return;
+            }
+
+            string potentialCommand = pieces[0];
             if (ConCommand.TryGet(potentialCommand, out var command) && command.HasFirstArgAutoComplete)
             {
                 // Check if we have a space afterwards (to avoid overriding the command autocomplete)
-                firstArgAutoComplete = input.TrimStart().EndsWith(' ');
+                firstArgAutoComplete = trimmedStartInput.Length > pieces[0].Length && trimmedStartInput[pieces[0].Length] == ' ';
                 // Store the command so we can replace the arg
                 if (firstArgAutoComplete)
                     commandForFirstArg = command;
@@ -413,11 +421,12 @@ namespace Tobo.DevConsole
             }
         }
 
-        public static void FillAutoCompleteArgList(string partialString, List<string> validOptions, List<string> returnValues, int max)
+        public void FillFirstArgAutoCompleteStrings(string partialString, List<string> validOptions)
         {
-            if (returnValues == null) return;
+            if (autoCompleteStrings == null)
+                autoCompleteStrings = new List<string>(MaxAutoCompleteStrings);
 
-            returnValues.Clear();
+            autoCompleteStrings.Clear();
 
             if (validOptions == null || validOptions.Count == 0)
             {
@@ -425,11 +434,17 @@ namespace Tobo.DevConsole
                 return;
             }
 
-
-            if (partialString == null || partialString.Trim().Length == 0)
+            // Make sure string has the command in it
+            if (partialString == null || commandForFirstArg == null ||
+                partialString.TrimStart().Length < commandForFirstArg.Name.Length + 1)
                 return;
 
+            // Remove command and space
+            partialString = partialString.TrimStart().Remove(0, commandForFirstArg.Name.Length + 1);
+
             partialString = partialString.ToLower().Trim();
+
+            //Debug.Log("Partial string: '" + partialString + "'");
 
             int matches = 0;
 
@@ -437,22 +452,32 @@ namespace Tobo.DevConsole
             {
                 if (option.StartsWith(partialString, StringComparison.InvariantCultureIgnoreCase))
                 {
-                    // Add a space onto everything so it's easier to type arguments
-                    returnValues.Add(option);
+                    autoCompleteStrings.Add(option);
                     matches++;
-                    if (matches == max)
+                    if (matches == MaxAutoCompleteStrings)
                         return;
                 }
             }
 
             foreach (string option in validOptions)
             {
-                if (option.Contains(partialString, StringComparison.InvariantCultureIgnoreCase) && !returnValues.Contains(option))
+                if (option.Contains(partialString, StringComparison.InvariantCultureIgnoreCase) && !autoCompleteStrings.Contains(option))
                 {
-                    // Add a space onto everything so it's easier to type arguments
-                    returnValues.Add(option);
+                    autoCompleteStrings.Add(option);
                     matches++;
-                    if (matches == max)
+                    if (matches == MaxAutoCompleteStrings)
+                        return;
+                }
+            }
+
+            // Just add all of them at the bottom
+            foreach (string option in validOptions)
+            {
+                if (!autoCompleteStrings.Contains(option))
+                {
+                    autoCompleteStrings.Add(option);
+                    matches++;
+                    if (matches == MaxAutoCompleteStrings)
                         return;
                 }
             }
