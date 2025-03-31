@@ -21,6 +21,7 @@ public class Commands : MonoBehaviour
 
     List<string> GetGiveArgs(string partialFirstArg)
     {
-        return ItemData.instance.itemData.Keys.ToList();
+        return new List<string>() { "flashlight" };
+        //return ItemData.instance.itemData.Keys.ToList();
     }
 }

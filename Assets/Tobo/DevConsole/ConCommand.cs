@@ -34,6 +34,11 @@ namespace Tobo.DevConsole
         /// </summary>
         private readonly CommandCompletionCallback CompletionCallback;
 
+        /// <summary>
+        /// Does this command have auto completion for the first argument?
+        /// </summary>
+        public bool HasFirstArgAutoComplete => CompletionCallback != null;
+
         public delegate void CommandCallback(CmdArgs args);
         public delegate List<string> CommandCompletionCallback(string partialFirstArg);
 

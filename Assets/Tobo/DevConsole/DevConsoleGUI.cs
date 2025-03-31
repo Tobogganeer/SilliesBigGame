@@ -30,11 +30,11 @@ namespace Tobo.DevConsole
 
         Vector2 scrollPos;
 
-        string input;
+        string input = string.Empty;
 
         int focusTrigger;
         bool returnTrigger;
-        bool autoCompleteTrigger;
+        bool updateAutoCompleteTrigger;
         bool wasFocused; // It keeps unfocusing when a new message comes in
 
         List<string> autoCompleteStrings;
@@ -46,6 +46,9 @@ namespace Tobo.DevConsole
         int bufferSelectionIndex = -1;
         Color autoCompleteGrey = new Color(0.65f, 0.65f, 0.65f);
 
+        bool firstArgAutoComplete;
+        ConCommand commandForFirstArg;
+
         public DevConsoleGUI(DevConsole console)
         {
             this.console = console;
@@ -53,10 +56,17 @@ namespace Tobo.DevConsole
 
         public void Update()
         {
-            if (autoCompleteTrigger)
+            CheckForFirstArgAutocomplete();
+
+            if (updateAutoCompleteTrigger)
             {
-                autoCompleteTrigger = false;
-                FillAutoCompleteStrings(input);
+                updateAutoCompleteTrigger = false;
+                // Are we auto-completing the first argument or the command itself?
+                if (firstArgAutoComplete)
+                    FillAutoCompleteArgList(input, commandForFirstArg.GetFirstArgumentAutoCompletionOptions(input),
+                        autoCompleteStrings, MaxAutoCompleteStrings);
+                else
+                    FillCommandAutoCompleteStrings(input);
                 bufferSelectionIndex = -1; // Everytime we change autocomplete, reset the buffer index (previous commands)
             }
 
@@ -65,9 +75,23 @@ namespace Tobo.DevConsole
                 Debug.Log(log);
                 log = null;
             }
+        }
 
-            if (Keyboard.current[Key.LeftCtrl].wasPressedThisFrame)
-                Debug.Log("Test");
+        void CheckForFirstArgAutocomplete()
+        {
+            // Check if what we have typed in is a command that has autocomplete
+            string potentialCommand = input.Trim();
+            if (ConCommand.TryGet(potentialCommand, out var command) && command.HasFirstArgAutoComplete)
+            {
+                // Check if we have a space afterwards (to avoid overriding the command autocomplete)
+                firstArgAutoComplete = input.TrimStart().EndsWith(' ');
+                // Store the command so we can replace the arg
+                if (firstArgAutoComplete)
+                    commandForFirstArg = command;
+            }
+            else
+                // No command - no autocomplete
+                firstArgAutoComplete = false;
         }
 
         public void Draw(Queue<DevConsole.Message> messages)
@@ -128,7 +152,7 @@ namespace Tobo.DevConsole
                                 MoveCaret();
 
                             if (old != input)
-                                autoCompleteTrigger = true; // Update autocomplete
+                                updateAutoCompleteTrigger = true; // Update autocomplete
 
                             if (focusTrigger > 0)
                             {
@@ -230,7 +254,7 @@ namespace Tobo.DevConsole
             //Keyboard.current[Key.Enter].wasPressedThisFrame
             console.OnCommandEntered(input);
             input = string.Empty;
-            autoCompleteTrigger = true; // Update autocomplete
+            updateAutoCompleteTrigger = true; // Update autocomplete
         }
 
         public void FocusInput()
@@ -248,7 +272,12 @@ namespace Tobo.DevConsole
                 bufferSelectionIndex--;
                 if (bufferSelectionIndex < 0)
                     bufferSelectionIndex = autoCompleteStrings.Count - 1;
-                newInput = input = autoCompleteStrings[bufferSelectionIndex];
+
+                // If we are filling in the first argument, keep the command itself
+                if (firstArgAutoComplete)
+                    newInput = input = commandForFirstArg.Name + ' ' + autoCompleteStrings[bufferSelectionIndex];
+                else
+                    newInput = input = autoCompleteStrings[bufferSelectionIndex];
                 // Setting input without the autoCompleteTrigger won't prompt autoComplete refresh
             }
             else // Look through history
@@ -276,7 +305,12 @@ namespace Tobo.DevConsole
                 bufferSelectionIndex++;
                 if (bufferSelectionIndex >= autoCompleteStrings.Count)
                     bufferSelectionIndex = 0;
-                newInput = input = autoCompleteStrings[bufferSelectionIndex];
+
+                // If we are filling in the first argument, keep the command itself
+                if (firstArgAutoComplete)
+                    newInput = input = commandForFirstArg.Name + ' ' + autoCompleteStrings[bufferSelectionIndex];
+                else
+                    newInput = input = autoCompleteStrings[bufferSelectionIndex];
             }
             else // Look through history
             {
@@ -312,7 +346,7 @@ namespace Tobo.DevConsole
                 focusTrigger = 1;
         }
 
-        private void FillAutoCompleteStrings(string partialString)
+        private void FillCommandAutoCompleteStrings(string partialString)
         {
             if (autoCompleteStrings == null)
                 autoCompleteStrings = new List<string>(MaxAutoCompleteStrings);
@@ -329,7 +363,7 @@ namespace Tobo.DevConsole
 
             int matches = 0;
 
-            char space = ' ';
+            //char space = ' ';
 
             // cvar start > command start > cvar contains > command contains
 
@@ -338,7 +372,8 @@ namespace Tobo.DevConsole
                 if (cVar.Name.StartsWith(partialString, StringComparison.InvariantCultureIgnoreCase))
                 {
                     // Add a space onto everything so it's easier to type arguments
-                    autoCompleteStrings.Add(cVar.Name + space);
+                    // EDIT: Not anymore because we are doing first-arg autocomplete
+                    autoCompleteStrings.Add(cVar.Name);// + space);
                     matches++;
                     if (matches == MaxAutoCompleteStrings)
                         return;
@@ -348,7 +383,7 @@ namespace Tobo.DevConsole
             {
                 if (command.Name.StartsWith(partialString, StringComparison.InvariantCultureIgnoreCase))
                 {
-                    autoCompleteStrings.Add(command.Name + space);
+                    autoCompleteStrings.Add(command.Name);// + space);
                     matches++;
                     if (matches == MaxAutoCompleteStrings)
                         return;
@@ -358,9 +393,9 @@ namespace Tobo.DevConsole
             foreach (ConVar cVar in ConVar.cVars.Values)
             {
                 // These might have been added already
-                if (cVar.Name.Contains(partialString, StringComparison.InvariantCultureIgnoreCase) && !autoCompleteStrings.Contains(cVar.Name + space))
+                if (cVar.Name.Contains(partialString, StringComparison.InvariantCultureIgnoreCase) && !autoCompleteStrings.Contains(cVar.Name))// + space))
                 {
-                    autoCompleteStrings.Add(cVar.Name + space);
+                    autoCompleteStrings.Add(cVar.Name);// + space);
                     matches++;
                     if (matches == MaxAutoCompleteStrings)
                         return;
@@ -368,9 +403,9 @@ namespace Tobo.DevConsole
             }
             foreach (ConCommand command in ConCommand.cCommands.Values)
             {
-                if (command.Name.Contains(partialString, StringComparison.InvariantCultureIgnoreCase) && !autoCompleteStrings.Contains(command.Name + space))
+                if (command.Name.Contains(partialString, StringComparison.InvariantCultureIgnoreCase) && !autoCompleteStrings.Contains(command.Name))// + space))
                 {
-                    autoCompleteStrings.Add(command.Name + space);
+                    autoCompleteStrings.Add(command.Name);// + space);
                     matches++;
                     if (matches == MaxAutoCompleteStrings)
                         return;
