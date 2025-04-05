@@ -39,7 +39,7 @@ namespace Tobo.DevConsole
         [Space]
         public Texture2D boxTexture;
         public Font font;
-        public int fontSize = 10;
+        public int fontSize = 12;
         public Color windowColour = new Color(140f / 255f, 140f / 255f, 140f / 255f);
         public Color backgroundColour = new Color(61f / 255f, 61f / 255f, 61f / 255f);
         [Space]

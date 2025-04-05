@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &355999497285477042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9072682804104622795}
+  - component: {fileID: 1978645697531287724}
+  m_Layer: 0
+  m_Name: Sillies ConCommand Init
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9072682804104622795
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355999497285477042}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 486.45956, y: 230.13075, z: -3.1725924}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8008655557349328837}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1978645697531287724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355999497285477042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e4d5fc282f676b4b811ffb83cc56a93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1527000349496836333
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,6 +154,7 @@ GameObject:
   - component: {fileID: 8008655557349328837}
   - component: {fileID: -7883887785890587555}
   - component: {fileID: 1724299063169364109}
+  - component: {fileID: 820419789284792215}
   m_Layer: 0
   m_Name: App
   m_TagString: Untagged
@@ -131,6 +176,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6397391847008076863}
+  - {fileID: 9072682804104622795}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-7883887785890587555
@@ -169,6 +215,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundLibrary: {fileID: 11400000, guid: 077cd7be670c6d54cb16f2c20be1c5d9, type: 2}
+--- !u!114 &820419789284792215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4248689779089318806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f87e39737a9cc934c92c45f0705b14f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  show: 0
+  toggleKey: 4
+  position: {x: 20, y: 20}
+  size: {x: 500, y: 400}
+  boxTexture: {fileID: 2800000, guid: ba5da53ee9671c24486538ecf681e294, type: 3}
+  font: {fileID: 12800000, guid: b0a712521c3b15a40a6c79bd7f5fc654, type: 3}
+  fontSize: 12
+  windowColour: {r: 0.54901963, g: 0.54901963, b: 0.54901963, a: 1}
+  backgroundColour: {r: 0.23921569, g: 0.23921569, b: 0.23921569, a: 1}
+  logColour: {r: 1, g: 1, b: 1, a: 1}
+  warningColour: {r: 0.98039216, g: 0.81960785, b: 0.37254903, a: 1}
+  errorColour: {r: 0.9490196, g: 0.32156864, b: 0.26666668, a: 1}
 --- !u!1 &5367811422728072156
 GameObject:
   m_ObjectHideFlags: 0

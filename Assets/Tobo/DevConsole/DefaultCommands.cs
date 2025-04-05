@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Tobo.DevConsole
@@ -33,10 +34,11 @@ namespace Tobo.DevConsole
             // TODO: help command
         }
 
-        static void HelpCompletion(string partialFirstArg, string[] resultBuffer)
+        static List<string> HelpCompletion(string partialFirstArg)
         {
-            // Completion doesn't work yet
-            throw new NotImplementedException();
+            List<string> allCommandsAndArgs = ConCommand.cCommands.Keys.ToList();
+            allCommandsAndArgs.AddRange(ConVar.cVars.Keys);
+            return allCommandsAndArgs;
         }
     }
 }
