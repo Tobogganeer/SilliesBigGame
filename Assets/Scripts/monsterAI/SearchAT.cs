@@ -30,16 +30,16 @@ namespace NodeCanvas.Tasks.Actions {
 
 			timer += 1 * Time.deltaTime;
 
-			if (timer > timeLimit)
+			if (timer > timeLimit || foundPlayer.value == true)
 			{
 				timer = 0;
 				EndAction(true);
 			}
 
-			/*if (!HidingSpot.IsPlayerHidden)
+			if (!HidingSpot.IsPlayerHidden)
 			{
 				foundPlayer.value = true;
-			}*/
+			}
 
 
 		}

@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Travel(CameraTransition transition, bool interruptCurrentTravel = false)
     {
+
         // Don't interupt if we are travelling currently
         if (Travelling && !interruptCurrentTravel)
             return;
@@ -84,6 +85,7 @@ public class PlayerMovement : MonoBehaviour
         Travel(new CameraTransition(new PosRot(transform.position, transform.rotation),
             new PosRot(position.position, position.GetRotation(direction, customTarget).GetRotation()),
             moveTime, rotateTime), interruptCurrentTravel);
+        
     }
 
     private void Update()

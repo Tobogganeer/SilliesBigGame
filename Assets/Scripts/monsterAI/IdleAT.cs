@@ -31,17 +31,17 @@ namespace NodeCanvas.Tasks.Actions {
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
 			timer += 1 * Time.deltaTime;
-
-			if (timer > timeLimit)
+            if (player.value.GetComponent<PlayerMovement>().currentRoom == currentRoom.value)
+            {
+                sameRoom.value = true;
+            }
+            if (timer > timeLimit)
 			{
 				timer = 0;
 				EndAction(true);
 			}
 
-            if (player.value.GetComponent<PlayerMovement>().currentRoom == currentRoom.value)
-            {
-                sameRoom.value = true;
-            }
+            
 
 		}
 
