@@ -12,6 +12,10 @@ public class TutorialQTE : MonoBehaviour
     public GameObject cg;
 
     [Space]
+    public GameObject patientInBedSprite;
+    public GameObject emptyBedSprite;
+
+    [Space]
     public float movementSize = 150f;
     public float movementSpeed = 5f;
 
@@ -41,6 +45,9 @@ public class TutorialQTE : MonoBehaviour
         {
             PopUp.Show("Start cutscene now... (END OF DEMO)", 3f);
             cg.SetActive(false);
+            // Take patient out of bed
+            patientInBedSprite.SetActive(false);
+            emptyBedSprite.SetActive(true);
         }
     }
 
