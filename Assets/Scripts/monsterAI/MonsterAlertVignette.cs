@@ -1,19 +1,19 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 namespace NodeCanvas.Tasks.Actions {
 
-	public class AttackAT : ActionTask {
+	public class MonsterAlertVignette : ActionTask {
 
-		public float QTECurrentTime = 0f;
-		public float QTETimeLimit = 5f;
+
+		public float timer;
+		public float timeLimit;
 
 		[Space]
-		public BBParameter<GameObject> monsterQTE;
-		public BBParameter<bool> whacked;
+		public GameObject vignetteCG;
 
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
@@ -25,22 +25,21 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-			QTECurrentTime = 0f;
-
-			//start the QTE
-			monsterQTE.value.SetActive(true);
+			vignetteCG.SetActive(true);
+			vignetteCG.GetComponent<Image>().color = new Vector4(1, 1, 1, 0);
+			timer = 0f;
 		}
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
-			if (QTECurrentTime > QTETimeLimit)
+			vignetteCG.GetComponent<Image>().color = new Vector4(1, 1, 1, timer / timeLimit);
+			if (timer > timeLimit)
 			{
-				// for now send them to the menu
-				monsterQTE.value.SetActive(false);
-                SceneManager.LoadScene("TitleScreen");
-            }
+				vignetteCG.SetActive(false);
+				EndAction(true);
+			}
 
-			QTECurrentTime += 1 * Time.deltaTime;
+			timer += 1 * Time.deltaTime;
 		}
 
 		//Called when the task is disabled.
