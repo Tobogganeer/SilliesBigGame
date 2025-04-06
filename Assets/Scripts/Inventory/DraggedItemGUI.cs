@@ -21,16 +21,12 @@ public class DraggedItemGUI : MonoBehaviour
 
     public void Enable(Sprite sprite)
     {
-        //TelemetryLogger.Log(this, "Picked up inside inventory"); // This logs everytime you pick up an item in the inventory
-
         draggedItemImage.sprite = sprite;
         draggedItemImage.enabled = true;
     }
 
     public void Disable()
     {
-        //TelemetryLogger.Log(this, "Put down inside inventory"); // This logs everytime you click off an item in the inventory
-
         draggedItemImage.enabled = false;
     }
 }

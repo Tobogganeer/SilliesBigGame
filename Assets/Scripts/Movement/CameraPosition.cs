@@ -16,20 +16,12 @@ public class CameraPosition : MonoBehaviour
 
     public Vector3 position => transform.position;
 
-    private void OnEnable()
+    private void Awake()
     {
         foreach (CameraRotation rotation in rotations)
         {
             rotation.Init(this);
             posRotToRotation.Add(rotation.GetPosRot(), rotation);
-        }
-    }
-
-    private void OnDisable()
-    {
-        foreach (CameraRotation rotation in rotations)
-        {
-            posRotToRotation.Remove(rotation.GetPosRot());
         }
     }
 

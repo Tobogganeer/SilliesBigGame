@@ -22,7 +22,6 @@ public class LockedDoor : MonoBehaviour, IInteractable
             Inventory.ConsumeItem(itemIDToOpen);
             setActiveWhenUnlocked.SetActive(enableObject);
             Sound.KeyUse.PlayDirect();
-            TelemetryLogger.Log(this, "Item unlocked with " + itemIDToOpen, "Time: " + LevelTimer.levelTimer);
         }
         else
         {
