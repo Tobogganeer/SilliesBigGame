@@ -8,10 +8,10 @@ using UnityEngine;
 public class LimitedRangeInteractable : MonoBehaviour
 {
     public CameraPosition position;
-    public Collider interactable;
+    public List<Collider> interactables;
 
     private void Update()
     {
-        interactable.enabled = PlayerMovement.instance.CurrentPosRot.position == position.position;
+        interactables.ForEach((coll) => coll.enabled = PlayerMovement.instance.CurrentPosRot.position == position.position);
     }
 }

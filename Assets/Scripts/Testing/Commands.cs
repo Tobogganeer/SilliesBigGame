@@ -9,6 +9,7 @@ public class Commands : MonoBehaviour
     ConCommand give;
     ConCommand room1code;
     ConCommand room2code;
+    ConCommand camera;
 
     private void Awake()
     {
