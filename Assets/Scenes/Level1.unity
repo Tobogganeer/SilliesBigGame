@@ -9574,8 +9574,8 @@ MonoBehaviour:
       moveTrigger: {fileID: 0}
       moveTimeMode: 0
       rotateTimeMode: 0
-      moveTime: 0
-      rotateTime: 0
+      moveTime: 0.3
+      rotateTime: 0.3
       _foldout: 1
     - directionToClick: 2
       mode: 0
@@ -9585,8 +9585,19 @@ MonoBehaviour:
       moveTrigger: {fileID: 0}
       moveTimeMode: 0
       rotateTimeMode: 0
-      moveTime: 0
-      rotateTime: 0
+      moveTime: 0.3
+      rotateTime: 0.3
+      _foldout: 1
+    - directionToClick: 5
+      mode: 1
+      leadsToRotation: 3
+      customFacingTarget: {fileID: 0}
+      leadsToPosition: {fileID: 1524417370}
+      moveTrigger: {fileID: 1919867978}
+      moveTimeMode: 0
+      rotateTimeMode: 0
+      moveTime: 0.3
+      rotateTime: 0.3
       _foldout: 1
 --- !u!1 &1366858957 stripped
 GameObject:
@@ -10659,6 +10670,17 @@ MonoBehaviour:
       customFacingTarget: {fileID: 0}
       leadsToPosition: {fileID: 0}
       moveTrigger: {fileID: 0}
+      moveTimeMode: 0
+      rotateTimeMode: 0
+      moveTime: 0.3
+      rotateTime: 0.3
+      _foldout: 1
+    - directionToClick: 5
+      mode: 1
+      leadsToRotation: 1
+      customFacingTarget: {fileID: 0}
+      leadsToPosition: {fileID: 1356216483}
+      moveTrigger: {fileID: 1174688935}
       moveTimeMode: 0
       rotateTimeMode: 0
       moveTime: 0.3
