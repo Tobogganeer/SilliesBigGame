@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class TutorialQTE : MonoBehaviour
@@ -12,8 +13,7 @@ public class TutorialQTE : MonoBehaviour
     public GameObject cg;
 
     [Space]
-    public GameObject patientInBedSprite;
-    public GameObject emptyBedSprite;
+    public UnityEvent onLevel2Unlocked;
 
     [Space]
     public float movementSize = 150f;
@@ -45,9 +45,7 @@ public class TutorialQTE : MonoBehaviour
         {
             PopUp.Show("Start cutscene now... (END OF DEMO)", 3f);
             cg.SetActive(false);
-            // Take patient out of bed
-            patientInBedSprite.SetActive(false);
-            emptyBedSprite.SetActive(true);
+            onLevel2Unlocked?.Invoke();
         }
     }
 
