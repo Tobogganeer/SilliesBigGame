@@ -30,6 +30,7 @@ public class InventoryInteraction : MonoBehaviour
     public void OnToggleButtonClicked()
     {
         InventoryPanel.SetActive(!InventoryPanel.activeInHierarchy);
+        TelemetryLogger.Log(this, "Inventory Clicked"); // This logs the inventory opening and closing.
     }
 
     public void OnItemSlotClicked(GameObject itemSlot)

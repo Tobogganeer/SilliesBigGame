@@ -10,6 +10,8 @@ public class ChemCabinetKeypad : MonoBehaviour
 
     bool hasInputGivenPassword;
 
+    int incorrectKeycodeEntered = 0;
+
     private void Start()
     {
         keypad.onWrongPasscodeEntered.AddListener(WrongPass);
@@ -37,6 +39,7 @@ public class ChemCabinetKeypad : MonoBehaviour
     public void WongPassAgain()
     {
         PopUp.Show("Management must've done that monthly password change again and didn't tell me...", 5f);
+        TelemetryLogger.Log(this, "Incorrect locker keypad code entered. Amount of incorrect attempts: " + incorrectKeycodeEntered);
     }
 
 }
