@@ -1748,6 +1748,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Light
       objectReference: {fileID: 0}
+    - target: {fileID: 4702586500677854523, guid: 991c0c4f34518fa4b9b7cd6b6195942a,
+        type: 3}
+      propertyPath: m_Range
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702586500677854523, guid: 991c0c4f34518fa4b9b7cd6b6195942a,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702586500677854523, guid: 991c0c4f34518fa4b9b7cd6b6195942a,
+        type: 3}
+      propertyPath: m_BounceIntensity
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5945391426815393897, guid: 991c0c4f34518fa4b9b7cd6b6195942a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1852,6 +1867,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Light (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702586500677854523, guid: 991c0c4f34518fa4b9b7cd6b6195942a,
+        type: 3}
+      propertyPath: m_Range
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702586500677854523, guid: 991c0c4f34518fa4b9b7cd6b6195942a,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702586500677854523, guid: 991c0c4f34518fa4b9b7cd6b6195942a,
+        type: 3}
+      propertyPath: m_BounceIntensity
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5945391426815393897, guid: 991c0c4f34518fa4b9b7cd6b6195942a,
         type: 3}
@@ -11195,6 +11225,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Light (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702586500677854523, guid: 991c0c4f34518fa4b9b7cd6b6195942a,
+        type: 3}
+      propertyPath: m_Range
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702586500677854523, guid: 991c0c4f34518fa4b9b7cd6b6195942a,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702586500677854523, guid: 991c0c4f34518fa4b9b7cd6b6195942a,
+        type: 3}
+      propertyPath: m_BounceIntensity
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5945391426815393897, guid: 991c0c4f34518fa4b9b7cd6b6195942a,
         type: 3}
