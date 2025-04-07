@@ -14,6 +14,9 @@ public class TutorialQTE : MonoBehaviour
 
     [Space]
     public UnityEvent onLevel2Unlocked;
+    public Cutscene cutscene;
+    public CameraPosition posAfterCutscene;
+    public CameraDirection dirAfterCutscene;
 
     [Space]
     public float movementSize = 150f;
@@ -43,10 +46,19 @@ public class TutorialQTE : MonoBehaviour
         bool hoveringOverTarget = RectTransformUtility.RectangleContainsScreenPoint(target, syringeObj.position);
         if (Mouse.current.leftButton.wasPressedThisFrame && hoveringOverTarget)
         {
-            PopUp.Show("Start cutscene now... (END OF DEMO)", 3f);
+            //PopUp.Show("Start cutscene now... (END OF DEMO)", 3f);
             cg.SetActive(false);
             onLevel2Unlocked?.Invoke();
+            cutscene.Play(CutsceneFinished);
+            Interactor.Enabled = false; // Disable interaction
         }
+    }
+
+    void CutsceneFinished()
+    {
+        Interactor.Enabled = true;
+        // Move to level 3
+        PlayerMovement.instance.Travel(posAfterCutscene, dirAfterCutscene, null, 0, 0, true);
     }
 
     private void LateUpdate()

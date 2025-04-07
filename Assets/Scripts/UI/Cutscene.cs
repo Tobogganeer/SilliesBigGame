@@ -42,8 +42,11 @@ public class Cutscene : MonoBehaviour
         // Go through pages one at a time
         for (int i = 0; i < pages.Count; i++)
         {
-
+            yield return StartCoroutine(pages[i].Display(this));
         }
+
+        whenFinished();
+        gameObject.SetActive(false);
     }
 
     [Serializable]
@@ -63,7 +66,7 @@ public class Cutscene : MonoBehaviour
             foreach (Image image in images)
             {
                 image.element.color = new Color(1, 1, 1, 0f); // Transparent
-                src.StartCoroutine(FadeInImage(image));
+                src.StartCoroutine(FadeInImage(image)); // Start all asynchronously
                 // Find out when the last image is fully displayed
                 longestImage = Mathf.Max(longestImage, image.fadeInTime + image.delayBeforeFadingIn);
             }

@@ -571,7 +571,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7506329543893858360
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1234,7 +1234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2601247767414061543
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2685,6 +2685,9 @@ MonoBehaviour:
   onLevel2Unlocked:
     m_PersistentCalls:
       m_Calls: []
+  cutscene: {fileID: 283651676579970308}
+  posAfterCutscene: {fileID: 0}
+  dirAfterCutscene: 0
   movementSize: 150
   movementSpeed: 5
 --- !u!222 &7753910896861941231
@@ -5485,36 +5488,81 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pages:
-  - canvasGroup: {fileID: 0}
-    images: []
-    extraTimeAfterAllImagesVisible: 0
-    fadeOutTime: 0
-  - canvasGroup: {fileID: 0}
-    images: []
-    extraTimeAfterAllImagesVisible: 0
-    fadeOutTime: 0
-  - canvasGroup: {fileID: 0}
-    images: []
-    extraTimeAfterAllImagesVisible: 0
-    fadeOutTime: 0
-  - canvasGroup: {fileID: 0}
-    images: []
-    extraTimeAfterAllImagesVisible: 0
-    fadeOutTime: 0
-  - canvasGroup: {fileID: 0}
-    images: []
-    extraTimeAfterAllImagesVisible: 0
-    fadeOutTime: 0
-  - canvasGroup: {fileID: 0}
-    images: []
-    extraTimeAfterAllImagesVisible: 0
-    fadeOutTime: 0
-  - canvasGroup: {fileID: 0}
-    images: []
-    extraTimeAfterAllImagesVisible: 0
-    fadeOutTime: 0
+  - canvasGroup: {fileID: 9106298903762773591}
+    images:
+    - element: {fileID: 6773979199669909199}
+      fadeInTime: 0.5
+      delayBeforeFadingIn: 0
+    - element: {fileID: 5842283964532384099}
+      fadeInTime: 0.5
+      delayBeforeFadingIn: 1
+    extraTimeAfterAllImagesVisible: 1
+    fadeOutTime: 0.5
+  - canvasGroup: {fileID: 4629761426878371028}
+    images:
+    - element: {fileID: 6028450971146421548}
+      fadeInTime: 0.5
+      delayBeforeFadingIn: 0
+    - element: {fileID: 8106003912712977424}
+      fadeInTime: 0.5
+      delayBeforeFadingIn: 1
+    extraTimeAfterAllImagesVisible: 1
+    fadeOutTime: 0.5
+  - canvasGroup: {fileID: 8062700865503160576}
+    images:
+    - element: {fileID: 1008670542316598464}
+      fadeInTime: 0.5
+      delayBeforeFadingIn: 0
+    - element: {fileID: 1549827440022748072}
+      fadeInTime: 0.5
+      delayBeforeFadingIn: 1
+    - element: {fileID: 4297112854257300650}
+      fadeInTime: 0.5
+      delayBeforeFadingIn: 2
+    extraTimeAfterAllImagesVisible: 1
+    fadeOutTime: 0.5
+  - canvasGroup: {fileID: 6087093374200183565}
+    images:
+    - element: {fileID: 1955107541369797655}
+      fadeInTime: 0.5
+      delayBeforeFadingIn: 0
+    - element: {fileID: 1723390328110711791}
+      fadeInTime: 0.5
+      delayBeforeFadingIn: 1
+    extraTimeAfterAllImagesVisible: 1
+    fadeOutTime: 0.5
+  - canvasGroup: {fileID: 4759925031405651682}
+    images:
+    - element: {fileID: 1304135427575675784}
+      fadeInTime: 0.5
+      delayBeforeFadingIn: 0
+    - element: {fileID: 2736026958970449934}
+      fadeInTime: 0.5
+      delayBeforeFadingIn: 1
+    - element: {fileID: 3574993334259266028}
+      fadeInTime: 0.5
+      delayBeforeFadingIn: 2
+    extraTimeAfterAllImagesVisible: 1
+    fadeOutTime: 0.5
+  - canvasGroup: {fileID: 4181176672609922243}
+    images:
+    - element: {fileID: 5959682700395389551}
+      fadeInTime: 0.5
+      delayBeforeFadingIn: 0
+    - element: {fileID: 2512835440489906657}
+      fadeInTime: 0.5
+      delayBeforeFadingIn: 1
+    extraTimeAfterAllImagesVisible: 1
+    fadeOutTime: 0.5
+  - canvasGroup: {fileID: 3236061496815961086}
+    images:
+    - element: {fileID: 6870736109227713713}
+      fadeInTime: 2
+      delayBeforeFadingIn: 0
+    extraTimeAfterAllImagesVisible: 1
+    fadeOutTime: 0.5
   blackBackground: {fileID: 3808097932497171097}
-  fadeInTime: 0.5
+  fadeInTime: 0
 --- !u!1 &6286169805818465295
 GameObject:
   m_ObjectHideFlags: 0
