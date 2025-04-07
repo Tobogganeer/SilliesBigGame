@@ -123,25 +123,26 @@ public class ItemData : MonoBehaviour
         });
         itemData.Add("Solution 3", new Dictionary<string, string>
         {
-            {"itemDescription", "The second solution from the cabinet. It's colourless, so you can't tell what it is."},
+            {"itemDescription", "The third solution from the cabinet. It's colourless, so you can't tell what it is."},
             {"itemImage", "ItemSprites/Syringe"},
             {"combination", string.Empty},
         });
         itemData.Add("Solution 4", new Dictionary<string, string>
         {
-            {"itemDescription", "The second solution from the cabinet. It's colourless, so you can't tell what it is."},
+            {"itemDescription", "The fourth solution from the cabinet. It's colourless, so you can't tell what it is."},
             {"itemImage", "ItemSprites/Syringe"},
             {"combination", string.Empty},
         });
         itemData.Add("Solution 5", new Dictionary<string, string>
         {
-            {"itemDescription", "The second solution from the cabinet. It's colourless, so you can't tell what it is."},
+            {"itemDescription", "The fifth solution from the cabinet. It's colourless, so you can't tell what it is."},
             {"itemImage", "ItemSprites/Syringe"},
             {"combination", string.Empty},
         });
         itemData.Add("Solution 6", new Dictionary<string, string>
         {
-            {"itemDescription", "The second solution from the cabinet. It's colourless, so you can't tell what it is."},
+            {"itemDescription", "The sixth solution from the cabinet. It's colourless, so you can't tell what it is."},
+            {"itemImage", "ItemSprites/Syringe"},
             {"combination", "Solution 2"},
             {"combinationResult", "Green Flask"},
         });
