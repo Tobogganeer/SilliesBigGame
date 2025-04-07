@@ -27,6 +27,7 @@ namespace NodeCanvas.Tasks.Actions {
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
+			if (searching.value) { return; }
             if (player.value.GetComponent<PlayerMovement>().currentRoom == currentRoom.value)
             {
                 sameRoom.value = true;

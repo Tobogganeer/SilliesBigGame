@@ -31,6 +31,8 @@ namespace NodeCanvas.Tasks.Actions {
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
             animationPlayed = false;
+
+			foundPlayer.value = false;
         }
 
 
@@ -42,32 +44,34 @@ namespace NodeCanvas.Tasks.Actions {
                 foundPlayer.value = true;
             }
 
-            if (foundPlayer.value == true)
+			if (foundPlayer.value == true)
 			{
-                searching.value = false;
-                monsterSearchAnim.value.SetActive(false);
-				EndAction(true);
+				searching.value = false;
+				monsterSearchAnim.value.SetActive(false);
 			}
-			else if (animationPlayed == true && !monsterSearchAnim.value.activeInHierarchy)
-			{
-				animationPlayed = false;
-                searching.value = false;
+			else if (foundPlayer.value == false) {
+				
+				if (animationPlayed == true && !monsterSearchAnim.value.activeInHierarchy)
+				{
+					animationPlayed = false;
+					searching.value = false;
 
-                EndAction(true);
+					EndAction(true);
+				}
+				else
+				{
+					if (animationPlayed == false && !monsterSearchAnim.value.activeInHierarchy)
+					{
+						Debug.Log("playing");
+						searching.value = true;
+						animationPlayed = true;
+						searchingSound.MaybeNull().PlayAtPosition(player.value.transform.position);
+						monsterSearchAnim.value.SetActive(true);
+
+
+					}
+				}
 			}
-            else
-            {
-                if (animationPlayed == false && !monsterSearchAnim.value.activeInHierarchy && !foundPlayer.value)
-                {
-                    Debug.Log("playing");
-					searching.value = true;
-                    animationPlayed = true;
-					searchingSound.MaybeNull().PlayAtPosition(player.value.transform.position);
-                    monsterSearchAnim.value.SetActive(true);
-                    
-
-                }
-            }
             
 			
 

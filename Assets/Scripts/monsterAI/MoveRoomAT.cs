@@ -26,7 +26,6 @@ namespace NodeCanvas.Tasks.Actions {
 		protected override void OnExecute() {
 			//int oldValue = currentRoom.value;
 			//currentRoom.value = Random.Range(1, 4);
-
 			if (currentRoom.value == 1)
 			{
 				int nextRoom = Random.Range(1, 3);
