@@ -8,6 +8,13 @@ public class LockedDoor : MonoBehaviour, IInteractable
     public GameObject setActiveWhenUnlocked;
     public bool enableObject = true;
     public string itemIDToOpen;
+    public bool disableThisObjectWhenUnlocked = false;
+
+    [Space]
+    public Sound lockedSound;
+    public Sound unlockSound;
+    public string lockedMessage = "Locked...";
+    public float lockedMessageTime = 1f;
 
     bool locked = true;
 
@@ -21,12 +28,18 @@ public class LockedDoor : MonoBehaviour, IInteractable
             locked = false;
             Inventory.ConsumeItem(itemIDToOpen);
             setActiveWhenUnlocked.SetActive(enableObject);
-            Sound.KeyUse.PlayDirect();
+            if (unlockSound != null)
+                unlockSound.PlayDirect();
+            if (disableThisObjectWhenUnlocked)
+                gameObject.SetActive(false);
+            //Sound.KeyUse.PlayDirect();
         }
         else
         {
-            PopUp.Show("Locked...", 1f);
-            Sound.DoorLocked.PlayAtPosition(transform.position);
+            PopUp.Show(lockedMessage, lockedMessageTime);
+            if (lockedSound != null)
+                lockedSound.PlayAtPosition(transform.position);
+            //Sound.DoorLocked.PlayAtPosition(transform.position);
         }
     }
 }
