@@ -10,11 +10,13 @@ using Tobo.Attributes;
 /// </summary>
 public class CameraPosition : MonoBehaviour
 {
-    public float roomNumber;
+    
     public List<CameraRotation> rotations = new List<CameraRotation>();
     static Dictionary<PosRot, CameraRotation> posRotToRotation = new Dictionary<PosRot, CameraRotation>();
 
     public Vector3 position => transform.position;
+
+    public int roomNumber;
 
     private void Awake()
     {
@@ -68,6 +70,8 @@ public class CameraPosition : MonoBehaviour
     }
 
     public static bool TryGetRotation(PosRot location, out CameraRotation outRotation) => posRotToRotation.TryGetValue(location, out outRotation);
+
+    
 
     public static bool TryGetTransitions(PosRot location, out List<CameraTransition> transitions)
     {
@@ -248,6 +252,7 @@ public struct PosRot
 {
     public Vector3 position;
     public Quaternion rotation;
+    
 
     public PosRot(Vector3 position, Quaternion rotation)
     {

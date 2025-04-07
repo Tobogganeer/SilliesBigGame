@@ -167,7 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92eebb98793272c47839bd393b6acc7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNumber: 0
   rotations:
   - facing: 6
     customFacingTarget: {fileID: 268294307}
@@ -183,6 +182,7 @@ MonoBehaviour:
       moveTime: 0
       rotateTime: 0
       _foldout: 1
+  roomNumber: 2
 --- !u!1001 &10690332
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -753,8 +753,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92eebb98793272c47839bd393b6acc7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNumber: 0
   rotations: []
+  roomNumber: 0
 --- !u!1 &142654463
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,8 +799,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92eebb98793272c47839bd393b6acc7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNumber: 0
   rotations: []
+  roomNumber: 0
 --- !u!1001 &151758258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -967,6 +967,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987100682738202826, guid: 51e566deedc6b894bbba9dd443a2458c,
+        type: 3}
+      propertyPath: roomNumber
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5080381663820807823, guid: 51e566deedc6b894bbba9dd443a2458c,
         type: 3}
@@ -1639,7 +1644,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92eebb98793272c47839bd393b6acc7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNumber: 3
   rotations:
   - facing: 0
     customFacingTarget: {fileID: 0}
@@ -1763,6 +1767,7 @@ MonoBehaviour:
       moveTime: 0.3
       rotateTime: 0.3
       _foldout: 1
+  roomNumber: 3
 --- !u!1 &307510152
 GameObject:
   m_ObjectHideFlags: 0
@@ -2203,6 +2208,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4987100682738202826, guid: 51e566deedc6b894bbba9dd443a2458c,
+        type: 3}
+      propertyPath: roomNumber
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2585,7 +2595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3807,8 +3817,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92eebb98793272c47839bd393b6acc7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNumber: 0
   rotations: []
+  roomNumber: 0
 --- !u!1 &682499416
 GameObject:
   m_ObjectHideFlags: 0
@@ -5017,7 +5027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5169,7 +5179,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92eebb98793272c47839bd393b6acc7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNumber: 0
   rotations:
   - facing: 1
     customFacingTarget: {fileID: 0}
@@ -5185,6 +5194,7 @@ MonoBehaviour:
       moveTime: 0.3
       rotateTime: 0.3
       _foldout: 1
+  roomNumber: 2
 --- !u!1 &876379506
 GameObject:
   m_ObjectHideFlags: 0
@@ -5214,7 +5224,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92eebb98793272c47839bd393b6acc7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNumber: 2
   rotations:
   - facing: 0
     customFacingTarget: {fileID: 0}
@@ -5360,6 +5369,7 @@ MonoBehaviour:
       moveTime: 0.3
       rotateTime: 0.3
       _foldout: 1
+  roomNumber: 2
 --- !u!4 &876379508
 Transform:
   m_ObjectHideFlags: 0
@@ -6270,7 +6280,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92eebb98793272c47839bd393b6acc7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNumber: 3
   rotations:
   - facing: 1
     customFacingTarget: {fileID: 0}
@@ -6394,6 +6403,7 @@ MonoBehaviour:
       moveTime: 0.3
       rotateTime: 0.3
       _foldout: 1
+  roomNumber: 3
 --- !u!4 &1052816189
 Transform:
   m_ObjectHideFlags: 0
@@ -6655,7 +6665,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92eebb98793272c47839bd393b6acc7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNumber: 4
   rotations:
   - facing: 0
     customFacingTarget: {fileID: 0}
@@ -6757,6 +6766,7 @@ MonoBehaviour:
       moveTime: 0.3
       rotateTime: 0.3
       _foldout: 1
+  roomNumber: 0
 --- !u!1 &1177136752
 GameObject:
   m_ObjectHideFlags: 0
@@ -7177,8 +7187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92eebb98793272c47839bd393b6acc7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNumber: 0
   rotations: []
+  roomNumber: 0
 --- !u!1 &1271070892
 GameObject:
   m_ObjectHideFlags: 0
@@ -7724,7 +7734,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92eebb98793272c47839bd393b6acc7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNumber: 3
   rotations:
   - facing: 0
     customFacingTarget: {fileID: 0}
@@ -7848,6 +7857,7 @@ MonoBehaviour:
       moveTime: 0.3
       rotateTime: 0.3
       _foldout: 1
+  roomNumber: 3
 --- !u!4 &1306971543
 Transform:
   m_ObjectHideFlags: 0
@@ -7960,6 +7970,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987100682738202826, guid: 51e566deedc6b894bbba9dd443a2458c,
+        type: 3}
+      propertyPath: roomNumber
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8697,7 +8712,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92eebb98793272c47839bd393b6acc7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNumber: 4
   rotations:
   - facing: 0
     customFacingTarget: {fileID: 0}
@@ -8799,6 +8813,7 @@ MonoBehaviour:
       moveTime: 0.3
       rotateTime: 0.3
       _foldout: 1
+  roomNumber: 0
 --- !u!1 &1402491041
 GameObject:
   m_ObjectHideFlags: 0
@@ -8941,7 +8956,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92eebb98793272c47839bd393b6acc7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNumber: 3
   rotations:
   - facing: 0
     customFacingTarget: {fileID: 0}
@@ -9065,6 +9079,7 @@ MonoBehaviour:
       moveTime: 0.3
       rotateTime: 0.3
       _foldout: 1
+  roomNumber: 3
 --- !u!4 &1441566532
 Transform:
   m_ObjectHideFlags: 0
@@ -9501,7 +9516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _serializedExposedParameters: []
-  _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"timeLimit":10.0,"player":{"_name":"player","_targetVariableID":"48fd10b9-3f4d-4e0f-b1d0-d46564e7146c"},"currentRoom":{"_name":"currentRoom","_targetVariableID":"87cf9a85-c481-49cf-9a4a-7fb13bd44f9a"},"sameRoom":{"_name":"sameRoom","_targetVariableID":"414ef01f-9709-47d5-ada7-97f7fb232366"},"$type":"NodeCanvas.Tasks.Actions.IdleAT"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Idle","_position":{"x":363.0,"y":217.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"player":{"_name":"player","_targetVariableID":"48fd10b9-3f4d-4e0f-b1d0-d46564e7146c"},"currentRoom":{"_name":"currentRoom","_targetVariableID":"87cf9a85-c481-49cf-9a4a-7fb13bd44f9a"},"sameRoom":{"_name":"sameRoom","_targetVariableID":"414ef01f-9709-47d5-ada7-97f7fb232366"},"$type":"NodeCanvas.Tasks.Actions.MoveRoomAT"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"MoveRoom","_position":{"x":515.1285,"y":103.0438},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"timeLimit":10.0,"vignetteCG":1,"$type":"NodeCanvas.Tasks.Actions.MonsterAlertVignette"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"SameRoomAlert","_position":{"x":478.9348,"y":298.162},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"},{"_nestedFSM":{"_value":2},"_position":{"x":631.8321,"y":368.8033},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"3"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"valueA":{"_name":"sameRoom","_targetVariableID":"414ef01f-9709-47d5-ada7-97f7fb232366"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"valueA":{"_name":"sameRoom","_targetVariableID":"414ef01f-9709-47d5-ada7-97f7fb232366"},"valueB":{},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
+  _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"timeLimit":10.0,"player":{"_name":"player","_targetVariableID":"48fd10b9-3f4d-4e0f-b1d0-d46564e7146c"},"currentRoom":{"_name":"currentRoom","_targetVariableID":"87cf9a85-c481-49cf-9a4a-7fb13bd44f9a"},"sameRoom":{"_name":"sameRoom","_targetVariableID":"414ef01f-9709-47d5-ada7-97f7fb232366"},"$type":"NodeCanvas.Tasks.Actions.IdleAT"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Idle","_position":{"x":363.0,"y":217.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"player":{"_name":"player","_targetVariableID":"48fd10b9-3f4d-4e0f-b1d0-d46564e7146c"},"currentRoom":{"_name":"currentRoom","_targetVariableID":"87cf9a85-c481-49cf-9a4a-7fb13bd44f9a"},"sameRoom":{"_name":"sameRoom","_targetVariableID":"414ef01f-9709-47d5-ada7-97f7fb232366"},"$type":"NodeCanvas.Tasks.Actions.MoveRoomAT"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"MoveRoom","_position":{"x":515.1285,"y":103.0438},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"timeLimit":10.0,"vignetteCG":1,"$type":"NodeCanvas.Tasks.Actions.MonsterAlertVignette"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"SameRoomAlert","_position":{"x":513.9348,"y":315.162},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"},{"_nestedFSM":{"_value":2},"_position":{"x":671.8321,"y":434.8033},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"3"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"valueA":{"_name":"sameRoom","_targetVariableID":"414ef01f-9709-47d5-ada7-97f7fb232366"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"valueA":{"_name":"sameRoom","_targetVariableID":"414ef01f-9709-47d5-ada7-97f7fb232366"},"valueB":{},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
   _boundGraphObjectReferences:
   - {fileID: 0}
   - {fileID: 539746704}
@@ -9801,6 +9816,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742610872569765373, guid: 619df69bf263acb43a8798c97132a69f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8888389262481614916, guid: 619df69bf263acb43a8798c97132a69f,
         type: 3}
@@ -11085,7 +11105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92eebb98793272c47839bd393b6acc7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNumber: 1
   rotations:
   - facing: 0
     customFacingTarget: {fileID: 0}
@@ -11209,6 +11228,7 @@ MonoBehaviour:
       moveTime: 0.3
       rotateTime: 0.3
       _foldout: 1
+  roomNumber: 1
 --- !u!4 &1765687239
 Transform:
   m_ObjectHideFlags: 0
@@ -11412,7 +11432,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92eebb98793272c47839bd393b6acc7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNumber: 0
   rotations:
   - facing: 1
     customFacingTarget: {fileID: 0}
@@ -11428,6 +11447,7 @@ MonoBehaviour:
       moveTime: 0.3
       rotateTime: 0.3
       _foldout: 1
+  roomNumber: 0
 --- !u!1 &1813454971
 GameObject:
   m_ObjectHideFlags: 0
@@ -11642,6 +11662,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4987100682738202826, guid: 51e566deedc6b894bbba9dd443a2458c,
+        type: 3}
+      propertyPath: roomNumber
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11782,7 +11807,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92eebb98793272c47839bd393b6acc7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNumber: 3
   rotations:
   - facing: 6
     customFacingTarget: {fileID: 2019076380}
@@ -11881,6 +11905,7 @@ MonoBehaviour:
       moveTime: 0.3
       rotateTime: 0.3
       _foldout: 1
+  roomNumber: 3
 --- !u!4 &1846456533
 Transform:
   m_ObjectHideFlags: 0

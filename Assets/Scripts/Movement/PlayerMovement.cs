@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using Tobo.Audio;
 using Tobo.Util;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Help the monster check what room the player is in
-    public int currentRoom;
+    
 
     public static PlayerMovement instance;
     private void Awake()
@@ -45,6 +45,10 @@ public class PlayerMovement : MonoBehaviour
     public PosRot PreviousPosRot { get; private set; }
     public PosRot CurrentPosRot => new PosRot(transform.position, transform.rotation);
 
+    // Help the monster check what room the player is in
+    public int currentRoom;
+    CameraPosition currentCameraPosition;
+
 
     public void Travel(CameraTransition transition, bool interruptCurrentTravel = false)
     {
@@ -75,6 +79,12 @@ public class PlayerMovement : MonoBehaviour
         Travel(new CameraTransition(new PosRot(transform.position, transform.rotation), new PosRot(position, lookTarget), moveTime, rotateTime), interruptCurrentTravel);
     }
 
+    public void Travel(CameraPosition camPos, float moveTime = 1.0f, float rotateTime = 0.5f, bool interruptCurrentTravel = false)
+    {
+        currentCameraPosition = camPos;
+        Travel(new CameraTransition(new PosRot(transform.position, transform.rotation), new PosRot(camPos.transform.position, camPos.transform.rotation), moveTime, rotateTime), interruptCurrentTravel);
+    }
+
     public void Travel(Vector3 position, Quaternion rotation, float moveTime = 1.0f, float rotateTime = 0.5f, bool interruptCurrentTravel = false)
     {
         Travel(new CameraTransition(new PosRot(transform.position, transform.rotation), new PosRot(position, rotation), moveTime, rotateTime), interruptCurrentTravel);
@@ -82,10 +92,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void Travel(CameraPosition position, CameraDirection direction, Transform customTarget = null, float moveTime = 1.0f, float rotateTime = 0.5f, bool interruptCurrentTravel = false)
     {
+        currentCameraPosition = position;
         Travel(new CameraTransition(new PosRot(transform.position, transform.rotation),
             new PosRot(position.position, position.GetRotation(direction, customTarget).GetRotation()),
             moveTime, rotateTime), interruptCurrentTravel);
-        
     }
 
     private void Update()
@@ -99,6 +109,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (travelProgress >= 1f)
         {
+            
             FinishTravelling();
             return;
         }
@@ -121,6 +132,20 @@ public class PlayerMovement : MonoBehaviour
 
     void FinishTravelling()
     {
+        //Debug.Log(CameraPosition.TryGetRotation(CurrentPosRot, out var rot));
+        if (CameraPosition.TryGetRotation(currentTransition.to, out var rot))
+        {
+            currentRoom = rot.position.roomNumber;
+        }
+
+        
+        //currentRoom = startingPosition.currentRoom;
+        //if (cameraRoomNumber != null) currentRoom = cameraRoomNumber.currentRoom;
+        if (currentCameraPosition != null)
+        {
+            currentRoom = currentCameraPosition.roomNumber;
+        }
+
         travelProgress = 1f;
         moveTimer = 1e5f; // Set these to be massive so we are definitely done moving
         rotateTimer = 1e5f;
