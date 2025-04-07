@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ExitDoorButton : MonoBehaviour, IInteractable
 {
-    public GameObject ExitDoor;
+    public ExitDoor exitDoor;
 
 
     void IInteractable.OnClicked()
     {
-        ExitDoor.GetComponent<ExitDoor>().buttonPress();
+        exitDoor.UnlockButtonPressed();
     }
 }

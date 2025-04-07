@@ -6354,6 +6354,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 667356453}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &667602737 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e9d7be19ece990438498ebb7591141d,
+    type: 3}
+  m_PrefabInstance: {fileID: 27449808}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &667602738 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8e9d7be19ece990438498ebb7591141d,
@@ -7357,6 +7363,12 @@ PrefabInstance:
 --- !u!4 &753887789 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8e9d7be19ece990438498ebb7591141d,
+    type: 3}
+  m_PrefabInstance: {fileID: 753887788}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &753887790 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e9d7be19ece990438498ebb7591141d,
     type: 3}
   m_PrefabInstance: {fileID: 753887788}
   m_PrefabAsset: {fileID: 0}
@@ -13516,16 +13528,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e99e7b4aeefd1f448262415ba88be69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jammed: 1
-  lockerZoomInTrigger: {fileID: 0}
-  originalPosition: {fileID: 492113765}
-  originalDirection: 3
-  dialog: {fileID: 1563956434}
   self: {fileID: 1563956432}
   miniGame: {fileID: 25535470}
-  moveTriggerBoxCollider: {fileID: 0}
-  door: {fileID: 2100000, guid: f80f595fd9f16a1499270f49e008df2a, type: 2}
-  doorCrowbar: {fileID: 2100000, guid: d7f63b5f91750cf4a993362bc64a464f, type: 2}
+  pos: {fileID: 492113765}
+  rot:
+    facing: 3
+    customFacingTarget: {fileID: 0}
+    inspectorTransitions: []
+  normalDoor: {fileID: 667602737}
+  crowbarDoor: {fileID: 753887790}
 --- !u!1 &1572675702
 GameObject:
   m_ObjectHideFlags: 0
@@ -13856,7 +13867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d0056fdb207e08468b06b70d865e58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExitDoor: {fileID: 1563956432}
+  exitDoor: {fileID: 1563956438}
 --- !u!1 &1587413368
 GameObject:
   m_ObjectHideFlags: 0

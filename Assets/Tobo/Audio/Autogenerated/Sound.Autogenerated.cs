@@ -36,6 +36,7 @@ namespace Tobo.Audio
             DoorOpen = -1650486193,
             DrawerClosed = 1162377076,
             DrawerOpen = -257647022,
+            ElectricBuzz = 1642172231,
             FlashlightButton = -50425809,
             GetKey = 1067224608,
             GlassPickup = 895153281,
@@ -89,6 +90,7 @@ namespace Tobo.Audio
         public static Sound DoorOpen => Get(ID.DoorOpen);
         public static Sound DrawerClosed => Get(ID.DrawerClosed);
         public static Sound DrawerOpen => Get(ID.DrawerOpen);
+        public static Sound ElectricBuzz => Get(ID.ElectricBuzz);
         public static Sound FlashlightButton => Get(ID.FlashlightButton);
         public static Sound GetKey => Get(ID.GetKey);
         public static Sound GlassPickup => Get(ID.GlassPickup);
@@ -149,6 +151,7 @@ namespace Tobo.Audio
             { "DoorOpen", Sound.ID.DoorOpen },
             { "DrawerClosed", Sound.ID.DrawerClosed },
             { "DrawerOpen", Sound.ID.DrawerOpen },
+            { "ElectricBuzz", Sound.ID.ElectricBuzz },
             { "FlashlightButton", Sound.ID.FlashlightButton },
             { "GetKey", Sound.ID.GetKey },
             { "GlassPickup", Sound.ID.GlassPickup },

@@ -1,46 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
+using Tobo.Audio;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
 public class ExitDoor : MonoBehaviour, IInteractable
 {
-    public bool jammed = true;
-    bool buttonPressed = false;
+    bool minigameComplete = false;
+    bool unlockButtonPressed = false;
     bool miniGameStarted = false;
-    public CustomMoveTrigger lockerZoomInTrigger;
-    public CameraPosition originalPosition;
-    public CameraDirection originalDirection;
 
-    public TextInteractable dialog;
     public GameObject self;
     public GameObject miniGame;
 
-    public BoxCollider moveTriggerBoxCollider;
+    [Space]
+    public CameraPosition pos;
+    public CameraRotation rot;
 
-    public Material door;
-    public Material doorCrowbar;
+    [Space]
+    public GameObject normalDoor;
+    public GameObject crowbarDoor;
     
 
     void IInteractable.OnClicked()
     {
-        if (!jammed)
+        if (minigameComplete)
         {
             // roll credits
             SceneManager.LoadScene("EndScreen");
+            return;
         }
-        if (!buttonPressed)
+
+        if (!unlockButtonPressed)
         {
-            dialog.text = "Won't open unless I press the button...";
-            dialog.OnClicked();
+            PopUp.Show("It won't budge!", 1.5f);
+            Sound.ElectricBuzz.PlayAtPosition(transform.position);
         }
         else
         {
             if (!miniGameStarted)
             {
+                // Show crowbar sprite
+                ShowDoor(crowbar: true);
+                // Start minigam
                 miniGameStarted = true;
-                self.GetComponent<MeshRenderer>().material = doorCrowbar;
                 miniGame.SetActive(true);
             }
         }
@@ -48,30 +52,39 @@ public class ExitDoor : MonoBehaviour, IInteractable
 
     public void Update()
     {
-        if (moveTriggerBoxCollider.enabled)
+        PosRot player = PlayerMovement.instance.CurrentPosRot;
+        // Check if player has moved or looked away
+        if (player.position != pos.position || player.rotation != Quaternion.LookRotation(rot.facing.GetOffset()))
         {
-            self.GetComponent<MeshRenderer>().material = door;
+            ShowDoor(crowbar: false);
             miniGame.SetActive(false);
+            miniGameStarted = false;
         }
     }
 
 
-    public void buttonPress()
+    public void UnlockButtonPressed()
     {
-        Debug.Log("pressed");
-        if (!buttonPressed)
+        unlockButtonPressed = true;
+        /*
+        if (!unlockButtonPressed)
         {
-            dialog.text = "Shit... the door is jammed.";
-            dialog.OnClicked();
-            buttonPressed = true;
+            PopUp.Show("Shit... the door is jammed.");
+            unlockButtonPressed = true;
         }
-        
+        */
     }
 
     public void FinishMiniGame()
     {
-        jammed = false;
-        self.GetComponent<MeshRenderer>().material = door;
+        minigameComplete = true;
+        ShowDoor(crowbar: false);
         miniGame.SetActive(false);
+    }
+
+    void ShowDoor(bool crowbar)
+    {
+        crowbarDoor.SetActive(crowbar);
+        normalDoor.SetActive(!crowbar);
     }
 }
