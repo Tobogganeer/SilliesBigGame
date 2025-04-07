@@ -181,6 +181,17 @@ namespace Tobo.Audio
             return Sound.Get(id).PlayDirect();
         }
 
+        /// <summary>
+        /// Returns <see cref="Sound.ID.None"/> if this <see cref="Sound"/> is null.
+        /// </summary>
+        /// <param name="sound"></param>
+        /// <returns></returns>
+        /// <remarks>Use to play a <see cref="Sound"/> that might be null (like something assignable from the inspector)</remarks>
+        public static Sound MaybeNull(this Sound sound)
+        {
+            return sound ?? Sound.Get(Sound.ID.None);
+        }
+
 #if TOBO_NET
         /// <summary>
         /// Plays this Sound locally at the given <paramref name="position"/> in world space. It will not be networked.

@@ -28,8 +28,8 @@ public class LockedDoor : MonoBehaviour, IInteractable
             locked = false;
             Inventory.ConsumeItem(itemIDToOpen);
             setActiveWhenUnlocked.SetActive(enableObject);
-            if (unlockSound != null)
-                unlockSound.PlayDirect();
+
+            unlockSound.MaybeNull().PlayDirect();
             if (disableThisObjectWhenUnlocked)
                 gameObject.SetActive(false);
             //Sound.KeyUse.PlayDirect();
@@ -37,8 +37,7 @@ public class LockedDoor : MonoBehaviour, IInteractable
         else
         {
             PopUp.Show(lockedMessage, lockedMessageTime);
-            if (lockedSound != null)
-                lockedSound.PlayAtPosition(transform.position);
+            lockedSound.MaybeNull().PlayAtPosition(transform.position);
             //Sound.DoorLocked.PlayAtPosition(transform.position);
         }
     }
