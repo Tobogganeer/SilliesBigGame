@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Tobo.Audio;
 using UnityEngine;
 
 public class Cutscene : MonoBehaviour
@@ -86,6 +87,9 @@ public class Cutscene : MonoBehaviour
         {
             yield return new WaitForSeconds(image.delayBeforeFadingIn);
 
+            if (image.playWhenFadeStarts != null)
+                image.playWhenFadeStarts.PlayDirect();
+
             float fadeTimer = image.fadeInTime;
             while (fadeTimer > 0)
             {
@@ -93,6 +97,9 @@ public class Cutscene : MonoBehaviour
                 image.element.color = new Color(1, 1, 1, 1f - (fadeTimer / image.fadeInTime)); // Fade in slowly
                 yield return null;
             }
+
+            if (image.playWhenFullyFadedIn != null)
+                image.playWhenFullyFadedIn.PlayDirect();
         }
     }
 
@@ -102,5 +109,7 @@ public class Cutscene : MonoBehaviour
         public UnityEngine.UI.Image element;
         public float fadeInTime = 1f;
         public float delayBeforeFadingIn;
+        public Sound playWhenFadeStarts;
+        public Sound playWhenFullyFadedIn;
     }
 }
