@@ -13,6 +13,7 @@ public class MonsterAttackQTE : MonoBehaviour
     public GameObject self;
     public RectTransform image;
     public GameObject monster;
+    public GameObject swingCG;
 
     [Space]
     public float movementSize = 150f;
@@ -44,7 +45,7 @@ public class MonsterAttackQTE : MonoBehaviour
         bool hoveringOverTarget = RectTransformUtility.RectangleContainsScreenPoint(target, crowbar.position);
         if (Mouse.current.leftButton.wasPressedThisFrame && hoveringOverTarget)
         {
-            PopUp.Show("Monster Whacked", 3f);
+            swingCG.SetActive(true);
             monster.GetComponent<Blackboard>().GetVariable("whacked").value = true;
             self.SetActive(false);
         }

@@ -2683,6 +2683,7 @@ MonoBehaviour:
   self: {fileID: 545661060}
   image: {fileID: 1130336231}
   monster: {fileID: 1562930858}
+  swingCG: {fileID: 828029890}
   movementSize: 150
   movementSpeed: 5
 --- !u!1 &563018664
@@ -4966,6 +4967,7 @@ GameObject:
   - component: {fileID: 828029894}
   - component: {fileID: 828029893}
   - component: {fileID: 828029892}
+  - component: {fileID: 828029895}
   m_Layer: 5
   m_Name: Patient QTE Swing Animation
   m_TagString: Untagged
@@ -5051,6 +5053,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828029890}
   m_CullTransparentMesh: 1
+--- !u!114 &828029895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828029890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb1d5ad3188381e4492b8541221999d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 828029890}
+  animator: {fileID: 828029892}
+  NTime: 0
 --- !u!1 &839005578
 GameObject:
   m_ObjectHideFlags: 0
@@ -9842,11 +9859,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6417088376918892442, guid: 619df69bf263acb43a8798c97132a69f,
         type: 3}
       insertIndex: 1
-      addedObject: {fileID: 828029891}
+      addedObject: {fileID: 545661061}
     - targetCorrespondingSourceObject: {fileID: 6417088376918892442, guid: 619df69bf263acb43a8798c97132a69f,
         type: 3}
       insertIndex: 2
-      addedObject: {fileID: 545661061}
+      addedObject: {fileID: 828029891}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 619df69bf263acb43a8798c97132a69f, type: 3}
 --- !u!1 &1582643353 stripped
