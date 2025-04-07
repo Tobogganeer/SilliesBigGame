@@ -108,6 +108,43 @@ public class ItemData : MonoBehaviour
             {"itemImage", "ItemSprites/Flask3C"},
             {"combination", string.Empty},
         });
+        itemData.Add("Solution 1", new Dictionary<string, string>
+        {
+            {"itemDescription", "The first solution from the cabinet. It's colourless, so you can't tell what it is."},
+            {"itemImage", "ItemSprites/Syringe"},
+            {"combination", string.Empty},
+        });
+        itemData.Add("Solution 2", new Dictionary<string, string>
+        {
+            {"itemDescription", "The second solution from the cabinet. It's colourless, so you can't tell what it is."},
+            {"itemImage", "ItemSprites/Syringe"},
+            {"combination", "Solution 6"},
+            {"combinationResult", "Green Flask"},
+        });
+        itemData.Add("Solution 3", new Dictionary<string, string>
+        {
+            {"itemDescription", "The second solution from the cabinet. It's colourless, so you can't tell what it is."},
+            {"itemImage", "ItemSprites/Syringe"},
+            {"combination", string.Empty},
+        });
+        itemData.Add("Solution 4", new Dictionary<string, string>
+        {
+            {"itemDescription", "The second solution from the cabinet. It's colourless, so you can't tell what it is."},
+            {"itemImage", "ItemSprites/Syringe"},
+            {"combination", string.Empty},
+        });
+        itemData.Add("Solution 5", new Dictionary<string, string>
+        {
+            {"itemDescription", "The second solution from the cabinet. It's colourless, so you can't tell what it is."},
+            {"itemImage", "ItemSprites/Syringe"},
+            {"combination", string.Empty},
+        });
+        itemData.Add("Solution 6", new Dictionary<string, string>
+        {
+            {"itemDescription", "The second solution from the cabinet. It's colourless, so you can't tell what it is."},
+            {"combination", "Solution 2"},
+            {"combinationResult", "Green Flask"},
+        });
     }
 
     public static Dictionary<string, string> GetData(string item) => instance.itemData[item];
