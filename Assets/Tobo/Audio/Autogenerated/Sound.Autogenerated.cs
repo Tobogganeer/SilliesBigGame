@@ -15,9 +15,23 @@ namespace Tobo.Audio
         public enum ID
         {
             None = 0,
+            BendingMetal = 344946229,
             CabinetClosed = -180397299,
             CabinetOpen = 67212331,
             CoatPickup = 2089786482,
+            CrowbarWack = -252362665,
+            CutSceneSound1 = 20686083,
+            CutsceneSound2 = -1647182556,
+            CutSceneSound3 = 20686085,
+            CutSceneSound4 = 20686086,
+            CutSceneSound5 = 20686087,
+            CutSceneSound6 = 20686088,
+            CutSceneSound7 = 20686089,
+            CutSceneSound8 = 20686090,
+            CutSceneSound9 = 20686091,
+            CutSceneSound10 = 641268621,
+            CutSceneSound11 = 641268622,
+            CutSceneSound12 = 641268623,
             DoorLocked = -1361169457,
             DoorOpen = -1650486193,
             DrawerClosed = 1162377076,
@@ -25,16 +39,26 @@ namespace Tobo.Audio
             FlashlightButton = -50425809,
             GetKey = 1067224608,
             GlassPickup = 895153281,
+            GlassPickupHIGH = 1845272995,
+            HeartBeat = 1979068101,
+            HeartBeatClose = -1497091533,
+            idkjumpscare = 59967357,
             ItemPickup = 1222083302,
             KeypadBad = 603097914,
             KeypadGood = 1516329000,
             KeypadPress = -230049224,
             KeyUse = 1181900191,
             Locker = 1219129871,
+            MouseClick = 300000090,
             NoiseCooler = -869308199,
             NoiseFlourence = -699231602,
+            PatientAttack = -142148906,
             PatientBreathing = -1330351052,
+            PatientHurt = 867099677,
+            PatientRun = 1552001213,
             PcStartup = 1714687667,
+            ShufflePaper1 = 1954791847,
+            ShufflePaper2 = 1954791848,
             SlotHover = -1850161273,
             TurnStep_moveCamIDK_ = -1499080850,
             UIClick = 1713459037,
@@ -44,9 +68,23 @@ namespace Tobo.Audio
             walking_Loop = 2130855777,
         }
 
+        public static Sound BendingMetal => Get(ID.BendingMetal);
         public static Sound CabinetClosed => Get(ID.CabinetClosed);
         public static Sound CabinetOpen => Get(ID.CabinetOpen);
         public static Sound CoatPickup => Get(ID.CoatPickup);
+        public static Sound CrowbarWack => Get(ID.CrowbarWack);
+        public static Sound CutSceneSound1 => Get(ID.CutSceneSound1);
+        public static Sound CutsceneSound2 => Get(ID.CutsceneSound2);
+        public static Sound CutSceneSound3 => Get(ID.CutSceneSound3);
+        public static Sound CutSceneSound4 => Get(ID.CutSceneSound4);
+        public static Sound CutSceneSound5 => Get(ID.CutSceneSound5);
+        public static Sound CutSceneSound6 => Get(ID.CutSceneSound6);
+        public static Sound CutSceneSound7 => Get(ID.CutSceneSound7);
+        public static Sound CutSceneSound8 => Get(ID.CutSceneSound8);
+        public static Sound CutSceneSound9 => Get(ID.CutSceneSound9);
+        public static Sound CutSceneSound10 => Get(ID.CutSceneSound10);
+        public static Sound CutSceneSound11 => Get(ID.CutSceneSound11);
+        public static Sound CutSceneSound12 => Get(ID.CutSceneSound12);
         public static Sound DoorLocked => Get(ID.DoorLocked);
         public static Sound DoorOpen => Get(ID.DoorOpen);
         public static Sound DrawerClosed => Get(ID.DrawerClosed);
@@ -54,16 +92,26 @@ namespace Tobo.Audio
         public static Sound FlashlightButton => Get(ID.FlashlightButton);
         public static Sound GetKey => Get(ID.GetKey);
         public static Sound GlassPickup => Get(ID.GlassPickup);
+        public static Sound GlassPickupHIGH => Get(ID.GlassPickupHIGH);
+        public static Sound HeartBeat => Get(ID.HeartBeat);
+        public static Sound HeartBeatClose => Get(ID.HeartBeatClose);
+        public static Sound idkjumpscare => Get(ID.idkjumpscare);
         public static Sound ItemPickup => Get(ID.ItemPickup);
         public static Sound KeypadBad => Get(ID.KeypadBad);
         public static Sound KeypadGood => Get(ID.KeypadGood);
         public static Sound KeypadPress => Get(ID.KeypadPress);
         public static Sound KeyUse => Get(ID.KeyUse);
         public static Sound Locker => Get(ID.Locker);
+        public static Sound MouseClick => Get(ID.MouseClick);
         public static Sound NoiseCooler => Get(ID.NoiseCooler);
         public static Sound NoiseFlourence => Get(ID.NoiseFlourence);
+        public static Sound PatientAttack => Get(ID.PatientAttack);
         public static Sound PatientBreathing => Get(ID.PatientBreathing);
+        public static Sound PatientHurt => Get(ID.PatientHurt);
+        public static Sound PatientRun => Get(ID.PatientRun);
         public static Sound PcStartup => Get(ID.PcStartup);
+        public static Sound ShufflePaper1 => Get(ID.ShufflePaper1);
+        public static Sound ShufflePaper2 => Get(ID.ShufflePaper2);
         public static Sound SlotHover => Get(ID.SlotHover);
         public static Sound TurnStep_moveCamIDK_ => Get(ID.TurnStep_moveCamIDK_);
         public static Sound UIClick => Get(ID.UIClick);
@@ -80,9 +128,23 @@ namespace Tobo.Audio
         internal static Dictionary<string, Sound.ID> SoundIDNameToSoundID { get; private set; } = new Dictionary<string, Sound.ID>()
         {
             { "None", Sound.ID.None },
+            { "BendingMetal", Sound.ID.BendingMetal },
             { "CabinetClosed", Sound.ID.CabinetClosed },
             { "CabinetOpen", Sound.ID.CabinetOpen },
             { "CoatPickup", Sound.ID.CoatPickup },
+            { "CrowbarWack", Sound.ID.CrowbarWack },
+            { "CutSceneSound1", Sound.ID.CutSceneSound1 },
+            { "CutsceneSound2", Sound.ID.CutsceneSound2 },
+            { "CutSceneSound3", Sound.ID.CutSceneSound3 },
+            { "CutSceneSound4", Sound.ID.CutSceneSound4 },
+            { "CutSceneSound5", Sound.ID.CutSceneSound5 },
+            { "CutSceneSound6", Sound.ID.CutSceneSound6 },
+            { "CutSceneSound7", Sound.ID.CutSceneSound7 },
+            { "CutSceneSound8", Sound.ID.CutSceneSound8 },
+            { "CutSceneSound9", Sound.ID.CutSceneSound9 },
+            { "CutSceneSound10", Sound.ID.CutSceneSound10 },
+            { "CutSceneSound11", Sound.ID.CutSceneSound11 },
+            { "CutSceneSound12", Sound.ID.CutSceneSound12 },
             { "DoorLocked", Sound.ID.DoorLocked },
             { "DoorOpen", Sound.ID.DoorOpen },
             { "DrawerClosed", Sound.ID.DrawerClosed },
@@ -90,16 +152,26 @@ namespace Tobo.Audio
             { "FlashlightButton", Sound.ID.FlashlightButton },
             { "GetKey", Sound.ID.GetKey },
             { "GlassPickup", Sound.ID.GlassPickup },
+            { "GlassPickupHIGH", Sound.ID.GlassPickupHIGH },
+            { "HeartBeat", Sound.ID.HeartBeat },
+            { "HeartBeatClose", Sound.ID.HeartBeatClose },
+            { "idkjumpscare", Sound.ID.idkjumpscare },
             { "ItemPickup", Sound.ID.ItemPickup },
             { "KeypadBad", Sound.ID.KeypadBad },
             { "KeypadGood", Sound.ID.KeypadGood },
             { "KeypadPress", Sound.ID.KeypadPress },
             { "KeyUse", Sound.ID.KeyUse },
             { "Locker", Sound.ID.Locker },
+            { "MouseClick", Sound.ID.MouseClick },
             { "NoiseCooler", Sound.ID.NoiseCooler },
             { "NoiseFlourence", Sound.ID.NoiseFlourence },
+            { "PatientAttack", Sound.ID.PatientAttack },
             { "PatientBreathing", Sound.ID.PatientBreathing },
+            { "PatientHurt", Sound.ID.PatientHurt },
+            { "PatientRun", Sound.ID.PatientRun },
             { "PcStartup", Sound.ID.PcStartup },
+            { "ShufflePaper1", Sound.ID.ShufflePaper1 },
+            { "ShufflePaper2", Sound.ID.ShufflePaper2 },
             { "SlotHover", Sound.ID.SlotHover },
             { "TurnStep(moveCamIDK)", Sound.ID.TurnStep_moveCamIDK_ },
             { "UIClick", Sound.ID.UIClick },
