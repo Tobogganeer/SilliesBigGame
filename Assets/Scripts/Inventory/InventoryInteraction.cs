@@ -42,11 +42,14 @@ public class InventoryInteraction : MonoBehaviour
             if (slot.itemDataKey == string.Empty) // if the slot is empty
             {
                 if (slot.inventorySlot == CraftResultSlot) return;
+                // Commented out so we can put any item into the crafting slots
+                /*
                 if (slot.inventorySlot == CraftingSlot1 || slot.inventorySlot == CraftingSlot2)
                 {
                     // Can't put an item with no recipes into a crafting slot
                     if (ItemData.GetData(heldItemKey)["combination"] == string.Empty) return;
                 }
+                */
 
                 // Put held item into slot
                 slot.itemDataKey = heldItemKey;
