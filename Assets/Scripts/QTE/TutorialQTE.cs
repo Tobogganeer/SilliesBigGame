@@ -27,7 +27,7 @@ public class TutorialQTE : MonoBehaviour
 
     private void OnEnable()
     {
-        PopUp.Show("Tutorial QTE: Insert the syringe into the patient's arm", 5f);
+        //PopUp.Show("Tutorial QTE: Insert the syringe into the patient's arm", 5f);
         syringeObj.gameObject.SetActive(true);
     }
 
