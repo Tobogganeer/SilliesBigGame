@@ -15,9 +15,8 @@ MonoBehaviour:
   soundID: 895153281
   clips:
   - {fileID: 8300000, guid: 329c04507bf1e7f41997b35139a9180e, type: 3}
-  maxDistance: 35
+  maxDistance: 10000
   category: 1
   volume: 1
   minPitch: 0.85
   maxPitch: 1.1
-  is2d: 1
