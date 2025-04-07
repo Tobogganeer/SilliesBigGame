@@ -7,4 +7,9 @@ Walking - https://www.youtube.com/watch?v=Ves2SnmMc34
 WalkingLoop - https://www.youtube.com/watch?v=Ves2SnmMc34
 PcStartup - https://www.youtube.com/watch?v=7nQ2oiVqKHw 
 
+CutsceneSound1 - https://pixabay.com/sound-effects/glass-shatter-263962/
+CutSceneSound4 - https://pixabay.com/sound-effects/axe-drop-1-rear-88428/
+CutSceneSound8 - https://pixabay.com/sound-effects/metal-pipe-foley-90737/
+CutSceneSound  - https://pixabay.com/sound-effects/door-slam-172171/
+
 All are Copyright Free / Public Domain / CC0
