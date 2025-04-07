@@ -13,10 +13,13 @@ public class ExitDoor : MonoBehaviour, IInteractable
     public CameraDirection originalDirection;
 
     public TextInteractable dialog;
-    public GameObject crowbar;
+    public GameObject self;
     public GameObject miniGame;
 
     public BoxCollider moveTriggerBoxCollider;
+
+    public Material door;
+    public Material doorCrowbar;
     
 
     void IInteractable.OnClicked()
@@ -36,7 +39,7 @@ public class ExitDoor : MonoBehaviour, IInteractable
             if (!miniGameStarted)
             {
                 miniGameStarted = true;
-                crowbar.SetActive(true);
+                self.GetComponent<MeshRenderer>().material = doorCrowbar;
                 miniGame.SetActive(true);
             }
         }
@@ -46,7 +49,7 @@ public class ExitDoor : MonoBehaviour, IInteractable
     {
         if (moveTriggerBoxCollider.enabled)
         {
-            crowbar.SetActive(false);
+            self.GetComponent<MeshRenderer>().material = door;
             miniGame.SetActive(false);
         }
     }
@@ -67,7 +70,7 @@ public class ExitDoor : MonoBehaviour, IInteractable
     public void FinishMiniGame()
     {
         jammed = false;
-        crowbar.SetActive(false);
+        self.GetComponent<MeshRenderer>().material = door;
         miniGame.SetActive(false);
     }
 }
