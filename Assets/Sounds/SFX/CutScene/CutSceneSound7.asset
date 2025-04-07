@@ -17,6 +17,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5c3f43b911c797144856b1a0971ea919, type: 3}
   maxDistance: 35
   category: 1
-  volume: 1
-  minPitch: 0.85
-  maxPitch: 1.1
+  volume: 0.5
+  minPitch: 1
+  maxPitch: 1

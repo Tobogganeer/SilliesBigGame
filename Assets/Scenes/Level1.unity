@@ -383,6 +383,98 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 283651676579970308, guid: 619df69bf263acb43a8798c97132a69f,
+        type: 3}
+      propertyPath: pages.Array.data[6].extraTimeAfterAllImagesVisible
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 283651676579970308, guid: 619df69bf263acb43a8798c97132a69f,
+        type: 3}
+      propertyPath: pages.Array.data[0].images.Array.data[0].playWhenFadeStarts
+      value: 
+      objectReference: {fileID: 11400000, guid: b4330c51d7d3b214a8fd0c532a728e2b,
+        type: 2}
+    - target: {fileID: 283651676579970308, guid: 619df69bf263acb43a8798c97132a69f,
+        type: 3}
+      propertyPath: pages.Array.data[1].images.Array.data[0].playWhenFadeStarts
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e3a22c27cab80649999570f99e5fc40,
+        type: 2}
+    - target: {fileID: 283651676579970308, guid: 619df69bf263acb43a8798c97132a69f,
+        type: 3}
+      propertyPath: pages.Array.data[1].images.Array.data[1].playWhenFadeStarts
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 283651676579970308, guid: 619df69bf263acb43a8798c97132a69f,
+        type: 3}
+      propertyPath: pages.Array.data[2].images.Array.data[0].playWhenFadeStarts
+      value: 
+      objectReference: {fileID: 11400000, guid: 8a48c326d3f04034191a1c8083c14ecc,
+        type: 2}
+    - target: {fileID: 283651676579970308, guid: 619df69bf263acb43a8798c97132a69f,
+        type: 3}
+      propertyPath: pages.Array.data[2].images.Array.data[1].playWhenFadeStarts
+      value: 
+      objectReference: {fileID: 11400000, guid: 26eea68c0e9fc7e4db82c9fec3f484e4,
+        type: 2}
+    - target: {fileID: 283651676579970308, guid: 619df69bf263acb43a8798c97132a69f,
+        type: 3}
+      propertyPath: pages.Array.data[2].images.Array.data[2].playWhenFadeStarts
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 283651676579970308, guid: 619df69bf263acb43a8798c97132a69f,
+        type: 3}
+      propertyPath: pages.Array.data[3].images.Array.data[0].playWhenFadeStarts
+      value: 
+      objectReference: {fileID: 11400000, guid: a8cbc3f27e357f24fb7308dacaa8305b,
+        type: 2}
+    - target: {fileID: 283651676579970308, guid: 619df69bf263acb43a8798c97132a69f,
+        type: 3}
+      propertyPath: pages.Array.data[3].images.Array.data[1].playWhenFadeStarts
+      value: 
+      objectReference: {fileID: 11400000, guid: e1ac3f004aba12949b9e8601b718582f,
+        type: 2}
+    - target: {fileID: 283651676579970308, guid: 619df69bf263acb43a8798c97132a69f,
+        type: 3}
+      propertyPath: pages.Array.data[4].images.Array.data[1].playWhenFadeStarts
+      value: 
+      objectReference: {fileID: 11400000, guid: 3a4da150674bcb444b0561cb5593d709,
+        type: 2}
+    - target: {fileID: 283651676579970308, guid: 619df69bf263acb43a8798c97132a69f,
+        type: 3}
+      propertyPath: pages.Array.data[4].images.Array.data[2].playWhenFadeStarts
+      value: 
+      objectReference: {fileID: 11400000, guid: f123a0573ff0dd14589dba4c5dcaab18,
+        type: 2}
+    - target: {fileID: 283651676579970308, guid: 619df69bf263acb43a8798c97132a69f,
+        type: 3}
+      propertyPath: pages.Array.data[5].images.Array.data[0].playWhenFadeStarts
+      value: 
+      objectReference: {fileID: 11400000, guid: ce51d0c1cb377e243aac8f9285cd11f4,
+        type: 2}
+    - target: {fileID: 283651676579970308, guid: 619df69bf263acb43a8798c97132a69f,
+        type: 3}
+      propertyPath: pages.Array.data[5].images.Array.data[1].playWhenFadeStarts
+      value: 
+      objectReference: {fileID: 11400000, guid: 9402e6b2d20496f41aadb2f74dd5a4e2,
+        type: 2}
+    - target: {fileID: 283651676579970308, guid: 619df69bf263acb43a8798c97132a69f,
+        type: 3}
+      propertyPath: pages.Array.data[6].images.Array.data[0].playWhenFadeStarts
+      value: 
+      objectReference: {fileID: 11400000, guid: 5897a7e5240d03c479fd413e138be521,
+        type: 2}
+    - target: {fileID: 283651676579970308, guid: 619df69bf263acb43a8798c97132a69f,
+        type: 3}
+      propertyPath: pages.Array.data[0].images.Array.data[0].playWhenFullyFadedIn
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 283651676579970308, guid: 619df69bf263acb43a8798c97132a69f,
+        type: 3}
+      propertyPath: pages.Array.data[1].images.Array.data[0].playWhenFullyFadedIn
+      value: 
+      objectReference: {fileID: 11400000, guid: 6e92c974a2a185d42be0c4fc5fac51cb,
+        type: 2}
     - target: {fileID: 590462903817494587, guid: 619df69bf263acb43a8798c97132a69f,
         type: 3}
       propertyPath: obj
