@@ -881,6 +881,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 355255152}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &369726538 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3555160364090210088, guid: 619df69bf263acb43a8798c97132a69f,
+    type: 3}
+  m_PrefabInstance: {fileID: 486676326}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &369726544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369726538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f8b968de53ff0d4aa83fd0b6c454f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: The pH level reads 5.
+  time: 3
+  oneTimeOnly: 0
 --- !u!1001 &439873973
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1197,7 +1218,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5268288711363921239, guid: 619df69bf263acb43a8798c97132a69f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1907578197}
+    - targetCorrespondingSourceObject: {fileID: 4907567044649849454, guid: 619df69bf263acb43a8798c97132a69f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 725761979}
+    - targetCorrespondingSourceObject: {fileID: 3073763319116515497, guid: 619df69bf263acb43a8798c97132a69f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 989911427}
+    - targetCorrespondingSourceObject: {fileID: 494069321076125472, guid: 619df69bf263acb43a8798c97132a69f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 686535970}
+    - targetCorrespondingSourceObject: {fileID: 3555160364090210088, guid: 619df69bf263acb43a8798c97132a69f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 369726544}
+    - targetCorrespondingSourceObject: {fileID: 1740626173692917533, guid: 619df69bf263acb43a8798c97132a69f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1661893521}
   m_SourcePrefab: {fileID: 100100000, guid: 619df69bf263acb43a8798c97132a69f, type: 3}
 --- !u!1001 &556842304
 PrefabInstance:
@@ -1361,6 +1406,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &686535964 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 494069321076125472, guid: 619df69bf263acb43a8798c97132a69f,
+    type: 3}
+  m_PrefabInstance: {fileID: 486676326}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &686535970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686535964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f8b968de53ff0d4aa83fd0b6c454f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: The pH level reads 2.
+  time: 3
+  oneTimeOnly: 0
 --- !u!1001 &705203573
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1457,6 +1523,27 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 925180364}
   m_SourcePrefab: {fileID: 100100000, guid: 8e9d7be19ece990438498ebb7591141d, type: 3}
+--- !u!1 &725761973 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4907567044649849454, guid: 619df69bf263acb43a8798c97132a69f,
+    type: 3}
+  m_PrefabInstance: {fileID: 486676326}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &725761979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725761973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f8b968de53ff0d4aa83fd0b6c454f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: The pH level reads 7.
+  time: 3
+  oneTimeOnly: 0
 --- !u!1 &733736124
 GameObject:
   m_ObjectHideFlags: 0
@@ -1735,6 +1822,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0000002, y: 1, z: 0.0000000437114}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &989911421 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3073763319116515497, guid: 619df69bf263acb43a8798c97132a69f,
+    type: 3}
+  m_PrefabInstance: {fileID: 486676326}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &989911427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989911421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f8b968de53ff0d4aa83fd0b6c454f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: The pH level reads 6.
+  time: 3
+  oneTimeOnly: 0
 --- !u!1001 &998664173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2726,6 +2834,27 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 486676326}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1661893515 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1740626173692917533, guid: 619df69bf263acb43a8798c97132a69f,
+    type: 3}
+  m_PrefabInstance: {fileID: 486676326}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1661893521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661893515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f8b968de53ff0d4aa83fd0b6c454f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: The pH level reads 7.
+  time: 3
+  oneTimeOnly: 0
 --- !u!1001 &1706132424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3229,6 +3358,27 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3db1877fd797c44f9dc035760630b9a, type: 3}
+--- !u!1 &1907578195 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5268288711363921239, guid: 619df69bf263acb43a8798c97132a69f,
+    type: 3}
+  m_PrefabInstance: {fileID: 486676326}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1907578197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907578195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f8b968de53ff0d4aa83fd0b6c454f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: The pH level reads 8.
+  time: 3
+  oneTimeOnly: 0
 --- !u!1 &1922328933
 GameObject:
   m_ObjectHideFlags: 0
