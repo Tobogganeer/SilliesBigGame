@@ -5493,74 +5493,104 @@ MonoBehaviour:
     - element: {fileID: 6773979199669909199}
       fadeInTime: 0.5
       delayBeforeFadingIn: 0
+      playWhenFadeStarts: {fileID: 0}
+      playWhenFullyFadedIn: {fileID: 0}
     - element: {fileID: 5842283964532384099}
       fadeInTime: 0.5
-      delayBeforeFadingIn: 1
-    extraTimeAfterAllImagesVisible: 1
+      delayBeforeFadingIn: 1.5
+      playWhenFadeStarts: {fileID: 0}
+      playWhenFullyFadedIn: {fileID: 0}
+    extraTimeAfterAllImagesVisible: 2
     fadeOutTime: 0.5
   - canvasGroup: {fileID: 4629761426878371028}
     images:
     - element: {fileID: 6028450971146421548}
-      fadeInTime: 0.5
+      fadeInTime: 1
       delayBeforeFadingIn: 0
+      playWhenFadeStarts: {fileID: 0}
+      playWhenFullyFadedIn: {fileID: 0}
     - element: {fileID: 8106003912712977424}
-      fadeInTime: 0.5
-      delayBeforeFadingIn: 1
-    extraTimeAfterAllImagesVisible: 1
+      fadeInTime: 1
+      delayBeforeFadingIn: 2.5
+      playWhenFadeStarts: {fileID: 0}
+      playWhenFullyFadedIn: {fileID: 0}
+    extraTimeAfterAllImagesVisible: 2
     fadeOutTime: 0.5
   - canvasGroup: {fileID: 8062700865503160576}
     images:
     - element: {fileID: 1008670542316598464}
       fadeInTime: 0.5
       delayBeforeFadingIn: 0
+      playWhenFadeStarts: {fileID: 0}
+      playWhenFullyFadedIn: {fileID: 0}
     - element: {fileID: 1549827440022748072}
       fadeInTime: 0.5
-      delayBeforeFadingIn: 1
+      delayBeforeFadingIn: 2
+      playWhenFadeStarts: {fileID: 0}
+      playWhenFullyFadedIn: {fileID: 0}
     - element: {fileID: 4297112854257300650}
       fadeInTime: 0.5
-      delayBeforeFadingIn: 2
-    extraTimeAfterAllImagesVisible: 1
+      delayBeforeFadingIn: 4
+      playWhenFadeStarts: {fileID: 0}
+      playWhenFullyFadedIn: {fileID: 0}
+    extraTimeAfterAllImagesVisible: 1.5
     fadeOutTime: 0.5
   - canvasGroup: {fileID: 6087093374200183565}
     images:
     - element: {fileID: 1955107541369797655}
       fadeInTime: 0.5
       delayBeforeFadingIn: 0
+      playWhenFadeStarts: {fileID: 0}
+      playWhenFullyFadedIn: {fileID: 0}
     - element: {fileID: 1723390328110711791}
-      fadeInTime: 0.5
-      delayBeforeFadingIn: 1
-    extraTimeAfterAllImagesVisible: 1
+      fadeInTime: 1
+      delayBeforeFadingIn: 2.5
+      playWhenFadeStarts: {fileID: 0}
+      playWhenFullyFadedIn: {fileID: 0}
+    extraTimeAfterAllImagesVisible: 2.5
     fadeOutTime: 0.5
   - canvasGroup: {fileID: 4759925031405651682}
     images:
     - element: {fileID: 1304135427575675784}
       fadeInTime: 0.5
       delayBeforeFadingIn: 0
+      playWhenFadeStarts: {fileID: 0}
+      playWhenFullyFadedIn: {fileID: 0}
     - element: {fileID: 2736026958970449934}
       fadeInTime: 0.5
-      delayBeforeFadingIn: 1
+      delayBeforeFadingIn: 1.5
+      playWhenFadeStarts: {fileID: 0}
+      playWhenFullyFadedIn: {fileID: 0}
     - element: {fileID: 3574993334259266028}
       fadeInTime: 0.5
-      delayBeforeFadingIn: 2
-    extraTimeAfterAllImagesVisible: 1
+      delayBeforeFadingIn: 3
+      playWhenFadeStarts: {fileID: 0}
+      playWhenFullyFadedIn: {fileID: 0}
+    extraTimeAfterAllImagesVisible: 2
     fadeOutTime: 0.5
   - canvasGroup: {fileID: 4181176672609922243}
     images:
     - element: {fileID: 5959682700395389551}
       fadeInTime: 0.5
       delayBeforeFadingIn: 0
+      playWhenFadeStarts: {fileID: 0}
+      playWhenFullyFadedIn: {fileID: 0}
     - element: {fileID: 2512835440489906657}
       fadeInTime: 0.5
-      delayBeforeFadingIn: 1
-    extraTimeAfterAllImagesVisible: 1
+      delayBeforeFadingIn: 2.5
+      playWhenFadeStarts: {fileID: 0}
+      playWhenFullyFadedIn: {fileID: 0}
+    extraTimeAfterAllImagesVisible: 2.5
     fadeOutTime: 0.5
   - canvasGroup: {fileID: 3236061496815961086}
     images:
     - element: {fileID: 6870736109227713713}
       fadeInTime: 2
       delayBeforeFadingIn: 0
-    extraTimeAfterAllImagesVisible: 1
-    fadeOutTime: 0.5
+      playWhenFadeStarts: {fileID: 0}
+      playWhenFullyFadedIn: {fileID: 0}
+    extraTimeAfterAllImagesVisible: 2
+    fadeOutTime: 1
   blackBackground: {fileID: 3808097932497171097}
   fadeInTime: 0
 --- !u!1 &6286169805818465295
