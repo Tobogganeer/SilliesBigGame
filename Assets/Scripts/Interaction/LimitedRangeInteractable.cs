@@ -14,4 +14,13 @@ public class LimitedRangeInteractable : MonoBehaviour
     {
         interactables.ForEach((coll) => coll.enabled = PlayerMovement.instance.CurrentPosRot.position == position.position);
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (position != null)
+        {
+            Gizmos.color = new Color(1, 1, 1, 0.3f);
+            Gizmos.DrawLine(transform.position, position.position);
+        }
+    }
 }
