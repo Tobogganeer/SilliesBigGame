@@ -7,10 +7,11 @@ namespace NodeCanvas.Tasks.Actions {
 
 	public class SearchAT : ActionTask {
 
-		public float timer;
-		public float timeLimit = 10f;
-
 		public BBParameter<bool> foundPlayer = false;
+
+		public BBParameter<GameObject> monsterSearchAnim;
+
+		public bool animationPlayed = false;
 
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
@@ -22,23 +23,36 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-			
-		}
+            animationPlayed = false;
+        }
+
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
 
-			timer += 1 * Time.deltaTime;
-
-			if (timer > timeLimit || foundPlayer.value == true)
+			if (foundPlayer.value == true)
 			{
-				timer = 0;
+				monsterSearchAnim.value.SetActive(false);
+				EndAction(true);
+			}
+			else if (animationPlayed == true && !monsterSearchAnim.value.activeInHierarchy)
+			{
+				animationPlayed = false;
 				EndAction(true);
 			}
 
-			if (!HidingSpot.IsPlayerHidden)
+                if (!HidingSpot.IsPlayerHidden)
 			{
 				foundPlayer.value = true;
+			}
+			else
+			{
+				if (animationPlayed == false)
+				{
+                    monsterSearchAnim.value.SetActive(true);
+                    animationPlayed = true;
+					
+				}
 			}
 
 

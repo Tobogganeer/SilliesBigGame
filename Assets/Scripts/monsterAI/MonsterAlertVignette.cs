@@ -39,6 +39,8 @@ namespace NodeCanvas.Tasks.Actions {
 				EndAction(true);
 			}
 
+
+
 			timer += 1 * Time.deltaTime;
 		}
 
