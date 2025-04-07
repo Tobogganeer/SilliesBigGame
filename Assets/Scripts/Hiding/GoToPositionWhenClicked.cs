@@ -8,6 +8,6 @@ public class GoToPositionWhenClicked : MonoBehaviour, IInteractable
 
     public void OnClicked()
     {
-        PlayerMovement.instance.Travel(camPos.transform.position, camPos.transform.rotation);
+        PlayerMovement.instance.Travel(camPos);
     }
 }
