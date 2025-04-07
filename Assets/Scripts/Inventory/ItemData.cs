@@ -119,7 +119,7 @@ public class ItemData : MonoBehaviour
             {"itemDescription", "The second solution from the cabinet. It's colourless, so you can't tell what it is."},
             {"itemImage", "ItemSprites/Syringe"},
             {"combination", "Solution 6"},
-            {"combinationResult", "Green Flask"},
+            {"combinationResult", "Removal Solvent"},
         });
         itemData.Add("Solution 3", new Dictionary<string, string>
         {
@@ -144,7 +144,13 @@ public class ItemData : MonoBehaviour
             {"itemDescription", "The sixth solution from the cabinet. It's colourless, so you can't tell what it is."},
             {"itemImage", "ItemSprites/Syringe"},
             {"combination", "Solution 2"},
-            {"combinationResult", "Green Flask"},
+            {"combinationResult", "Removal Solvent"},
+        });
+        itemData.Add("Removal Solvent", new Dictionary<string, string>
+        {
+            {"itemDescription", "Hard-earned caulk removal solvent."},
+            {"itemImage", "ItemSprites/Flask1B"},
+            {"combination", string.Empty},
         });
     }
 
