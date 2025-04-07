@@ -34,6 +34,7 @@ public class Cutscene : MonoBehaviour
         {
             fadeTimer -= Time.deltaTime;
             blackBackground.color = new Color(0, 0, 0, 1f - (fadeTimer / fadeInTime)); // Fade in slowly
+            yield return null;
         }
 
         blackBackground.color = new Color(0, 0, 0); // Solid black
@@ -51,13 +52,44 @@ public class Cutscene : MonoBehaviour
         public CanvasGroup canvasGroup;
         public List<Image> images;
         public float extraTimeAfterAllImagesVisible = 1f;
+        public float fadeOutTime = 0.5f;
 
-        public IEnumerator Display()
+        public IEnumerator Display(MonoBehaviour src)
         {
             canvasGroup.gameObject.SetActive(true);
-            canvasGroup.alpha = 0;
+            canvasGroup.alpha = 1; // Enable
+
+            float longestImage = 0;
             foreach (Image image in images)
+            {
                 image.element.color = new Color(1, 1, 1, 0f); // Transparent
+                src.StartCoroutine(FadeInImage(image));
+                // Find out when the last image is fully displayed
+                longestImage = Mathf.Max(longestImage, image.fadeInTime + image.delayBeforeFadingIn);
+            }
+
+            yield return new WaitForSeconds(longestImage + extraTimeAfterAllImagesVisible);
+
+            float timer = fadeOutTime;
+            while (timer > 0)
+            {
+                timer -= Time.deltaTime;
+                canvasGroup.alpha = timer / fadeOutTime; // Fade out slowly
+                yield return null;
+            }
+        }
+
+        public IEnumerator FadeInImage(Image image)
+        {
+            yield return new WaitForSeconds(image.delayBeforeFadingIn);
+
+            float fadeTimer = image.fadeInTime;
+            while (fadeTimer > 0)
+            {
+                fadeTimer -= Time.deltaTime;
+                image.element.color = new Color(1, 1, 1, 1f - (fadeTimer / image.fadeInTime)); // Fade in slowly
+                yield return null;
+            }
         }
     }
 
