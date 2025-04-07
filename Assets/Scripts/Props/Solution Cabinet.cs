@@ -16,7 +16,7 @@ public class SolutionCabinet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(newCG.active == true)
+        if(newCG.activeInHierarchy == true)
         {
             mainCG.obj = newCG;
         }
