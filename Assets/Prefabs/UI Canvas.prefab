@@ -7815,6 +7815,12 @@ GameObject:
   - component: {fileID: 5265726438105675233}
   - component: {fileID: 3034704375944077620}
   - component: {fileID: 8308088488506729731}
+  - component: {fileID: 1097927099637914717}
+  - component: {fileID: 5375027331348662445}
+  - component: {fileID: 2001149134399857352}
+  - component: {fileID: 5387951828133766168}
+  - component: {fileID: 5506226852241706480}
+  - component: {fileID: 4521693085961744586}
   m_Layer: 5
   m_Name: RawImage
   m_TagString: Untagged
@@ -7932,6 +7938,96 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raycastHitsTransparentPixels: 1
+--- !u!114 &1097927099637914717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8394320331606120628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bddf59e747af5704bb8d40a115e3dafb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: Solution 1
+  showPickedUpMessage: 1
+  pickupSound: {fileID: 0}
+--- !u!114 &5375027331348662445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8394320331606120628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bddf59e747af5704bb8d40a115e3dafb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: Solution 2
+  showPickedUpMessage: 1
+  pickupSound: {fileID: 0}
+--- !u!114 &2001149134399857352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8394320331606120628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bddf59e747af5704bb8d40a115e3dafb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: Solution 3
+  showPickedUpMessage: 1
+  pickupSound: {fileID: 0}
+--- !u!114 &5387951828133766168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8394320331606120628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bddf59e747af5704bb8d40a115e3dafb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: Solution 4
+  showPickedUpMessage: 1
+  pickupSound: {fileID: 0}
+--- !u!114 &5506226852241706480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8394320331606120628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bddf59e747af5704bb8d40a115e3dafb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: Solution 5
+  showPickedUpMessage: 1
+  pickupSound: {fileID: 0}
+--- !u!114 &4521693085961744586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8394320331606120628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bddf59e747af5704bb8d40a115e3dafb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: Solution 6
+  showPickedUpMessage: 1
+  pickupSound: {fileID: 0}
 --- !u!1 &8550866704690544484
 GameObject:
   m_ObjectHideFlags: 0
