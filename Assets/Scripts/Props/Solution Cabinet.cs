@@ -6,6 +6,7 @@ using UnityEngine;
 public class SolutionCabinet : MonoBehaviour
 {
     public GameObject newCG;
+    public EnableObjectOnClick mainCG;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +18,7 @@ public class SolutionCabinet : MonoBehaviour
     {
         if(newCG.active == true)
         {
-            gameObject.GetComponent<EnableObjectOnClick>().obj = newCG;
+            mainCG.obj = newCG;
         }
     }
 
