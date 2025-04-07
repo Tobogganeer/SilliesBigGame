@@ -18,12 +18,20 @@ public class CameraPosition : MonoBehaviour
 
     public int roomNumber;
 
-    private void Awake()
+    private void OnEnable()
     {
         foreach (CameraRotation rotation in rotations)
         {
             rotation.Init(this);
             posRotToRotation.Add(rotation.GetPosRot(), rotation);
+        }
+    }
+
+    private void OnDisable()
+    {
+        foreach (CameraRotation rotation in rotations)
+        {
+            posRotToRotation.Remove(rotation.GetPosRot());
         }
     }
 

@@ -24,8 +24,8 @@ public class CameraTransition
         this.from = from;
         this.to = to;
         this.moveTrigger = customTrigger;
-        this.moveTime = DefaultMoveTime;
-        this.rotateTime = DefaultRotateTime;
+        this.moveTime = moveTime;
+        this.rotateTime = rotateTime;
     }
 
     public CameraTransition(MoveDirection direction, Vector3 fromPosition, Quaternion fromRotation, Vector3 targetPosition, Quaternion targetRotation,
