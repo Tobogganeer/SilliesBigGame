@@ -1,5 +1,6 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
+using Tobo.Audio;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,13 +12,17 @@ namespace NodeCanvas.Tasks.Actions {
 		public float QTECurrentTime = 0f;
 		public float QTETimeLimit = 5f;
 
+		public BBParameter<GameObject> player;
+
 		[Space]
 		public BBParameter<GameObject> monsterQTE;
 		public BBParameter<bool> whacked;
 
-		//Use for initialization. This is called only once in the lifetime of the task.
-		//Return null if init was successfull. Return an error string otherwise
-		protected override string OnInit() {
+        public Sound angrySound;
+
+        //Use for initialization. This is called only once in the lifetime of the task.
+        //Return null if init was successfull. Return an error string otherwise
+        protected override string OnInit() {
 			return null;
 		}
 
@@ -26,9 +31,9 @@ namespace NodeCanvas.Tasks.Actions {
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
 			QTECurrentTime = 0f;
-
-			//start the QTE
-			monsterQTE.value.SetActive(true);
+			angrySound.MaybeNull().PlayAtPosition(player.value.transform.position);
+            //start the QTE
+            monsterQTE.value.SetActive(true);
 		}
 
 		//Called once per frame while the action is active.

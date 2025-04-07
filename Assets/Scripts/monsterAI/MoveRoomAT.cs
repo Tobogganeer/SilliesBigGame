@@ -1,5 +1,6 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
+using Tobo.Audio;
 using UnityEngine;
 
 
@@ -11,6 +12,7 @@ namespace NodeCanvas.Tasks.Actions {
         public BBParameter<GameObject> player;
         public BBParameter<int> currentRoom;
         public BBParameter<bool> sameRoom;
+        public Sound movementSound;
 
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise

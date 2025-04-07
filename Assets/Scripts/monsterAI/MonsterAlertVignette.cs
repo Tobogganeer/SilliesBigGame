@@ -1,5 +1,6 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
+using Tobo.Audio;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,9 +12,15 @@ namespace NodeCanvas.Tasks.Actions {
 
 		public float timer;
 		public float timeLimit;
+        public Sound heartBeat;
+		public Sound heartBeatClose;
 
-		[Space]
+        [Space]
 		public GameObject vignetteCG;
+
+		public GameObject player;
+
+		public bool playedCloseSound;
 
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
@@ -27,7 +34,9 @@ namespace NodeCanvas.Tasks.Actions {
 		protected override void OnExecute() {
 			vignetteCG.SetActive(true);
 			vignetteCG.GetComponent<Image>().color = new Vector4(1, 1, 1, 0);
-			timer = 0f;
+			heartBeat.MaybeNull().PlayAtPosition(player.transform.position);
+            playedCloseSound = false;
+            timer = 0f;
 		}
 
 		//Called once per frame while the action is active.
@@ -38,6 +47,12 @@ namespace NodeCanvas.Tasks.Actions {
 				vignetteCG.SetActive(false);
 				EndAction(true);
 			}
+
+			else if (timer > timeLimit / 2 && !playedCloseSound)
+			{
+                heartBeatClose.MaybeNull().PlayAtPosition(player.transform.position);
+				playedCloseSound = true;
+            }
 
 
 

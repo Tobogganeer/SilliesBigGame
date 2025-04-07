@@ -1,5 +1,6 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
+using Tobo.Audio;
 using UnityEngine;
 
 
@@ -9,6 +10,10 @@ namespace NodeCanvas.Tasks.Actions {
 
 		public BBParameter<int> currentRoom;
 		public BBParameter<bool> sameRoom;
+
+		public BBParameter<GameObject> player;
+
+		public Sound running;
 
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
@@ -20,6 +25,7 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
+			running.MaybeNull().PlayAtPosition(player.value.transform.position);
             if (currentRoom.value == 1)
             {
                 int nextRoom = Random.Range(1, 3);

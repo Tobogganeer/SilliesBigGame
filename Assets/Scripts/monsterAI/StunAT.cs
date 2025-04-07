@@ -1,5 +1,6 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
+using Tobo.Audio;
 using UnityEngine;
 
 
@@ -17,11 +18,14 @@ namespace NodeCanvas.Tasks.Actions {
 		[Space]
 		public BBParameter<bool> foundPlayer;
 		public BBParameter<bool> whacked;
-		
 
-		//Use for initialization. This is called only once in the lifetime of the task.
-		//Return null if init was successfull. Return an error string otherwise
-		protected override string OnInit() {
+		public Sound runSound;
+        public BBParameter<GameObject> player;
+
+
+        //Use for initialization. This is called only once in the lifetime of the task.
+        //Return null if init was successfull. Return an error string otherwise
+        protected override string OnInit() {
 			return null;
 		}
 
@@ -29,7 +33,9 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-			foundPlayer.value = false;
+            PopUp.Show("She'll be back soon...", 1.5f);
+			runSound.MaybeNull().PlayAtPosition(player.value.transform.position);
+            foundPlayer.value = false;
 			whacked.value = false;
 			stunTime = 0f;
 			stunDuration = Random.Range(stunDurationMin+1, stunDurationMax+1);

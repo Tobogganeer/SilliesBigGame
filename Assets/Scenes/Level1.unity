@@ -368,7 +368,7 @@ MonoBehaviour:
       moveTime: 0
       rotateTime: 0
       _foldout: 1
-  roomNumber: 0
+  roomNumber: 3
 --- !u!1 &10769780 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 09b7f23c3e8f2a041a281bc74b7759ee,
@@ -3526,7 +3526,7 @@ MonoBehaviour:
       moveTime: 0.3
       rotateTime: 0.3
       _foldout: 1
-  roomNumber: 0
+  roomNumber: 3
 --- !u!1 &339524913
 GameObject:
   m_ObjectHideFlags: 0
@@ -3996,7 +3996,7 @@ MonoBehaviour:
       moveTime: 0.3
       rotateTime: 0.3
       _foldout: 1
-  roomNumber: 0
+  roomNumber: 4
 --- !u!4 &381153174
 Transform:
   m_ObjectHideFlags: 0
@@ -4074,6 +4074,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987100682738202826, guid: 51e566deedc6b894bbba9dd443a2458c,
+        type: 3}
+      propertyPath: roomNumber
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5337,7 +5342,7 @@ MonoBehaviour:
       moveTime: 0
       rotateTime: 0
       _foldout: 1
-  roomNumber: 0
+  roomNumber: 3
 --- !u!1 &499153120
 GameObject:
   m_ObjectHideFlags: 0
@@ -6243,6 +6248,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987100682738202826, guid: 51e566deedc6b894bbba9dd443a2458c,
+        type: 3}
+      propertyPath: roomNumber
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7815,6 +7825,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
       objectReference: {fileID: 0}
+    - target: {fileID: 4987100682738202826, guid: 51e566deedc6b894bbba9dd443a2458c,
+        type: 3}
+      propertyPath: roomNumber
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8398,6 +8413,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4987100682738202826, guid: 51e566deedc6b894bbba9dd443a2458c,
+        type: 3}
+      propertyPath: roomNumber
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8857,6 +8877,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987100682738202826, guid: 51e566deedc6b894bbba9dd443a2458c,
+        type: 3}
+      propertyPath: roomNumber
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9565,7 +9590,7 @@ MonoBehaviour:
       moveTime: 0
       rotateTime: 0
       _foldout: 1
-  roomNumber: 0
+  roomNumber: 2
 --- !u!1 &1013246794
 GameObject:
   m_ObjectHideFlags: 0
@@ -10002,6 +10027,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4987100682738202826, guid: 51e566deedc6b894bbba9dd443a2458c,
+        type: 3}
+      propertyPath: roomNumber
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7114578141585746201, guid: 51e566deedc6b894bbba9dd443a2458c,
         type: 3}
       propertyPath: position
@@ -10277,6 +10307,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987100682738202826, guid: 51e566deedc6b894bbba9dd443a2458c,
+        type: 3}
+      propertyPath: roomNumber
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10705,6 +10740,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987100682738202826, guid: 51e566deedc6b894bbba9dd443a2458c,
+        type: 3}
+      propertyPath: roomNumber
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7114578141585746201, guid: 51e566deedc6b894bbba9dd443a2458c,
         type: 3}
@@ -11632,7 +11672,7 @@ MonoBehaviour:
       moveTime: 0.3
       rotateTime: 0.3
       _foldout: 1
-  roomNumber: 0
+  roomNumber: 4
 --- !u!1001 &1349339430
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11928,7 +11968,7 @@ MonoBehaviour:
       moveTime: 0.3
       rotateTime: 0.3
       _foldout: 1
-  roomNumber: 0
+  roomNumber: 2
 --- !u!1 &1366858957 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e9d7be19ece990438498ebb7591141d,
@@ -13163,7 +13203,7 @@ MonoBehaviour:
       moveTime: 0.3
       rotateTime: 0.3
       _foldout: 1
-  roomNumber: 0
+  roomNumber: 3
 --- !u!1 &1531946277
 GameObject:
   m_ObjectHideFlags: 0
@@ -13331,7 +13371,7 @@ MonoBehaviour:
       moveTime: 0.3
       rotateTime: 0.3
       _foldout: 1
-  roomNumber: 0
+  roomNumber: 3
 --- !u!1 &1563422121
 GameObject:
   m_ObjectHideFlags: 0
@@ -14142,7 +14182,7 @@ MonoBehaviour:
       moveTime: 0.3
       rotateTime: 0.3
       _foldout: 1
-  roomNumber: 0
+  roomNumber: 4
 --- !u!1001 &1622942465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15901,7 +15941,7 @@ MonoBehaviour:
       moveTime: 0
       rotateTime: 0
       _foldout: 1
-  roomNumber: 0
+  roomNumber: 1
 --- !u!1 &1807692804
 GameObject:
   m_ObjectHideFlags: 0
@@ -16285,7 +16325,7 @@ MonoBehaviour:
       moveTime: 0.3
       rotateTime: 0.3
       _foldout: 1
-  roomNumber: 0
+  roomNumber: 1
 --- !u!1 &1858815332
 GameObject:
   m_ObjectHideFlags: 0
@@ -17284,16 +17324,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _serializedExposedParameters: []
-  _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"timeLimit":10.0,"player":{"_name":"player","_targetVariableID":"48fd10b9-3f4d-4e0f-b1d0-d46564e7146c"},"currentRoom":{"_name":"currentRoom","_targetVariableID":"87cf9a85-c481-49cf-9a4a-7fb13bd44f9a"},"sameRoom":{"_name":"sameRoom","_targetVariableID":"414ef01f-9709-47d5-ada7-97f7fb232366"},"$type":"NodeCanvas.Tasks.Actions.IdleAT"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Idle","_position":{"x":363.0,"y":217.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"player":{"_name":"player","_targetVariableID":"48fd10b9-3f4d-4e0f-b1d0-d46564e7146c"},"currentRoom":{"_name":"currentRoom","_targetVariableID":"87cf9a85-c481-49cf-9a4a-7fb13bd44f9a"},"sameRoom":{"_name":"sameRoom","_targetVariableID":"414ef01f-9709-47d5-ada7-97f7fb232366"},"$type":"NodeCanvas.Tasks.Actions.MoveRoomAT"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"MoveRoom","_position":{"x":515.1285,"y":103.0438},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"timeLimit":10.0,"vignetteCG":1,"$type":"NodeCanvas.Tasks.Actions.MonsterAlertVignette"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"SameRoomAlert","_position":{"x":513.9348,"y":315.162},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"},{"_nestedFSM":{"_value":2},"_position":{"x":668.8321,"y":433.8033},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"3"},{"_conditionList":{"conditions":[]},"_actionList":{"executionMode":1,"actions":[{"player":{"_name":"player","_targetVariableID":"48fd10b9-3f4d-4e0f-b1d0-d46564e7146c"},"currentRoom":{"_name":"currentRoom","_targetVariableID":"87cf9a85-c481-49cf-9a4a-7fb13bd44f9a"},"sameRoom":{"_name":"sameRoom","_targetVariableID":"414ef01f-9709-47d5-ada7-97f7fb232366"},"searching":{},"$type":"NodeCanvas.Tasks.Actions.CheckPlayerRoomAT"}]},"_position":{"x":684.9348,"y":162.162},"$type":"NodeCanvas.StateMachines.OnFSMUpdate"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"valueA":{"_name":"sameRoom","_targetVariableID":"414ef01f-9709-47d5-ada7-97f7fb232366"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"valueA":{"_name":"sameRoom","_targetVariableID":"414ef01f-9709-47d5-ada7-97f7fb232366"},"valueB":{},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
+  _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"timeLimit":20.0,"player":{"_name":"player","_targetVariableID":"48fd10b9-3f4d-4e0f-b1d0-d46564e7146c"},"currentRoom":{"_name":"currentRoom","_targetVariableID":"87cf9a85-c481-49cf-9a4a-7fb13bd44f9a"},"sameRoom":{"_name":"sameRoom","_targetVariableID":"414ef01f-9709-47d5-ada7-97f7fb232366"},"$type":"NodeCanvas.Tasks.Actions.IdleAT"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Idle","_position":{"x":363.0,"y":217.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"player":{"_name":"player","_targetVariableID":"48fd10b9-3f4d-4e0f-b1d0-d46564e7146c"},"currentRoom":{"_name":"currentRoom","_targetVariableID":"87cf9a85-c481-49cf-9a4a-7fb13bd44f9a"},"sameRoom":{"_name":"sameRoom","_targetVariableID":"414ef01f-9709-47d5-ada7-97f7fb232366"},"$type":"NodeCanvas.Tasks.Actions.MoveRoomAT"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"MoveRoom","_position":{"x":515.1285,"y":103.0438},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"timeLimit":10.0,"heartBeat":1,"heartBeatClose":2,"vignetteCG":3,"player":4,"$type":"NodeCanvas.Tasks.Actions.MonsterAlertVignette"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"SameRoomAlert","_position":{"x":515.9348,"y":315.162},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"},{"_nestedFSM":{"_value":5},"_position":{"x":669.8321,"y":433.8033},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"3"},{"_conditionList":{"conditions":[]},"_actionList":{"executionMode":1,"actions":[{"player":{"_name":"player","_targetVariableID":"48fd10b9-3f4d-4e0f-b1d0-d46564e7146c"},"currentRoom":{"_name":"currentRoom","_targetVariableID":"87cf9a85-c481-49cf-9a4a-7fb13bd44f9a"},"sameRoom":{"_name":"sameRoom","_targetVariableID":"414ef01f-9709-47d5-ada7-97f7fb232366"},"searching":{},"$type":"NodeCanvas.Tasks.Actions.CheckPlayerRoomAT"}]},"_position":{"x":684.9348,"y":162.162},"$type":"NodeCanvas.StateMachines.OnFSMUpdate"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"valueA":{"_name":"sameRoom","_targetVariableID":"414ef01f-9709-47d5-ada7-97f7fb232366"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"valueA":{"_name":"sameRoom","_targetVariableID":"414ef01f-9709-47d5-ada7-97f7fb232366"},"valueB":{},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
   _boundGraphObjectReferences:
   - {fileID: 0}
+  - {fileID: 11400000, guid: 35fd06399786d6a48a9e0abf5d14820a, type: 2}
+  - {fileID: 11400000, guid: 491b41d12f081004796bd1e7eb8d535c, type: 2}
   - {fileID: 25535469}
+  - {fileID: 3268452208511815763}
   - {fileID: 11400000, guid: 318308c806bb8a84ba51cb4c18efe69e, type: 2}
   _boundGraphSource:
     _version: 3.29
     _category: 
     _comments: 
-    _translation: {x: -1.9347248, y: 11.837985}
+    _translation: {x: -18.35984, y: 9.525777}
     _zoomFactor: 1
   _firstActivation: 0
   _enableAction: 0
@@ -17807,7 +17850,7 @@ MonoBehaviour:
       moveTime: 0.3
       rotateTime: 0.3
       _foldout: 1
-  roomNumber: 0
+  roomNumber: 2
 --- !u!1001 &2130825880
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18093,7 +18136,7 @@ MonoBehaviour:
       moveTime: 0.3
       rotateTime: 0.3
       _foldout: 1
-  roomNumber: 0
+  roomNumber: 4
 --- !u!4 &2143977960
 Transform:
   m_ObjectHideFlags: 0
@@ -18173,6 +18216,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4987100682738202826, guid: 51e566deedc6b894bbba9dd443a2458c,
+        type: 3}
+      propertyPath: roomNumber
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18240,6 +18288,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782506487730418855, guid: 71d90f10374011948828e2741eb5d11e,
+        type: 3}
+      propertyPath: currentRoom
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5782506487730418855, guid: 71d90f10374011948828e2741eb5d11e,
         type: 3}
@@ -18331,6 +18384,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8553108540370787014, guid: 0f62d8eef5de89d4f99dbb9185246188,
+        type: 3}
+      propertyPath: soundGoingToFirstState
+      value: 
+      objectReference: {fileID: 11400000, guid: 3f90ed681707ce74797f014191b49584,
+        type: 2}
+    - target: {fileID: 8553108540370787014, guid: 0f62d8eef5de89d4f99dbb9185246188,
+        type: 3}
+      propertyPath: soundGoingToSecondState
+      value: 
+      objectReference: {fileID: 11400000, guid: 3f90ed681707ce74797f014191b49584,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

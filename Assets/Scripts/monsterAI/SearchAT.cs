@@ -1,5 +1,6 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
+using Tobo.Audio;
 using UnityEngine;
 
 
@@ -15,9 +16,13 @@ namespace NodeCanvas.Tasks.Actions {
 
 		public BBParameter<bool> searching;
 
-		//Use for initialization. This is called only once in the lifetime of the task.
-		//Return null if init was successfull. Return an error string otherwise
-		protected override string OnInit() {
+		public BBParameter<GameObject> player;
+
+        public Sound searchingSound;
+
+        //Use for initialization. This is called only once in the lifetime of the task.
+        //Return null if init was successfull. Return an error string otherwise
+        protected override string OnInit() {
 			return null;
 		}
 
@@ -32,7 +37,12 @@ namespace NodeCanvas.Tasks.Actions {
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
 
-			if (foundPlayer.value == true)
+            if (!HidingSpot.IsPlayerHidden)
+            {
+                foundPlayer.value = true;
+            }
+
+            if (foundPlayer.value == true)
 			{
                 searching.value = false;
                 monsterSearchAnim.value.SetActive(false);
@@ -47,20 +57,18 @@ namespace NodeCanvas.Tasks.Actions {
 			}
             else
             {
-                if (animationPlayed == false && !monsterSearchAnim.value.activeInHierarchy)
+                if (animationPlayed == false && !monsterSearchAnim.value.activeInHierarchy && !foundPlayer.value)
                 {
                     Debug.Log("playing");
 					searching.value = true;
                     animationPlayed = true;
+					searchingSound.MaybeNull().PlayAtPosition(player.value.transform.position);
                     monsterSearchAnim.value.SetActive(true);
                     
 
                 }
             }
-            if (!HidingSpot.IsPlayerHidden)
-			{
-				foundPlayer.value = true;
-			}
+            
 			
 
 
