@@ -278,6 +278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotations: []
+  roomNumber: 0
 --- !u!114 &2488718600116303246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,6 +301,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4934006666089262811}
   - component: {fileID: 7114578141585746201}
+  - component: {fileID: 7362260476749359558}
   m_Layer: 0
   m_Name: Locker
   m_TagString: Untagged
@@ -343,6 +345,20 @@ MonoBehaviour:
   - {fileID: 4187382829804092612}
   - {fileID: 4427748797748561584}
   - {fileID: 4428702034482138300}
+--- !u!114 &7362260476749359558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4709531555731346503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9175b53aa9017684f80c1dfc2f33a005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {fileID: 4987100682738202826}
+  interactables:
   - {fileID: 4755814640255185415}
 --- !u!1 &5941181005044313699
 GameObject:
