@@ -20271,6 +20271,7 @@ GameObject:
   - component: {fileID: 5387951828133766168}
   - component: {fileID: 5506226852241706480}
   - component: {fileID: 4521693085961744586}
+  - component: {fileID: 2794661083326843645}
   m_Layer: 5
   m_Name: RawImage
   m_TagString: Untagged
@@ -20478,6 +20479,21 @@ MonoBehaviour:
   itemID: Solution 6
   showPickedUpMessage: 1
   pickupSound: {fileID: 0}
+--- !u!114 &2794661083326843645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8394320331606120628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f8b968de53ff0d4aa83fd0b6c454f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: Gathered all of the solutions.
+  time: 3
+  oneTimeOnly: 0
 --- !u!1 &8413560654248565219
 GameObject:
   m_ObjectHideFlags: 0
