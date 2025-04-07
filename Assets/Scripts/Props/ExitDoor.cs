@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class ExitDoor : MonoBehaviour, IInteractable
@@ -27,7 +28,7 @@ public class ExitDoor : MonoBehaviour, IInteractable
         if (!jammed)
         {
             // roll credits
-            return;
+            SceneManager.LoadScene("EndScreen");
         }
         if (!buttonPressed)
         {

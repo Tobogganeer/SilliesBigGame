@@ -13,6 +13,8 @@ namespace NodeCanvas.Tasks.Actions {
 
 		public bool animationPlayed = false;
 
+		public BBParameter<bool> searching;
+
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
 		protected override string OnInit() {
@@ -32,28 +34,34 @@ namespace NodeCanvas.Tasks.Actions {
 
 			if (foundPlayer.value == true)
 			{
-				monsterSearchAnim.value.SetActive(false);
+                searching.value = false;
+                monsterSearchAnim.value.SetActive(false);
 				EndAction(true);
 			}
 			else if (animationPlayed == true && !monsterSearchAnim.value.activeInHierarchy)
 			{
 				animationPlayed = false;
-				EndAction(true);
-			}
+                searching.value = false;
 
-                if (!HidingSpot.IsPlayerHidden)
+                EndAction(true);
+			}
+            else
+            {
+                if (animationPlayed == false && !monsterSearchAnim.value.activeInHierarchy)
+                {
+                    Debug.Log("playing");
+					searching.value = true;
+                    animationPlayed = true;
+                    monsterSearchAnim.value.SetActive(true);
+                    
+
+                }
+            }
+            if (!HidingSpot.IsPlayerHidden)
 			{
 				foundPlayer.value = true;
 			}
-			else
-			{
-				if (animationPlayed == false)
-				{
-                    monsterSearchAnim.value.SetActive(true);
-                    animationPlayed = true;
-					
-				}
-			}
+			
 
 
 		}
