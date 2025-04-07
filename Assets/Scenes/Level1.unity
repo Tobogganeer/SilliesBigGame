@@ -1877,17 +1877,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 8e9d7be19ece990438498ebb7591141d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8e9d7be19ece990438498ebb7591141d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8e9d7be19ece990438498ebb7591141d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.313
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8e9d7be19ece990438498ebb7591141d,
         type: 3}
@@ -1923,6 +1923,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 8e9d7be19ece990438498ebb7591141d,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 8e9d7be19ece990438498ebb7591141d,
         type: 3}
@@ -3199,7 +3204,7 @@ MonoBehaviour:
   - facing: 6
     customFacingTarget: {fileID: 1958413602}
     inspectorTransitions:
-    - directionToClick: 1
+    - directionToClick: 2
       mode: 0
       leadsToRotation: 2
       customFacingTarget: {fileID: 0}
@@ -3210,7 +3215,7 @@ MonoBehaviour:
       moveTime: 0.3
       rotateTime: 0.3
       _foldout: 1
-    - directionToClick: 2
+    - directionToClick: 1
       mode: 0
       leadsToRotation: 6
       customFacingTarget: {fileID: 1807692805}
@@ -5380,6 +5385,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 8e9d7be19ece990438498ebb7591141d,
         type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 8e9d7be19ece990438498ebb7591141d,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4245e9802932606469f258fd98361ab0, type: 2}
@@ -7058,8 +7068,8 @@ MonoBehaviour:
       _foldout: 1
     - directionToClick: 5
       mode: 1
-      leadsToRotation: 0
-      customFacingTarget: {fileID: 0}
+      leadsToRotation: 6
+      customFacingTarget: {fileID: 1807692805}
       leadsToPosition: {fileID: 338910977}
       moveTrigger: {fileID: 1721924957}
       moveTimeMode: 0
