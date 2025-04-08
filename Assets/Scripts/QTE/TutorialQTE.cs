@@ -51,6 +51,8 @@ public class TutorialQTE : MonoBehaviour
             onLevel2Unlocked?.Invoke();
             cutscene.Play(CutsceneFinished);
             Interactor.Enabled = false; // Disable interaction
+            Inventory.ConsumeItem("Charged Flashlight");
+            Inventory.ConsumeItem("Syringe");
         }
     }
 
