@@ -15153,7 +15153,7 @@ MonoBehaviour:
       leadsToRotation: 1
       customFacingTarget: {fileID: 0}
       leadsToPosition: {fileID: 1356216483}
-      moveTrigger: {fileID: 0}
+      moveTrigger: {fileID: 1000269584}
       moveTimeMode: 0
       rotateTimeMode: 0
       moveTime: 0.3
