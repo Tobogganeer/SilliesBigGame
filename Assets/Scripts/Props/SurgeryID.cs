@@ -10,6 +10,8 @@ public class SurgeryID : MonoBehaviour
     public TextMeshProUGUI responseText, surgeryIDText;
     public List<Surgery> surgeries;
     public List<int> surgeryID;
+    public GameObject textFieldsObject;
+    public Keypad keypad;
 
     Surgery inputedSurgery;
 
@@ -27,32 +29,46 @@ public class SurgeryID : MonoBehaviour
 
     public void GenerateID()
     {
-        inputedSurgery = new Surgery((Procedure)procedureDropdown.value, (Equipment)equipmentDropdown.value, (Medication)medicationDropdown.value, (Duration)durationDropdown.value);
-        Response response = GetResponse();
-
-        int randomNumber = UnityEngine.Random.Range(0, 999999);
-        string ID = randomNumber.ToString("000000");
-
-        switch (response)
+        if(textFieldsObject.activeInHierarchy)
         {
-            case Response.Error:
-                surgeryID = new List<int>();
-                responseText.text = "There was an error validating this surgery. Please make sure your fields are correct.";
-                surgeryIDText.text = "Error";
-                break;
+            inputedSurgery = new Surgery((Procedure)procedureDropdown.value, (Equipment)equipmentDropdown.value, (Medication)medicationDropdown.value, (Duration)durationDropdown.value);
+            Response response = GetResponse();
 
-            case Response.GrantAccess:
-                surgeryID = new List<int>(ID.ToIntArray());
-                responseText.text = "Surgery logged. Due to the type logged, the generated ID will grant access to the equipment room.";
-                surgeryIDText.text = ID;
-                break;
+            int randomNumber = UnityEngine.Random.Range(0, 9999);
+            string ID = randomNumber.ToString("0000");
 
-            case Response.NoAccess:
-                responseText.text = "Surgery logged. Please check with management or security in order to gain access to the equipment room.";
-                surgeryID = new List<int>(ID.ToIntArray());
-                surgeryIDText.text = ID;
-                break;
+            switch (response)
+            {
+                case Response.Error:
+                    responseText.text = "There was an error validating this surgery. Please make sure your fields are correct.";
+                    surgeryIDText.text = "Error";
+                    break;
+
+                case Response.GrantAccess:
+                    responseText.text = "Surgery logged. Due to the type logged, the generated ID will grant access to the equipment room.";
+                    surgeryIDText.text = ID;
+
+                    surgeryID = new List<int>();
+                    foreach (char character in ID)
+                    {
+                        surgeryID.Add(int.Parse(character.ToString()));
+                    }
+
+                    keypad.correctOrder = surgeryID;
+                    break;
+
+                case Response.NoAccess:
+                    responseText.text = "Surgery logged. Please check with management or security in order to gain access to the equipment room.";
+                    surgeryIDText.text = ID;
+                    break;
+            }
         }
+        else
+        {
+            responseText.text = "Please fill out all fields.";
+            surgeryIDText.text = "Error";
+        }
+        
     }
 
     public bool SameSurgery(Surgery value, Surgery compareTo)
