@@ -7488,6 +7488,7 @@ GameObject:
   - component: {fileID: 691308485}
   - component: {fileID: 691308488}
   - component: {fileID: 691308487}
+  - component: {fileID: 691308489}
   m_Layer: 0
   m_Name: R4 Door Locked Interaction
   m_TagString: Untagged
@@ -7572,6 +7573,22 @@ MonoBehaviour:
   position: {fileID: 338910977}
   interactables:
   - {fileID: 691308486}
+--- !u!114 &691308489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691308482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f8b968de53ff0d4aa83fd0b6c454f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: There's a sign that says "Security prevents access to the equipment room.
+    If access is required, please enter a valid surgery ID to override security."
+  time: 3
+  oneTimeOnly: 0
 --- !u!1 &694847177
 GameObject:
   m_ObjectHideFlags: 0
